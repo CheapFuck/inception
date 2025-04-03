@@ -2,18 +2,25 @@ FROM scratch
 ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
 
 
+# Install necessary dependencies
+RUN apk update && \
+    apk add --no-cache \
+    nginx \
+    openssl \
+    ca-certificates && \
+    # Clean up after installation to reduce image size
+    rm -rf /var/cache/apk/*
 
-# RUN apt update && apt upgrade && apt install -y nginx
-# CMD ["nginx", "-g", "daemon off;"]
+# Copy custom nginx.conf (you can modify your nginx.conf accordingly)
+COPY nginx.conf /etc/nginx/nginx.conf
 
-RUN apk update && apk add nginx
+# Copy SSL certificates into the container (adjust the paths)
+COPY certs/cert.pem /etc/ssl/certs/cert.pem
+COPY certs/cert.key /etc/ssl/private/cert.key
 
-# Expose Nginx's default HTTP port
+# Expose ports for HTTP and HTTPS
 EXPOSE 80
 EXPOSE 443
-
-# Copy your custom Nginx configuration, if you have one (optional)
-# COPY nginx.conf /etc/nginx/nginx.conf
 
 # Command to run Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]

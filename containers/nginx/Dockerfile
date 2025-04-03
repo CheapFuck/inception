@@ -1,11 +1,16 @@
-# Start from an Alpine base image to keep it small
-FROM alpine:3.21
+FROM scratch
+ADD ../alpine-minirootfs-3.21.2-x86_64.tar.gz /
 
-# Install Nginx and required dependencies
+
+
+# RUN apt update && apt upgrade && apt install -y nginx
+# CMD ["nginx", "-g", "daemon off;"]
+
 RUN apk update && apk add nginx
 
 # Expose Nginx's default HTTP port
 EXPOSE 80
+EXPOSE 443
 
 # Copy your custom Nginx configuration, if you have one (optional)
 # COPY nginx.conf /etc/nginx/nginx.conf

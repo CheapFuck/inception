@@ -8,7 +8,7 @@ services:
     build:
       context: .  # Set the context to the parent directory (my_project)
       dockerfile: containers/nginx/Dockerfile  # Point to the Dockerfile inside containers/nginx
-      image: nginx:42
+      # image: nginx:42
     ports:
      - "443:443"
     # depends_on:

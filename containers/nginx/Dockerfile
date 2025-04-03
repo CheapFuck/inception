@@ -9,7 +9,7 @@ RUN apk update && \
     openssl \
     ca-certificates && \
     # Clean up after installation to reduce image size
-    rm -rf /var/cache/apk/*
+    rm -rf /var/cache/apk/* && \
     mkdir -p /run/nginx
 
 # Copy custom nginx.conf (you can modify your nginx.conf accordingly)

@@ -17,4 +17,3 @@ EXPOSE 443
 
 # Command to run Nginx in the foreground
 CMD ["nginx", "-g", "daemon off;"]
-CMD ["/bin/sh"]

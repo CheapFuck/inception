@@ -13,12 +13,8 @@ services:
     ports:
      - "443:443"
      - "80:80"
-    # depends_on:
-    #   - wordpress
     volumes:
      - wordpress:/var/www/html
     networks:
       - inception
-    # env_file:
-    #   - .env
     restart: always

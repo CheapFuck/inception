@@ -14,6 +14,7 @@ services:
      - "443:443"
      - "80:80"
     volumes:
+     - ./index.html:/var/www/html/index.html  # Mount the local index.html
      - wordpress:/var/www/html
     networks:
       - inception

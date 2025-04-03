@@ -1,18 +1,21 @@
-.PHONY: run_script
+.PHONY: run_script all up down stop start
+
+# Ensure that 'run_script' is part of the 'all' target if you want it to be triggered
+all: run_script up
+	@echo "all target executed"
 
 run_script:
 	./penultimate.sh
 
-all : up
-
-up : 
+up:
+	@echo "up target executed"
 	@docker compose -f docker-compose.yml up -d
 
-down : 
+down:
 	@docker compose -f docker-compose.yml down
 
-stop : 
+stop:
 	@docker compose -f docker-compose.yml stop
 
-start : 
+start:
 	@docker compose -f docker-compose.yml start

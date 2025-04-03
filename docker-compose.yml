@@ -18,3 +18,6 @@ services:
     networks:
       - inception
     restart: always
+
+volumes:
+  wordpress:

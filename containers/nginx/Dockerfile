@@ -11,7 +11,7 @@ RUN apk update && \
     mkdir -p /run/nginx && \
     mkdir -p /var/www/html
 
-COPY /home/vboxuser/inception/containers/nginx/index.html /var/www/html/index.html
+COPY containers/nginx/index.html /var/www/html/index.html
 
 EXPOSE 80
 

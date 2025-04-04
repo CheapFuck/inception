@@ -6,20 +6,19 @@ ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
 # ENTRYPOINT ["entrypoint.sh"]
 
 # Install necessary dependencies
-# RUN apk update && \
-#     apk add --no-cache \
-#     nginx \
-#     openssl \
-#     ca-certificates && \
-#     # Clean up after installation to reduce image size
-#     rm -rf /var/cache/apk/* && \
-#     mkdir -p /run/nginx && \
-#     mkdir -p /var/www/html
+RUN apk update && \
+    apk add --no-cache \
+    nginx \
+    openssl \
+    ca-certificates && \
+    # Clean up after installation to reduce image size
+    rm -rf /var/cache/apk/* && \
+    mkdir -p /run/nginx 
 
 # Copy custom nginx.conf (you can modify your nginx.conf accordingly)
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY nginx.conf /etc/nginx/http.d/default.conf
-# COPY index.html /var/www/html/index.html
+COPY index.html /var/www/html/index.html
 
 
 # Copy SSL certificates into the container (adjust the paths)

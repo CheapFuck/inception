@@ -18,7 +18,7 @@ ENTRYPOINT ["entrypoint.sh"]
 # Copy custom nginx.conf (you can modify your nginx.conf accordingly)
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY nginx.conf /etc/nginx/http.d/default.conf
-COPY index.html /var/www/html/index.html
+# COPY index.html /var/www/html/index.html
 
 
 # Copy SSL certificates into the container (adjust the paths)

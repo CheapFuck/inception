@@ -15,6 +15,8 @@ RUN apk update && \
 
 # COPY containers/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY containers/nginx/index.html /var/www/html/index.html
+COPY containers/nginx/openssl.cnf /
+
 # COPY containers/nginx/index.html /usr/share/nginx/html/index.html
 
 

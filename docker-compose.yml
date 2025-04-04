@@ -23,7 +23,7 @@ services:
 
 volumes:
   wordpress:  # Define the named volume without any further mapping
-  # - ./html:/var/www/html
+  - ./html:/var/www/html
 
 
     #  volumes:

@@ -15,7 +15,7 @@ services:
      - "443:443"
      - "80:80"
     volumes:
-     - wordpress:/var/www/html
+      - ./index.html:/usr/share/nginx/html/index.html
     networks:
       - inception
     restart: always

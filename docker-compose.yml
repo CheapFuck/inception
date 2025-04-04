@@ -15,15 +15,20 @@ services:
      - "443:443"
      - "80:80"
     volumes:
-     - /home/vboxuser/inception/containers/nginx/index.html:/var/www/html/index.html  # Mount the local index.html
      - wordpress:/var/www/html
     networks:
       - inception
     restart: always
 
-volumes:
-  wordpress:  # Define the named volume without any further mapping
 
+volumes:
+        wordpress:
+                name: wordpress
+                driver: local
+                driver_opts:
+                        device: /home/vboxuser/inception/containers/nginx
+                        o: bind
+                        type: none
     #  volumes:
     #  - ./containers/nginx/index.html:/var/www/html/index.html  # Mount the local index.html
     #  - ./html:/var/www/html  # Use a bind mount to the local html directory

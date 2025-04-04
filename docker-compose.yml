@@ -1,11 +1,11 @@
-volumes:
-        wordpress:
-                name: wordpress
-                driver: local
-                driver_opts:
-                        device: /home/vboxuser/inception/containers/nginx
-                        o: bind
-                        type: none
+# volumes:
+#         wordpress:
+#                 name: wordpress
+#                 driver: local
+#                 driver_opts:
+#                         device: /home/vboxuser/inception/containers/nginx
+#                         o: bind
+#                         type: none
         # mariadb:
         #         name: mariadb
         #         driver: local
@@ -29,7 +29,7 @@ services:
      - "443:443"
      - "80:80"
     volumes:
-     - wordpress:/var/www/html
+     - containers/nginx:/var/www/html
     networks:
       - inception
     restart: always

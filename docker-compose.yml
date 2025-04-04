@@ -2,6 +2,7 @@
 networks:
   inception:
     name: inception
+    driver: bridge
 
 services:
   nginx:
@@ -19,10 +20,6 @@ services:
     networks:
       - inception
     restart: always
-
-networks:
-  inception:
-    driver: bridge
 
 volumes:
   wordpress:  # Define the named volume without any further mapping

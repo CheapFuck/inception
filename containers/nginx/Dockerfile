@@ -8,9 +8,10 @@ RUN apk update && \
     ca-certificates && \
     # Clean up after installation to reduce image size
     rm -rf /var/cache/apk/* && \
-    mkdir -p /run/nginx 
+    mkdir -p /run/nginx && \
+    mkdir -p /var/www/html
 
-COPY index.html /usr/share/nginx/html/index.html
+COPY index.html /var/www/html/index.html
 
 EXPOSE 80
 

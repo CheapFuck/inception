@@ -11,6 +11,8 @@ RUN apk update && \
     mkdir -p /run/nginx && \
     mkdir -p /var/www/html
 
+COPY containers/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY containers/nginx/nginx.conf /etc/nginx/http.d/default.conf
 COPY containers/nginx/index.html /var/www/html/index.html
 
 EXPOSE 80

@@ -20,6 +20,10 @@ services:
       - inception
     restart: always
 
+networks:
+  inception:
+    driver: bridge
+
 volumes:
   wordpress:  # Define the named volume without any further mapping
   # - ./html:/var/www/html

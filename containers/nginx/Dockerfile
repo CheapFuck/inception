@@ -1,9 +1,10 @@
 FROM scratch
 ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
 
-COPY entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
+# COPY entrypoint.sh /usr/local/bin/
+# RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+# ENTRYPOINT ["entrypoint.sh"]
+
 # Install necessary dependencies
 # RUN apk update && \
 #     apk add --no-cache \

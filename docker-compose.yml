@@ -21,14 +21,7 @@ services:
     restart: always
 
 
-volumes:
-        wordpress:
-                name: wordpress
-                driver: local
-                driver_opts:
-                        device: /home/vboxuser/inception/containers/nginx
-                        o: bind
-                        type: none
+
     #  volumes:
     #  - ./containers/nginx/index.html:/var/www/html/index.html  # Mount the local index.html
     #  - ./html:/var/www/html  # Use a bind mount to the local html directory

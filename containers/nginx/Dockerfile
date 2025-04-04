@@ -10,7 +10,8 @@ RUN apk update && \
     ca-certificates && \
     # Clean up after installation to reduce image size
     rm -rf /var/cache/apk/* && \
-    mkdir -p /run/nginx
+    mkdir -p /run/nginx && \
+    mkdir -p /var/www/html
 
 # Copy custom nginx.conf (you can modify your nginx.conf accordingly)
 COPY nginx.conf /etc/nginx/nginx.conf

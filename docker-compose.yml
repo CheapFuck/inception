@@ -2,7 +2,7 @@
 networks:
   inception:
     name: inception
-    driver: bridge
+    # driver: bridge
 
 services:
   nginx:

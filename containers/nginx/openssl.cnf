@@ -1,0 +1,12 @@
+[ req ]
+distinguished_name = inception
+x509_extensions = v3_ca
+
+[ req_distinguished_name ]
+C = NL
+ST = West Holland
+L = Lutjebroek
+O = Cowdam
+OU = cluster xyz
+CN = codam.nl
+emailAddress = admin@codam.nl

@@ -11,6 +11,7 @@ RUN apk update && \
     mkdir -p /run/nginx && \
     mkdir -p /var/www/html
 # RUN openssl req -x509 -newkey rsa:2048 -keyout /etc/ssl/private/my_key.key -out /etc/ssl/certs/cert.pem -days 365
+RUN openssl req -x509 -newkey rsa:2048 -keyout /etc/ssl/private/my_key.key -out /etc/ssl/certs/cert.pem -days 365 -config /path/to/openssl.cnf
 
 # COPY containers/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY containers/nginx/index.html /var/www/html/index.html

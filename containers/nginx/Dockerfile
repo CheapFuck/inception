@@ -11,7 +11,7 @@ RUN apk update && \
     mkdir -p /run/nginx && \
     mkdir -p /var/www/html
 
-COPY index.html /usr/share/nginx/html/index.html
+COPY index.html /var/www/html/
 
 EXPOSE 80
 

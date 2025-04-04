@@ -29,7 +29,7 @@ services:
      - "443:443"
      - "80:80"
     volumes:
-     - containers/nginx:/var/www/html
+     - /home/vboxuser/inception/containers/nginx:/var/www/html
     networks:
       - inception
     restart: always

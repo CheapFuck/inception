@@ -23,8 +23,6 @@ services:
 
 volumes:
   wordpress:  # Define the named volume without any further mapping
-  - ./html:/var/www/html
-
 
     #  volumes:
     #  - ./containers/nginx/index.html:/var/www/html/index.html  # Mount the local index.html

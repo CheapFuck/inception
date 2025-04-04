@@ -21,7 +21,8 @@ services:
     restart: always
 
 volumes:
-  - ./html:/var/www/html
+  wordpress:  # Define the named volume without any further mapping
+  # - ./html:/var/www/html
 
 
     #  volumes:

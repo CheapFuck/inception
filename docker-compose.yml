@@ -14,11 +14,16 @@ services:
      - "443:443"
      - "80:80"
     volumes:
-     - ./index.html:/var/www/html/index.html  # Mount the local index.html
+     - ./containers/nginx/index.html:/var/www/html/index.html  # Mount the local index.html
      - wordpress:/var/www/html
     networks:
       - inception
     restart: always
 
 volumes:
-  wordpress:
+  - ./html:/var/www/html
+
+
+    #  volumes:
+    #  - ./containers/nginx/index.html:/var/www/html/index.html  # Mount the local index.html
+    #  - ./html:/var/www/html  # Use a bind mount to the local html directory

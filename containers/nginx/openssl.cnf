@@ -7,8 +7,8 @@ x509_extensions     = v3_ca   # Specifies the extensions for self-signed cert
 
 [ req_distinguished_name ]
 C = NL
-ST = West Holland
-L = Lutjebroek
+ST = Noord Holland
+L = Amsterdam
 O = Cowdam
 OU = cluster xyz
 CN = codam.nl

@@ -23,7 +23,7 @@ services:
     container_name: nginx
     build:
       context: .  # Set the context to the parent directory (my_project)
-      dockerfile: srcs/containers/nginx/Dockerfile  # Point to the Dockerfile inside containers/nginx
+      dockerfile: containers/nginx/Dockerfile  # Point to the Dockerfile inside containers/nginx
       # image: nginx:42
     ports:
      - "443:443"

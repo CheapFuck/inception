@@ -21,8 +21,6 @@ networks:
 services:
   nginx:
     container_name: nginx
-    volumes:
-     - /home/vboxuser/inception/srcs/html:/var/www/html
     build:
       context: .  # Set the context to the parent directory (my_project)
       dockerfile: containers/nginx/Dockerfile  # Point to the Dockerfile inside containers/nginx
@@ -30,6 +28,8 @@ services:
     ports:
      - "443:443"
      - "80:80"
+    volumes:
+     - /home/vboxuser/inception/containers/nginx:/var/www/html
     networks:
       - inception
     restart: always

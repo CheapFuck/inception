@@ -13,9 +13,9 @@ RUN apk update && \
 # RUN openssl req -x509 -newkey rsa:2048 -keyout /etc/ssl/private/my_key.key -out /etc/ssl/certs/cert.pem -days 365
 # RUN openssl req -x509 -newkey rsa:2048 -keyout /etc/ssl/private/my_key.key -out /etc/ssl/certs/cert.pem -days 365 -config openssl.cnf -subj "/C=US/ST=Utah/L=Lehi/O=Your Company, Inc./OU=IT/CN=yourdomain.com" -nodes
 
-COPY containers/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY srcs/containers/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY web/html/index.html /var/www/html/index.html
-COPY containers/nginx/openssl.cnf /
+COPY srcs/containers/nginx/openssl.cnf /
 
 # COPY containers/nginx/index.html /usr/share/nginx/html/index.html
 

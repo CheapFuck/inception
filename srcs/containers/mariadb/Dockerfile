@@ -17,6 +17,9 @@ ENV MYSQL_ROOT_PASSWORD=root_password \
 RUN mkdir -p /var/lib/mysql && \
     chown -R mysql:mysql /var/lib/mysql
 
+# Initialize MariaDB
+RUN mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+
 # Expose the MariaDB default port
 EXPOSE 3306
 
@@ -24,7 +27,8 @@ COPY containers/mariadb/init.sql /init.sql
 
 # Initialize MariaDB (create database, users) on container start
 # CMD ["sh", "-c", "mysqld --user=mysql --init-file=/init.sql"]
-CMD ["mysqld", "--user=mysql"]
+# CMD ["mysqld", "--user=mysql"]
+CMD ["mysqld", "--user=mysql", "--init-file=/init.sql"]
 
 # apk add --no-cache \
 

@@ -20,7 +20,7 @@ RUN mkdir -p /var/lib/mysql && \
 # Expose the MariaDB default port
 EXPOSE 3306
 
-COPY init.sql /init.sql
+COPY srcs/containers/mariadb/init.sql /init.sql
 
 # Initialize MariaDB (create database, users) on container start
 CMD ["sh", "-c", "mysqld --user=mysql --init-file=/init.sql"]

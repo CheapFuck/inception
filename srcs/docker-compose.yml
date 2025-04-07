@@ -36,6 +36,25 @@ services:
 
 
 
+mariadb:
+    container_name: mariadb
+    build:
+      context: .  # Set the context to the parent directory (my_project)
+      dockerfile: containers/mariadb/Dockerfile  # Point to the Dockerfile inside containers/nginx
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password  # Root password for the database
+      MYSQL_DATABASE: my_database  # Name of the database to create on startup
+      MYSQL_USER: my_user  # Create a user with privileges
+      MYSQL_PASSWORD: my_password  # Password for the user
+    volumes:
+      - mariadb_data:/var/lib/mysql  # Persist data between container restarts
+    networks:
+      - inception
+    restart: always
+    ports:
+      - "3306:3306"  # Expose port 3306 to the host for MariaDB connections
+
+
     #  volumes:
     #  - ./containers/nginx/index.html:/var/www/html/index.html  # Mount the local index.html
     #  - ./html:/var/www/html  # Use a bind mount to the local html directory

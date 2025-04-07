@@ -1,0 +1,41 @@
+# volumes:
+#         wordpress:
+#                 name: wordpress
+#                 driver: local
+#                 driver_opts:
+#                         device: /home/vboxuser/inception/containers/nginx
+#                         o: bind
+#                         type: none
+        # mariadb:
+        #         name: mariadb
+        #         driver: local
+        #         driver_opts:
+        #                 device: /Users/sahafid/Desktop/Inception/srcs/mariadb
+        #                 o: bind
+        #                 type: none
+networks:
+  inception:
+    name: inception
+    # driver: bridge
+
+services:
+  nginx:
+    container_name: nginx
+    build:
+      context: .  # Set the context to the parent directory (my_project)
+      dockerfile: containers/nginx/Dockerfile  # Point to the Dockerfile inside containers/nginx
+      # image: nginx:42
+    ports:
+     - "443:443"
+     - "80:80"
+    volumes:
+     - /home/vboxuser/inception/containers/nginx:/var/www/html
+    networks:
+      - inception
+    restart: always
+
+
+
+    #  volumes:
+    #  - ./containers/nginx/index.html:/var/www/html/index.html  # Mount the local index.html
+    #  - ./html:/var/www/html  # Use a bind mount to the local html directory

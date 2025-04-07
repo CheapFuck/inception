@@ -60,5 +60,5 @@ services:
     #  - ./html:/var/www/html  # Use a bind mount to the local html directory
 
 
-  volumes:
-    mariadb_data:  # Declare the named volume
+volumes:
+  mariadb_data:  # Declare the named volume

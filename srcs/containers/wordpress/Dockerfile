@@ -1,31 +1,30 @@
-# Start from scratch and add the Alpine root filesystem
 FROM scratch
 ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
 
-# Install necessary packages
+# Install PHP 8 and necessary extensions
 RUN apk update && \
     apk add --no-cache \
-    php7-fpm \
-    php7-mysqli \
-    php7-opcache \
-    php7-json \
-    php7-mbstring \
-    php7-xml \
-    php7-curl \
-    php7-iconv \
-    php7-session \
-    php7-zlib \
-    php7-soap \
-    php7-dom \
+    php8-fpm \
+    php8-mysqli \
+    php8-opcache \
+    php8-json \
+    php8-mbstring \
+    php8-xml \
+    php8-curl \
+    php8-iconv \
+    php8-session \
+    php8-zlib \
+    php8-soap \
+    php8-dom \
     nginx \
     curl \
     bash \
     && rm -rf /var/cache/apk/*
 
-# Configure PHP-FPM (optional customization)
-RUN sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/' /etc/php7/php.ini \
-    && sed -i 's/user = nobody/user = www-data/' /etc/php7/php-fpm.d/www.conf \
-    && sed -i 's/group = nobody/group = www-data/' /etc/php7/php-fpm.d/www.conf
+# Configure PHP-FPM
+RUN sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/' /etc/php8/php.ini \
+    && sed -i 's/user = nobody/user = www-data/' /etc/php8/php-fpm.d/www.conf \
+    && sed -i 's/group = nobody/group = www-data/' /etc/php8/php-fpm.d/www.conf
 
 # Install WordPress
 RUN curl -o /tmp/latest.tar.gz -L https://wordpress.org/latest.tar.gz && \
@@ -44,5 +43,5 @@ WORKDIR /var/www
 # COPY nginx.conf /etc/nginx/nginx.conf
 
 # Start both Nginx and PHP-FPM
-# CMD sh -c "php-fpm7 && nginx -g 'daemon off;'"
-CMD sh -c "php-fpm7"
+# CMD sh -c "php-fpm8 && nginx -g 'daemon off;'"
+CMD sh -c "php-fpm8"

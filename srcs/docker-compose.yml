@@ -59,6 +59,26 @@ services:
     #  - ./containers/nginx/index.html:/var/www/html/index.html  # Mount the local index.html
     #  - ./html:/var/www/html  # Use a bind mount to the local html directory
 
+ wordpress:
+    container_name: wordpress
+    build:
+      context: .  # Set the context to the parent directory (my_project)
+      dockerfile: containers/wordpress/Dockerfile  # Point to the WordPress Dockerfile
+    environment:
+      WORDPRESS_DB_HOST: mariadb:3306  # Database service to connect to
+      WORDPRESS_DB_NAME: my_database  # Database name
+      WORDPRESS_DB_USER: my_user  # Database user
+      WORDPRESS_DB_PASSWORD: my_password  # Database user password
+    volumes:
+      - wordpress_data:/var/www/html  # Persist WordPress data
+    ports:
+      - "8080:80"  # Expose WordPress on port 8080
+    networks:
+      - inception
+    depends_on:
+      - mariadb  # Ensure MariaDB is up before WordPress
+    restart: always
 
 volumes:
-  mariadb_data:  # Declare the named volume
+  mariadb_data:  # Declare the named volume for MariaDB data
+  wordpress_data:  # Declare the named volume for WordPress data

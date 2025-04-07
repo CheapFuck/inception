@@ -29,7 +29,7 @@ EXPOSE 3306
 # Initialize MariaDB (create database, users) on container start
 # CMD ["sh", "-c", "mysqld --user=mysql --init-file=/init.sql"]
 # CMD ["mysqld", "--user=mysql"]
-CMD ["mysqld", "--user=mysql"]
+CMD ["mariadbd", "--user=mysql"]
 
 # apk add --no-cache \
 

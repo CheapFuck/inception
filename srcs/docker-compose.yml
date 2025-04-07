@@ -21,7 +21,9 @@ services:
 
   mariadb:
     container_name: mariadb
-    image: mariadb:latest  # Use the official MariaDB image
+    build:
+      context: .  # Set the context to the parent directory (my_project)
+      dockerfile: containers/mariadb/Dockerfile  # Point to the WordPress Dockerfile    environment:
     environment:
       MYSQL_ROOT_PASSWORD: root_password  # Root password for the database
       MYSQL_DATABASE: my_database  # Name of the database to create on startup

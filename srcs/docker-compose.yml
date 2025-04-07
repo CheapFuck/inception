@@ -36,7 +36,7 @@ services:
 
 
 
-mariadb:
+  mariadb:
     container_name: mariadb
     build:
       context: .  # Set the context to the parent directory (my_project)

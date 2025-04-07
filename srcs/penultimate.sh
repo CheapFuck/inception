@@ -26,5 +26,5 @@ wget -q $url -O alpine-minirootfs-${penultimate_version}-x86_64.tar.gz
 
 # Output the downloaded penultimate version
 echo "Downloaded Alpine penultimate version: ${penultimate_version}"
-sed -i "s|alpine-minirootfs-[0-9.]*-x86_64.tar.gz|alpine-minirootfs-${penultimate_version}-x86_64.tar.gz|" containers/nginx/Dockerfile
+sed -i "s|alpine-minirootfs-[0-9.]*-x86_64.tar.gz|alpine-minirootfs-${penultimate_version}-x86_64.tar.gz|" /home/vboxuser/inception/containers/nginx/Dockerfile
 # cat Dockerfile

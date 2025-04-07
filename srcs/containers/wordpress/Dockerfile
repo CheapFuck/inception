@@ -1,6 +1,9 @@
 FROM scratch
 ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
 
+# Update the Alpine repositories to include the PHP repository
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.21/community" >> /etc/apk/repositories
+
 # Install PHP 8 and necessary extensions
 RUN apk update && \
     apk add --no-cache \
@@ -45,3 +48,4 @@ WORKDIR /var/www
 # Start both Nginx and PHP-FPM
 # CMD sh -c "php-fpm8 && nginx -g 'daemon off;'"
 CMD sh -c "php-fpm8"
+

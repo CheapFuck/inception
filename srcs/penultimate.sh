@@ -21,7 +21,7 @@ echo "Penultimate version: ${penultimate_version}"
 url="https://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/x86_64/alpine-minirootfs-${penultimate_version}-x86_64.tar.gz"
 
 # Download the tarball
-wget -q $url -O alpine-minirootfs-${penultimate_version}-x86_64.tar.gz
+wget -q $url -O srcs/alpine-minirootfs-${penultimate_version}-x86_64.tar.gz
 
 # Output the downloaded penultimate version
 echo "Downloaded Alpine penultimate version: ${penultimate_version}"

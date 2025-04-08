@@ -12,10 +12,10 @@ RUN apk update && \
 COPY containers/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY html/index.html /var/www/html/index.html
 COPY containers/nginx/openssl.cnf /
-COPY containers/nginx/wait.sh /
+# COPY containers/nginx/wait.sh /
 RUN openssl req -x509 -newkey rsa:2048 -keyout /etc/ssl/private/my_key.key -out /etc/ssl/certs/cert.pem -days 365 -config openssl.cnf -subj "/C=NL/ST=Noord Holland/L=Amsterdam/O=Codam/OU=IT/CN=codam.nl" -nodes
 RUN chmod 600 /etc/ssl/private/my_key.key
 RUN chmod 644 /etc/ssl/certs/cert.pem
-RUN chmod a+x wait.sh
+# RUN chmod a+x wait.sh
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]

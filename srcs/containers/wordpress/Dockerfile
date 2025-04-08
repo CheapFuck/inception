@@ -39,4 +39,4 @@ RUN curl -O https://wordpress.org/latest.tar.gz && \
 EXPOSE 9000
 
 # Run PHP-FPM in the foreground
-CMD ["/usr/local/sbin/php-fpm"]
+CMD ["ls"]

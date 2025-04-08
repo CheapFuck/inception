@@ -1,6 +1,6 @@
 FROM scratch
 ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
-CMD [""]
+CMD ["ls"]
 # Add the PHP 8 repository from Alpine Community if it's not available
 # RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.21/community" >> /etc/apk/repositories && \
 #     apk update && \

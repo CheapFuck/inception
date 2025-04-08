@@ -22,9 +22,9 @@ RUN apk update && \
     && rm -rf /var/cache/apk/*
 
 # Copy PHP-FPM configuration files (create them in your local context)
-# COPY php.ini /etc/php/php.ini
-# COPY php-fpm.conf /etc/php/php-fpm.conf
-# COPY www.conf /etc/php/php-fpm.d/www.conf
+COPY php.ini /etc/php/php.ini
+COPY php-fpm.conf /etc/php/php-fpm.conf
+COPY www.conf /etc/php/php-fpm.d/www.conf
 
 # Create necessary directories for WordPress and PHP-FPM
 RUN mkdir -p /var/www/html /run/php-fpm

@@ -50,7 +50,7 @@ services:
     volumes:
       - wordpress_data:/var/www/html  # Persist WordPress data
     ports:
-      - "8080:80"  # Expose WordPress on port 8080
+      - "9000"  # Expose WordPress on port 8080
     networks:
       - inception
     depends_on:

@@ -23,7 +23,6 @@ COPY containers/wordpress/php.ini /etc/php/php.ini
 COPY containers/wordpress/php-fpm.conf /etc/php/php-fpm.conf
 # COPY containers/wordpress/www.conf /etc/php/php-fpm.d/www.conf
 
-RUN cat /etc/php/php-fpm.d/www.conf
 # # Create necessary directories for WordPress and PHP-FPM
 RUN mkdir -p /var/www/html /run/php-fpm
 
@@ -34,6 +33,7 @@ RUN curl -O https://wordpress.org/latest.tar.gz && \
     chown -R root:root /var/www/html
 
 COPY containers/wordpress/www.conf /etc/php/php-fpm.d/www.conf
+RUN cat /etc/php/php-fpm.d/www.conf
 
 # Expose the PHP-FPM port (9000)
 EXPOSE 9000

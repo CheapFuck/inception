@@ -15,9 +15,9 @@ services:
       - "80:80"
     volumes:
       - wordpress_data:/var/www/html  # Persist WordPress data
-      - ./nginx.conf:/etc/nginx/nginx.conf  # Nginx config
-      - ./ssl/cert.pem:/etc/ssl/certs/cert.pem  # SSL cert
-      - ./ssl/my_key.key:/etc/ssl/private/my_key.key  # SSL key
+      # - ./nginx.conf:/etc/nginx/nginx.conf  # Nginx config
+      # - ./ssl/cert.pem:/etc/ssl/certs/cert.pem  # SSL cert
+      # - ./ssl/my_key.key:/etc/ssl/private/my_key.key  # SSL key
     networks:
       - inception
     restart: always

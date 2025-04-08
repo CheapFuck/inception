@@ -30,10 +30,10 @@ RUN apk update && \
 RUN mkdir -p /var/www/html /run/php-fpm
 
 # Download and configure WordPress
-RUN curl -O https://wordpress.org/latest.tar.gz && \
-    tar -xvzf latest.tar.gz -C /var/www/html && \
-    rm latest.tar.gz && \
-    chown -R www-data:www-data /var/www/html
+# RUN curl -O https://wordpress.org/latest.tar.gz && \
+#     tar -xvzf latest.tar.gz -C /var/www/html && \
+#     rm latest.tar.gz && \
+#     chown -R www-data:www-data /var/www/html
 
 # Expose the PHP-FPM port (9000)
 EXPOSE 9000

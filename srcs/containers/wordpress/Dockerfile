@@ -23,24 +23,24 @@ CMD ["nginx", "-g", "daemon off;"]
 # ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
 
 # # Install necessary packages for PHP-FPM and WordPress
-# RUN apk update && \
-#     apk add --no-cache \
-#     php \
-#     php-fpm \
-#     php-mysqli \
-#     php-json \
-#     php-opcache \
-#     php-session \
-#     php-curl \
-#     php-zlib \
-#     php-mbstring \
-#     php-xml \
-#     php-gd \
-#     php-intl \
-#     bash \
-#     curl \
-#     && rm -rf /var/cache/apk/*
-RUN mkdir /var/run/php
+RUN apk update && \
+    apk add --no-cache \
+    php \
+    php-fpm \
+    php-mysqli \
+    php-json \
+    php-opcache \
+    php-session \
+    php-curl \
+    php-zlib \
+    php-mbstring \
+    php-xml \
+    php-gd \
+    php-intl \
+    bash \
+    curl \
+    && rm -rf /var/cache/apk/*
+# RUN mkdir /var/run/php
 
 # RUN apk update && apk add --no-cache bash curl  \
 #     php84-fpm php84-json php84-zlib php84-xml php84-xmlwriter php84-simplexml php84-pdo php84-phar php84-openssl \
@@ -57,16 +57,16 @@ RUN mkdir /var/run/php
 # # COPY www.conf /etc/php/php-fpm.d/www.conf
 
 # # Create necessary directories for WordPress and PHP-FPM
-# RUN mkdir -p /var/www/html /run/php-fpm
+RUN mkdir -p /var/www/html /run/php-fpm
 
-# # Download and configure WordPress
-# RUN curl -O https://wordpress.org/latest.tar.gz && \
-#     tar -xvzf latest.tar.gz -C /var/www/html && \
-#     rm latest.tar.gz && \
-#     chown -R root:root /var/www/html
+# Download and configure WordPress
+RUN curl -O https://wordpress.org/latest.tar.gz && \
+    tar -xvzf latest.tar.gz -C /var/www/html && \
+    rm latest.tar.gz && \
+    chown -R root:root /var/www/html
 
-# # Expose the PHP-FPM port (9000)
-# EXPOSE 9000
+# Expose the PHP-FPM port (9000)
+EXPOSE 9000
 
 # # Run PHP-FPM in the foreground
-# CMD ["php-fpm"]
+CMD ["php-fpm83"]

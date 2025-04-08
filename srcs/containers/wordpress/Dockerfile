@@ -39,4 +39,5 @@ RUN mkdir -p /var/www/html /run/php-fpm
 EXPOSE 9000
 
 # Run PHP-FPM in the foreground
-CMD ["/usr/sbin/php-fpm7", "-F"]
+# CMD ["/usr/sbin/php-fpm7", "-F"]
+CMD ["ls"]

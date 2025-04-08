@@ -4,7 +4,7 @@ ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
 
 # Install necessary packages for PHP-FPM and WordPress
 RUN apk update && \
-    apk add --no-cache \
+    apk add --no-cache
     # php7 \
     # php7-fpm \
     # php7-mysqli \

@@ -1,6 +1,6 @@
 FROM scratch
 ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
-
+CMD ["sh"]
 # Add the PHP 8 repository from Alpine Community if it's not available
 # RUN echo "http://dl-cdn.alpinelinux.org/alpine/v3.21/community" >> /etc/apk/repositories && \
 #     apk update && \
@@ -30,5 +30,5 @@ ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
 # COPY nginx.conf /etc/nginx/nginx.conf
 
 # Start Nginx and PHP-FPM
-CMD ["sh"]
+# CMD ["sh"]
 # CMD sh -c "php-fpm8 && nginx -g 'daemon off;'"

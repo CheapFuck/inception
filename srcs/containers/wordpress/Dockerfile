@@ -23,6 +23,7 @@ COPY containers/wordpress/php.ini /etc/php/php.ini
 COPY containers/wordpress/php-fpm.conf /etc/php/php-fpm.conf
 COPY containers/wordpress/www.conf /etc/php/php-fpm.d/www.conf
 
+RUN cat /etc/php/php-fpm.d/www.conf
 # # Create necessary directories for WordPress and PHP-FPM
 RUN mkdir -p /var/www/html /run/php-fpm
 

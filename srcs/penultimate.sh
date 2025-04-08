@@ -28,9 +28,10 @@ wget -q $url -O srcs/alpine-minirootfs-${penultimate_version}-x86_64.tar.gz
 echo "Downloaded Alpine penultimate version: ${penultimate_version}"
 sed -i "s|alpine-minirootfs-[0-9.]*-x86_64.tar.gz|alpine-minirootfs-${penultimate_version}-x86_64.tar.gz|" srcs/containers/nginx/Dockerfile
 sed -i "s|alpine-minirootfs-[0-9.]*-x86_64.tar.gz|alpine-minirootfs-${penultimate_version}-x86_64.tar.gz|" srcs/containers/mariadb/Dockerfile
+sed -i "s|alpine-minirootfs-[0-9.]*-x86_64.tar.gz|alpine-minirootfs-${penultimate_version}-x86_64.tar.gz|" srcs/containers/wordpress/Dockerfile
 
 
-cat srcs/containers/nginx/Dockerfile
-cat srcs/containers/mariadb/Dockerfile
+# cat srcs/containers/nginx/Dockerfile
+# cat srcs/containers/mariadb/Dockerfile
 
 # cat Dockerfile

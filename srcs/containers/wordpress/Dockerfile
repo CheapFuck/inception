@@ -33,7 +33,7 @@ RUN mkdir -p /var/www/html /run/php-fpm
 RUN curl -O https://wordpress.org/latest.tar.gz && \
     tar -xvzf latest.tar.gz -C /var/www/html && \
     rm latest.tar.gz && \
-    chown -R vboxuser:vboxuser /var/www/html
+    chown -R root:root /var/www/html
 
 # Expose the PHP-FPM port (9000)
 EXPOSE 9000

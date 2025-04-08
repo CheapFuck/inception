@@ -30,5 +30,5 @@ ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
 # COPY nginx.conf /etc/nginx/nginx.conf
 
 # Start Nginx and PHP-FPM
-CMD sh -c "sh"
+CMD ["sh"]
 # CMD sh -c "php-fpm8 && nginx -g 'daemon off;'"

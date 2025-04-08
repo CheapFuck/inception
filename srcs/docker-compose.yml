@@ -1,6 +1,6 @@
 networks:
   inception:
-    name: inception
+    driver: bridge
 
 services:
   nginx:
@@ -55,6 +55,7 @@ services:
     depends_on:
       - mariadb  # Ensure MariaDB is up before WordPress
     restart: always
+    
 
 volumes:
   mariadb_data:  # Declare the named volume for MariaDB data

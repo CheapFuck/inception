@@ -14,7 +14,9 @@ services:
      - "443:443"
      - "80:80"
     volumes:
-     - ./html:/var/www/html
+    #  - ./html:/var/www/html
+    #      volumes:
+     - wordpress_data:/var/www/html  # Persist WordPress data
     networks:
       - inception
     restart: always

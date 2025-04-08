@@ -32,8 +32,8 @@ RUN curl -O https://wordpress.org/latest.tar.gz && \
     rm latest.tar.gz && \
     chown -R root:root /var/www/html
 
-COPY containers/wordpress/www.conf /etc/php/php-fpm.d/www.conf
-RUN cat /etc/php/php-fpm.d/www.conf
+COPY containers/wordpress/www.conf /etc/php83/php-fpm.d/www.conf
+RUN cat /etc/php83/php-fpm.d/www.conf
 
 # Expose the PHP-FPM port (9000)
 EXPOSE 9000

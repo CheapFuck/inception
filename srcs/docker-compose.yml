@@ -14,7 +14,7 @@ services:
      - "443:443"
      - "80:80"
     volumes:
-     - /home/vboxuser/inception/srcs/html:/var/www/html
+     - srcs/html:/var/www/html
     networks:
       - inception
     restart: always

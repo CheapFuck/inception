@@ -22,11 +22,11 @@ url="https://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/x86_64/alpine-
 
 # Download the tarball
 pwd
-wget -q $url -O alpine-minirootfs-${penultimate_version}-x86_64.tar.gz
+wget -q $url -O alpine-minirootfs-${penultimate_version}-x86_64.tar.gz srcs/
 
 # Output the downloaded penultimate version
 echo "Downloaded Alpine penultimate version: ${penultimate_version}"
 sed -i "s|alpine-minirootfs-[0-9.]*-x86_64.tar.gz|alpine-minirootfs-${penultimate_version}-x86_64.tar.gz|" srcs/containers/nginx/Dockerfile
-sudo sed -i "s|alpine-minirootfs-[0-9.]*-x86_64.tar.gz|alpine-minirootfs-${penultimate_version}-x86_64.tar.gz|" srcs/containers/mariadb/Dockerfile
+sed -i "s|alpine-minirootfs-[0-9.]*-x86_64.tar.gz|alpine-minirootfs-${penultimate_version}-x86_64.tar.gz|" srcs/containers/mariadb/Dockerfile
 
 # cat Dockerfile

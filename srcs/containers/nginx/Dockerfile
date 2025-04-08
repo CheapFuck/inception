@@ -17,4 +17,4 @@ RUN openssl req -x509 -newkey rsa:2048 -keyout /etc/ssl/private/my_key.key -out 
 RUN chmod 600 /etc/ssl/private/my_key.key
 RUN chmod 644 /etc/ssl/certs/cert.pem
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["wait.sh"]

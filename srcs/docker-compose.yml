@@ -1,7 +1,8 @@
+version: '3'
+
 networks:
   inception:
     name: inception
-    # driver: bridge
 
 services:
   nginx:
@@ -9,14 +10,14 @@ services:
     build:
       context: .  # Set the context to the parent directory (my_project)
       dockerfile: containers/nginx/Dockerfile  # Point to the Dockerfile inside containers/nginx
-      # image: nginx:42
     ports:
-     - "443:443"
-     - "80:80"
+      - "443:443"
+      - "80:80"
     volumes:
-    #  - ./html:/var/www/html
-    #      volumes:
-     - wordpress_data:/var/www/html  # Persist WordPress data
+      - wordpress_data:/var/www/html  # Persist WordPress data
+      - ./nginx.conf:/etc/nginx/nginx.conf  # Nginx config
+      - ./ssl/cert.pem:/etc/ssl/certs/cert.pem  # SSL cert
+      - ./ssl/my_key.key:/etc/ssl/private/my_key.key  # SSL key
     networks:
       - inception
     restart: always
@@ -25,7 +26,7 @@ services:
     container_name: mariadb
     build:
       context: .  # Set the context to the parent directory (my_project)
-      dockerfile: containers/mariadb/Dockerfile  # Point to the WordPress Dockerfile    environment:
+      dockerfile: containers/mariadb/Dockerfile  # Point to the WordPress Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: root_password  # Root password for the database
       MYSQL_DATABASE: my_database  # Name of the database to create on startup
@@ -51,8 +52,6 @@ services:
       WORDPRESS_DB_PASSWORD: my_password  # Database user password
     volumes:
       - wordpress_data:/var/www/html  # Persist WordPress data
-    ports:
-      - "9000"  # Expose WordPress on port 8080
     networks:
       - inception
     depends_on:

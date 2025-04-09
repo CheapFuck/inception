@@ -24,7 +24,7 @@ COPY containers/wordpress/php-fpm.conf /etc/php83/php-fpm.conf
 COPY containers/wordpress/www.conf /etc/php83/php-fpm.d/www.conf
 
 # # Create necessary directories for WordPress and PHP-FPM
-RUN mkdir -p /var/www/html /run/php-fpm
+RUN mkdir -p /var/www/html /run/php83-fpm
 
 # Download and configure WordPress
 RUN curl -O https://wordpress.org/latest.tar.gz && \

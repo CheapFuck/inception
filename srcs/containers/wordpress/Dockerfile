@@ -32,7 +32,7 @@ RUN curl -O https://wordpress.org/latest.tar.gz && \
     rm latest.tar.gz && \
     chown -R root:root /var/www/html
 
-COPY containers/wordpress/www.conf /etc/php83/php-fpm.d/www.conf
+# COPY containers/wordpress/www.conf /etc/php83/php-fpm.d/www.conf
 # RUN cat /etc/php83/php-fpm.d/www.conf
 # RUN sed -i 's/^listen = 127\.0\.0\.1:9000/listen = 0.0.0.0:9000/' /etc/php83/php-fpm.d/www.conf
 

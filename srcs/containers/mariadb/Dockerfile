@@ -17,7 +17,7 @@ RUN mkdir -p /var/lib/mysql && \
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 RUN chown -R mysql:mysql /var/lib/mysql
 COPY containers/mariadb/init.sql /init.sql
-COPY containers/marivadb/my.cnf /etc/mysql/my.cnf
+COPY containers/mariadb/my.cnf /etc/mysql/my.cnf
 
 # Initialize MariaDB
 # RUN mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql

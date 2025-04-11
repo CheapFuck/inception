@@ -25,12 +25,12 @@ COPY containers/wordpress/www.conf /etc/php83/php-fpm.d/www.conf
 
 # # Create necessary directories for WordPress and PHP-FPM
 RUN mkdir -p /var/www/html /run/php83-fpm
-COPY containers/wordpress/wp-config.php /var/www/html/wordpress/wp-config.php
 # Download and configure WordPress
 RUN curl -O https://wordpress.org/wordpress-6.7.2.tar.gz && \
     tar -xvzf wordpress-6.7.2.tar.gz -C /var/www/html && \
     rm wordpress-6.7.2.tar.gz && \
     chown -R root:root /var/www/html
+COPY containers/wordpress/wp-config.php /var/www/html/wordpress/wp-config.php
 
 # RUN chown root:root /var/www/html/wordpress/wp-config.php
 RUN ls -l /var/www/html

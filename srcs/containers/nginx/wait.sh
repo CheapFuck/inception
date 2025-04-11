@@ -6,3 +6,4 @@ until curl -s wordpress:9000 > /dev/null; do
 done
 # Start Nginx after PHP-FPM is ready
 nginx -g "daemon off;"
+z

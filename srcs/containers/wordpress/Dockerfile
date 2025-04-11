@@ -33,6 +33,7 @@ RUN curl -O https://wordpress.org/wordpress-6.7.2.tar.gz && \
     rm wordpress-6.7.2.tar.gz && \
     chown -R root:root /var/www/html
 COPY containers/wordpress/wp-config.php /var/www/html/wordpress/wp-config.php
+COPY containers/wordpress/wp-config.php /var/www/html/wp-config.php
 RUN chown root:root /var/www/html/wordpress/wp-config.php && \
         chmod 640 /var/www/html/wordpress/wp-config.php
     

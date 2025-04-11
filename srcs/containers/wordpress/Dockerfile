@@ -21,11 +21,11 @@ RUN apk update && \
 # # Copy PHP-FPM configuration files (create them in your local context)
 COPY containers/wordpress/php.ini /etc/php83/php.ini
 COPY containers/wordpress/default/php-fpm.conf /etc/php83/php-fpm.conf
-COPY containers/wordpress/www.conf /etc/php83/php-fpm.d/www.conf
+COPY containers/wordpress/default/www.conf /etc/php83/php-fpm.d/www.conf
 
 # # Create necessary directories for WordPress and PHP-FPM
 RUN mkdir -p /var/www/html /run/php83-fpm
-# COPY ./wp-config.php /var/www/html/wordpress/wp-config.php
+COPY containers/wordpress/wp-config.php /var/www/html/wordpress/wp-config.php
 # Download and configure WordPress
 RUN curl -O https://wordpress.org/wordpress-6.7.2.tar.gz && \
     tar -xvzf wordpress-6.7.2.tar.gz -C /var/www/html && \

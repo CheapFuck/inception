@@ -32,6 +32,7 @@ RUN curl -O https://wordpress.org/wordpress-6.7.2.tar.gz && \
     rm wordpress-6.7.2.tar.gz && \
     chown -R root:root /var/www/html
 
+RUN chown -R nobody:nobody *
 # COPY containers/wordpress/www.conf /etc/php83/php-fpm.d/www.conf
 # RUN cat /etc/php83/php-fpm.d/www.conf
 # RUN sed -i 's/^listen = 127\.0\.0\.1:9000/listen = 0.0.0.0:9000/' /etc/php83/php-fpm.d/www.conf

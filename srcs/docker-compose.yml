@@ -10,7 +10,7 @@ services:
       dockerfile: containers/nginx/Dockerfile  # Point to the Dockerfile inside containers/nginx
     ports:
       - "443:443"
-      - "80:80"
+      # - "80:80"
     volumes:
       - wordpress_data:/var/www/html  # Persist WordPress data
       # - ./nginx.conf:/etc/nginx/nginx.conf  # Nginx config

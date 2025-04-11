@@ -18,10 +18,7 @@ RUN apk update && \
     curl \
     && rm -rf /var/cache/apk/*
 
-
-
-RUN chown -R nobody:nobody *
-    # # Copy PHP-FPM configuration files (create them in your local context)
+# # Copy PHP-FPM configuration files (create them in your local context)
 COPY containers/wordpress/php.ini /etc/php83/php.ini
 COPY containers/wordpress/default/php-fpm.conf /etc/php83/php-fpm.conf
 COPY containers/wordpress/default/www.conf /etc/php83/php-fpm.d/www.conf

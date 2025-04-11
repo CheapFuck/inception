@@ -19,4 +19,4 @@ emailAddress = admin@codam.nl
 basicConstraints = CA:TRUE
 keyUsage = cRLSign, keyCertSign
 subjectKeyIdentifier = hash
-authorityKeyIdentifier = keyid,issuerz
+authorityKeyIdentifier = keyid,issuer

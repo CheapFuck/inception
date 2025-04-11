@@ -25,6 +25,11 @@ services:
     build:
       context: .  # Set the context to the parent directory (my_project)
       dockerfile: containers/mariadb/Dockerfile  # Point to the WordPress Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     # environment:
     #   MYSQL_ROOT_PASSWORD: root_password  # Root password for the database
     #   MYSQL_DATABASE: my_database  # Name of the database to create on startup
@@ -43,6 +48,11 @@ services:
     build:
       context: .  # Set the context to the parent directory (my_project)
       dockerfile: containers/wordpress/Dockerfile  # Point to the WordPress Dockerfile
+    environment:
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
     # environment:
     #   WORDPRESS_DB_HOST: mariadb:3306  # Database service to connect to
     #   WORDPRESS_DB_NAME: my_database  # Database name

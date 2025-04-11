@@ -32,6 +32,8 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - mariadb_data:/var/lib/mysql  # Persist data between container restarts
+      - ./containers/mariadb/my.cnf:/etc/mysql/my.cnf
+      - ./containers/mariadb/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - inception
     restart: always

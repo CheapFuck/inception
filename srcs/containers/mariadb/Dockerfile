@@ -7,16 +7,17 @@ RUN apk update && \
     bash \
     && rm -rf /var/cache/apk/*
 # Set up environment variables for MariaDB
-# ENV MYSQL_ROOT_PASSWORD=root_password \
-#     MYSQL_DATABASE=my_database \
-#     MYSQL_USER=my_user \
-#     MYSQL_PASSWORD=my_password
+ENV MYSQL_ROOT_PASSWORD=root_password \
+    MYSQL_DATABASE=my_database \
+    MYSQL_USER=my_user \
+    MYSQL_PASSWORD=my_password
 # Create a directory for the database
 RUN mkdir -p /var/lib/mysql && \
     chown -R mysql:mysql /var/lib/mysql
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 RUN chown -R mysql:mysql /var/lib/mysql
 COPY containers/mariadb/init.sql /init.sql
+COPY containers/mariadb/init.sql /docker-entrypoint-initdb.d/
 COPY containers/mariadb/my.cnf /etc/mysql/my.cnf
 
 # Initialize MariaDB
@@ -27,4 +28,4 @@ EXPOSE 3306
 # CMD ["sh", "-c", "mysqld --user=mysql --init-file=/init.sql"]
 # CMD ["mysqld", "--user=mysql"]
 # CMD ["mariadbd", "--user=mysql"]
-CMD ["sh", "-c", "mariadbd --user=mysql --init-file=/init.sql"]
+CMD ["sh", "mariadbd --user=mysql --init-file=/init.sql"]

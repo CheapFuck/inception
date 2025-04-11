@@ -20,7 +20,7 @@ COPY containers/mariadb/init.sql /init.sql
 COPY containers/mariadb/my.cnf /etc/mysql/my.cnf
 
 # Initialize MariaDB
-# RUN mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+RUN mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 # Expose the MariaDB default port
 EXPOSE 3306
 # Initialize MariaDB (create database, users) on container start

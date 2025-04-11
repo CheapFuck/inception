@@ -10,7 +10,7 @@ services:
       dockerfile: containers/nginx/Dockerfile  # Point to the Dockerfile inside containers/nginx
     ports:
       - "443:443"
-      # - "80:80"
+      - "80:80"
     volumes:
       - wordpress_data:/var/www/html  # Persist WordPress data
       # - ./nginx.conf:/etc/nginx/nginx.conf  # Nginx config
@@ -26,14 +26,12 @@ services:
       context: .  # Set the context to the parent directory (my_project)
       dockerfile: containers/mariadb/Dockerfile  # Point to the WordPress Dockerfile
     environment:
-      MYSQL_ROOT_PASSWORD: my_password
-      MYSQL_DATABASE: my_database
-      MYSQL_USER: my_user
-      MYSQL_PASSWORD: my_password
+      MYSQL_ROOT_PASSWORD: root_password  # Root password for the database
+      MYSQL_DATABASE: my_database  # Name of the database to create on startup
+      MYSQL_USER: my_user  # Create a user with privileges
+      MYSQL_PASSWORD: my_password  # Password for the user
     volumes:
       - mariadb_data:/var/lib/mysql  # Persist data between container restarts
-      - ./containers/mariadb/my.cnf:/etc/mysql/my.cnf
-      - ./containers/mariadb/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - inception
     restart: always
@@ -45,11 +43,6 @@ services:
     build:
       context: .  # Set the context to the parent directory (my_project)
       dockerfile: containers/wordpress/Dockerfile  # Point to the WordPress Dockerfile
-    # environment:
-    #   WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
-    #   WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
-    #   WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
-    #   WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
     environment:
       WORDPRESS_DB_HOST: mariadb:3306  # Database service to connect to
       WORDPRESS_DB_NAME: my_database  # Database name
@@ -61,7 +54,6 @@ services:
       - inception
     depends_on:
       - mariadb  # Ensure MariaDB is up before WordPress
-    # entrypoint: ["./wait-for-it.sh", "mariadb:3306", "--", "php-fpm83", "-F"]
     restart: always
     
 

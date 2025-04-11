@@ -30,7 +30,7 @@ define( 'DB_PASSWORD', 'my_password' );
 // define( 'DB_PASSWORD', getenv('WORDPRESS_DB_PASSWORD') );
 
 /** Database hostname */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', 'mariadb:3306' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );

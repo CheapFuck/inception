@@ -32,7 +32,7 @@ RUN curl -O https://wordpress.org/wordpress-6.7.2.tar.gz && \
     rm wordpress-6.7.2.tar.gz && \
     chown -R root:root /var/www/html
 COPY containers/wordpress/wp-config.php /var/www/html/wp-config.php
-# RUN chown www-data:www-data /var/www/html/wp-config.php
+RUN chown root:root /var/www/html/wp-config.php
 RUN ls -l /var/www/html
 # COPY containers/wordpress/www.conf /etc/php83/php-fpm.d/www.conf
 # RUN cat /etc/php83/php-fpm.d/www.conf

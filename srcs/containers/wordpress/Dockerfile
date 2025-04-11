@@ -33,10 +33,14 @@ RUN curl -O https://wordpress.org/wordpress-6.7.2.tar.gz && \
     rm wordpress-6.7.2.tar.gz && \
     chown -R root:root /var/www/html
 # COPY containers/wordpress/wp-config.php /var/www/html/wordpress/wp-config.php
-COPY containers/wordpress/wp-config.php /var/www/html/wp-config.php
-RUN chown root:root /var/www/html/wp-config.php && \
-        chmod 640 /var/www/html/wp-config.php
+# COPY containers/wordpress/wp-config.php /var/www/html/wp-config.php
+# RUN chown root:root /var/www/html/wp-config.php && \
+#         chmod 640 /var/www/html/wp-config.php
     
+
+
+
+
 # RUN chown root:root /var/www/html/wordpress/wp-config.php
 RUN ls -la /var/www/html/wordpress
 # COPY containers/wordpress/www.conf /etc/php83/php-fpm.d/www.conf
@@ -47,4 +51,7 @@ RUN ls -la /var/www/html/wordpress
 EXPOSE 9000
 
 # # Run PHP-FPM in the foreground
-CMD ["php-fpm83", "-F"]
+COPY containers/wordpress/wp-config.php /tmp/wp-config.php
+COPY containers/wordpress/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]

@@ -30,11 +30,6 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    # environment:
-    #   MYSQL_ROOT_PASSWORD: root_password  # Root password for the database
-    #   MYSQL_DATABASE: my_database  # Name of the database to create on startup
-    #   MYSQL_USER: my_user  # Create a user with privileges
-    #   MYSQL_PASSWORD: my_password  # Password for the user
     volumes:
       - mariadb_data:/var/lib/mysql  # Persist data between container restarts
     networks:
@@ -64,6 +59,7 @@ services:
       - inception
     depends_on:
       - mariadb  # Ensure MariaDB is up before WordPress
+    # entrypoint: ["./wait-for-it.sh", "mariadb:3306", "--", "php-fpm83", "-F"]
     restart: always
     
 

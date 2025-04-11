@@ -5,17 +5,17 @@ all: run_script up
 	@echo "all target executed"
 
 run_script:
-	@./srcs/penultimate.sh
+	./srcs/penultimate.sh
 
 up:
 	@echo "up target executed"
-	@COMPOSE_BAKE=true docker compose -f srcs/docker-compose.yml up --build -d
+	@docker compose -f srcs/docker-compose.yml up --build -d
 
 down:
-	@COMPOSE_BAKE=true docker compose -f srcs/docker-compose.yml down
+	@docker compose -f srcs/docker-compose.yml down
 
 stop:
-	@COMPOSE_BAKE=true docker compose -f srcs/docker-compose.yml stop
+	@docker compose -f srcs/docker-compose.yml stop
 
 start:
-	@COMPOSE_BAKE=true docker compose -f srcs/docker-compose.yml start
+	@docker compose -f srcs/docker-compose.yml start

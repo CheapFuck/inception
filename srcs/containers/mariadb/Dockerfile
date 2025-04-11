@@ -19,6 +19,8 @@ RUN chown -R mysql:mysql /var/lib/mysql
 COPY containers/mariadb/init.sql /init.sql
 COPY containers/mariadb/init.sql /docker-entrypoint-initdb.d/
 COPY containers/mariadb/my.cnf /etc/mysql/my.cnf
+COPY containers/mariadb/entrypoint.sh /
+RUN chmod +x /entrypoint.sh
 
 # Initialize MariaDB
 RUN mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql

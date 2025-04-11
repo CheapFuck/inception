@@ -36,7 +36,7 @@ RUN curl -O https://wordpress.org/latest.tar.gz && \
 # RUN cat /etc/php83/php-fpm.d/www.conf
 # RUN sed -i 's/^listen = 127\.0\.0\.1:9000/listen = 0.0.0.0:9000/' /etc/php83/php-fpm.d/www.conf
 
-# Expose the PHP-FPM port (9000)
+# Expose the PHP-FPM pozrt (9000)
 EXPOSE 9000
 
 # # Run PHP-FPM in the foreground

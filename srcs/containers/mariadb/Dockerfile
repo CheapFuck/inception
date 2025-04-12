@@ -5,7 +5,7 @@ ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
 # expose port
 EXPOSE 3306
 
-ENV ROOT_PASSWORD=123
+# ENV ROOT_PASSWORD=123
 
 # update apk repositories
 RUN apk update
@@ -21,12 +21,12 @@ RUN apk add \
     inotify-tools
 
 # install zsh
-RUN apk add \
-    zsh \
-    zsh-vcs
+# RUN apk add \
+#     zsh \
+#     zsh-vcs
 
 # configure zsh
-ADD --chown=root:root include/zshrc /etc/zsh/zshrc
+# ADD --chown=root:root include/zshrc /etc/zsh/zshrc
 
 # install mariadb
 RUN apk add \
@@ -65,7 +65,7 @@ WORKDIR /var/lib/mysql/
 ENTRYPOINT ["tini", "-vw"]
 
 # run script
-CMD ["/tmp/start.sh"]
+CMD ["tail", "-f", "/dev/null"]
 
 # # Copy the main shell script to image
 # COPY ["main.sh", "/usr/local/bin/"]

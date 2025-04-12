@@ -41,4 +41,4 @@ RUN mkdir -p /var/www/html/wordpress /run/php83-fpm
 EXPOSE 9000
 
 # # Run PHP-FPM in the foreground
-CMD ["wp-cli.sh"]
+CMD ["./wp-cli.sh"]

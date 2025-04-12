@@ -1,10 +1,9 @@
 #!/bin/bash
 
 # wait for the database to be available
-until mariadb -h mariadb -u my_user -pmy_password -e ""; do
+until mysqladmin ping -h"mariadb" -u"my_user" -p"my_password" --silent; do
   >&2 echo "MariaDB is unavailable - sleeping"
   sleep 5
 done
 
->&2 echo "MariaDB is up - executing WordPress setup"
 # continue with your wp-cli commands

@@ -28,7 +28,7 @@ wp core download --allow-root --version=6.7.2 --locale=en_US
 wp config create --allow-root --dbname="my_database" --dbuser="my_user" --dbpass="my_password" --dbhost="mariadb:3306"
 
 # This will then install WordPress, and again, all the options are just placeholders that will get replaced
-wp core install --allow-root --admin_user="root" --admin_password="root_password" --admin_email="thivan-d@student.codam.nl"
+wp core install --allow-root --admin_user="root" --admin_password="1d0ntkn0w!?" --admin_email="thivan-d@student.codam.nl"
 
 # This create a new WordPress user, and sets its role to author ( --role=author )
 wp user create "my_user" "thivan-d@student.codam.nl" --user_pass="my_password" --role=author

@@ -1,5 +1,11 @@
 #!/bin/sh
+# Wait for MariaDB to be ready
+until mariadb -h mariadb -u my_user -pmy_password -e "SHOW DATABASES;" > /dev/null 2>&1; do
+  echo "Waiting for MariaDB to be ready..."
+  sleep 3
+done
 
+echo "MariaDB is ready. Continuing WordPress setup..."
 # Check if wp-cli is installed, if not, install it
 if ! command -v wp > /dev/null 2>&1; then
   echo "wp-cli is not installed. Installing wp-cli..."

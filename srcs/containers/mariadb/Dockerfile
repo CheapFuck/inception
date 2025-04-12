@@ -32,4 +32,5 @@ EXPOSE 3306
 # CMD ["sh", "-c", "mysqld --user=mysql --init-file=/init.sql"]
 # CMD ["mysqld", "--user=mysql"]
 # CMD ["mariadbd", "--user=mysql"]
-CMD ["sh", "-c", "mariadbd --user=mysql --init-file=/init.sql"]
+# CMD ["sh", "-c", "mariadbd --user=mysql --init-file=/init.sql"]
+CMD ["mariadbd", "--user=mysql", "--bind-address=0.0.0.0", "--port=3306"]

@@ -51,7 +51,7 @@ services:
       context: .  # Set the context to the parent directory (my_project)
       dockerfile: containers/wordpress/Dockerfile  # Point to the WordPress Dockerfile
     environment:
-      WORDPRESS_DB_HOST: mariadb:3306  # Database service to connect to
+      WORDPRESS_DB_HOST: mariadb  # Database service to connect to
       WORDPRESS_DB_NAME: my_database  # Database name
       WORDPRESS_DB_USER: my_user  # Database user
       WORDPRESS_DB_PASSWORD: my_password  # Database user password

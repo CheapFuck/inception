@@ -29,7 +29,7 @@ services:
       MYSQL_PASSWORD: my_password  # Password for the user
     volumes:
       - mariadb_data:/var/lib/mysql  # Persist data between container restarts
-      - ./home/vboxuser/inception/srcs/containers/mariadb/my.cnf:/etc/mysql/my.cnf
+      - ./containers/mariadb/my.cnf:/etc/mysql/my.cnf
     networks:
       - inception
     restart: always

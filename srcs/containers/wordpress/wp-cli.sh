@@ -1,13 +1,22 @@
 #!/bin/sh
 
-# We will first check if the "/var/www/html" folder exist or not,
-# if not we create it
+# Check if wp-cli is installed, if not, install it
+if ! command -v wp > /dev/null 2>&1; then
+  echo "wp-cli is not installed. Installing wp-cli..."
+  curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+  chmod +x wp-cli.phar
+  mv wp-cli.phar /usr/local/bin/wp
+  echo "wp-cli installed successfully."
+fi
+
+# Check if the "/var/www/html" folder exists, if not create it
 if [ ! -d "/var/www/html" ]; then
   mkdir -p /var/www/html
 fi
 
-# We will cd into the folder
+# Change to the WordPress directory
 cd /var/www/html
+
 
 # This downloads the WordPress core files, the option ( --allow-root ) will run the command as root
 # and ( --version:5.8.1 ) specifies the version of WordPress that will get downloaded

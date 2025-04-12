@@ -1,5 +1,13 @@
 #!/bin/sh
-./wait.sh
+# ./wait.sh
+
+# Wait until MariaDB is accepting connections
+until mariadb -h mariadb -u my_user -pmy_password -e "SELECT 1;" > /dev/null 2>&1; do
+  >&2 echo "MariaDB is unavailable - sleeping"
+  sleep 5
+done
+
+>&2 echo "MariaDB is up - executing WordPress setup"
 
 # Check if wp-cli is installed, if not, install it
 if ! command -v wp > /dev/null 2>&1; then

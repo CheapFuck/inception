@@ -29,7 +29,6 @@ services:
       MYSQL_PASSWORD: my_password  # Password for the user
     volumes:
       - mariadb_data:/var/lib/mysql  # Persist data between container restarts
-      - wordpress_data:/var/www/html  # Persist WordPress data
     networks:
       - inception
     restart: always

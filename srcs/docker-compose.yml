@@ -1,3 +1,7 @@
+networks:
+  inception:
+    driver: bridge
+
 services:
   nginx:
     container_name: nginx
@@ -62,6 +66,3 @@ services:
 volumes:
   mariadb_data:  # Declare the named volume for MariaDB data
   wordpress_data:  # Declare the named volume for WordPress data
-networks:
-  inception:
-    driver: bridge

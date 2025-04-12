@@ -53,7 +53,8 @@ RUN chown mysql:mysql /var/log/mysqld.log
 RUN sed -i '/^\[server\]$/a log-error=\/var\/log\/mysqld.log' /etc/my.cnf.d/mariadb-server.cnf
 
 # add entry point script
-ADD --chown=root:root start.sh /tmp/start.sh
+ADD --chown=root:root containers/mariadb/start.sh /tmp/start.sh
+
 
 # make entry point script executable
 RUN chmod +x /tmp/start.sh

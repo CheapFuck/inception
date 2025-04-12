@@ -37,8 +37,8 @@ services:
     networks:
       - inception
     restart: always
-    ports:
-      - "3306:3306"  # Expose port 3306 to the host for MariaDB connections
+    # ports:
+    #   - "3306:3306"  # Expose port 3306 to the host for MariaDB connections
 
   wordpress:
     container_name: wordpress

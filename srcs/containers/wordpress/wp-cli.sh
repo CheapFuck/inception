@@ -1,5 +1,5 @@
 #!/bin/sh
-# ./wait.sh
+./wait.sh
 
 # Check if wp-cli is installed, if not, install it
 if ! command -v wp > /dev/null 2>&1; then

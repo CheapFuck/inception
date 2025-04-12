@@ -10,6 +10,7 @@ RUN apk update && \
     mkdir -p /run/nginx && \
     mkdir -p /var/www/html
 COPY containers/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY containers/nginx/nginx.conf /etc/nginx/http.d/default.conf
 COPY html/index.html /var/www/html/index.html
 COPY containers/nginx/openssl.cnf /
 # COPY containers/nginx/wait.sh /

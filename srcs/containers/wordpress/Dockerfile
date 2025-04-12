@@ -22,15 +22,16 @@ RUN apk update && \
 COPY containers/wordpress/php.ini /etc/php83/php.ini
 COPY containers/wordpress/default/php-fpm.conf /etc/php83/php-fpm.conf
 COPY containers/wordpress/default/www.conf /etc/php83/php-fpm.d/www.conf
-
+COPY containers/wordpress/wp-cli.sh /
+RUN chmod +x wp-cli.sh
 # # Create necessary directories for WordPress and PHP-FPM
 RUN mkdir -p /var/www/html/wordpress /run/php83-fpm
 
 # Download and configure WordPress
-RUN curl -O https://wordpress.org/latest.tar.gz && \
-    tar -xvzf latest.tar.gz -C /var/www/html/wordpress && \
-    rm latest.tar.gz && \
-    chown -R root:root /var/www/html
+# RUN curl -O https://wordpress.org/latest.tar.gz && \
+#     tar -xvzf latest.tar.gz -C /var/www/html/wordpress && \
+#     rm latest.tar.gz && \
+#     chown -R root:root /var/www/html
 
 # COPY containers/wordpress/www.conf /etc/php83/php-fpm.d/www.conf
 # RUN cat /etc/php83/php-fpm.d/www.conf

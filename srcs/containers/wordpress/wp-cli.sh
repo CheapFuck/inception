@@ -34,4 +34,5 @@ wp core install --allow-root --admin_user="root" --admin_password="1d0ntkn0w!?" 
 wp user create "my_user" "thivan-d@student.codam.nl" --user_pass="my_password" --role=author
 
 # This is the command that will keep WordPress up and running
+./wait.sh
 exec php-fpm83 -F -R

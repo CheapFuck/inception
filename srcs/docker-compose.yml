@@ -42,8 +42,8 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-    ports:
-      - "3306:3306"  # Expose port 3306 to the host for MariaDB connections
+    # ports:
+    #   - "3306:3306"  # Expose port 3306 to the host for MariaDB connections
 
   wordpress:
     container_name: wordpress

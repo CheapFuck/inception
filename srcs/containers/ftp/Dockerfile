@@ -24,6 +24,7 @@ RUN mkdir -p /home/ftpuser && \
     mkdir -p /home/ftpuser/files && \
     chown ftpuser:ftpuser /home/ftpuser/files
 
+RUN usermod -d /home/ftpuser ftpuser
 # Create FTP user
 RUN echo "ftpuser:ftppassword" | chpasswd
 
@@ -33,7 +34,7 @@ COPY containers/ftp/vsftpd.conf /etc/vsftpd/vsftpd.conf
 # Copy the entrypoint script
 COPY containers/ftp/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-
+RUN touch /var/log/vsftpd.log && chmod 666 /var/log/vsftpd.log
 # Expose FTP ports
 EXPOSE 20 21 21100-21110
 
@@ -44,7 +45,8 @@ ENV FTP_PASS=ftppassword
 # Healthcheck (uncomment if needed)
 # HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD nc -z localhost 21 || exit 1
 
-CMD ["/entrypoint.sh"]
+# CMD ["/entrypoint.sh"]
+CMD ["/usr/sbin/vsftpd", "-olisten=YES", "-oxferlog_enable=YES", "/etc/vsftpd/vsftpd.conf"]
 
 
 

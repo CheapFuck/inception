@@ -75,7 +75,7 @@ services:
     environment:
       - FTP_USER=ftpuser
       - FTP_PASS=ftppassword
-      - PASV_ADDRESS=localhost
+      - PASV_ADDRESS=10.0.2.15
       - PASV_MIN_PORT=21100
       - PASV_MAX_PORT=21110
     healthcheck:

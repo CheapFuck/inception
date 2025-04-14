@@ -79,7 +79,8 @@ services:
       - PASV_MIN_PORT=21100
       - PASV_MAX_PORT=21110
     healthcheck:
-      test: ["CMD-SHELL", "pgrep vsftpd && lsof -i :21"]      interval: 30s
+      test: ["CMD-SHELL", "pgrep vsftpd && lsof -i :21"]
+      interval: 30s
       timeout: 5s
       retries: 3
     volumes:

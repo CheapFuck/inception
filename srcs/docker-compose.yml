@@ -71,7 +71,7 @@ services:
       - "21100-21110:21100-21110"
     build:
       context: .  # Set the context to the parent directory (my_project)
-      dockerfile: containers/wordpress/Dockerfile  # Point to the WordPress Dockerfile
+      dockerfile: containers/ftp/Dockerfile  # Point to the WordPress Dockerfile
     environment:
       - FTP_USER=ftpuser
       - FTP_PASS=ftppassword

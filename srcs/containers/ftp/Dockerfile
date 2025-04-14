@@ -16,7 +16,7 @@ RUN useradd -m -d /var/www/html -s /bin/false ftpuser && \
 # Copy a custom config (we’ll write this below)
 COPY containers/ftp/vsftpd.conf /etc/vsftpd/vsftpd.conf
 
-COPY entrypoint.sh /entrypoint.sh
+COPY containers/ftp/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 # Expose FTP ports
 EXPOSE 20 21 21100-21110

@@ -79,7 +79,7 @@ services:
       - PASV_MIN_PORT=21100
       - PASV_MAX_PORT=21110
     volumes:
-      - wordpress_data:/home/vsftpd
+      - wordpress_data:/var/www/html 
   
 volumes:
   mariadb_data:  # Declare the named volume for MariaDB data

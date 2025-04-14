@@ -1,5 +1,6 @@
 FROM scratch
 ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
+
 RUN apk update && \
     apk add --no-cache \
     vsftpd \
@@ -9,12 +10,13 @@ RUN apk update && \
     netcat-openbsd \
     && rm -rf /var/cache/apk/*
 
-# Ensure the FTP directory exists and is accessible
-RUN mkdir -p /var/www/html && chown ftpuser:ftpuser /var/www/html
+# Create FTP user and ensure the directory exists with proper ownership
+RUN useradd -m -d /var/www/html -s /bin/false ftpuser && \
+    mkdir -p /var/www/html && \
+    chown ftpuser:ftpuser /var/www/html
 
 # Create FTP user
-RUN useradd -m -d /var/www/html -s /bin/false ftpuser && \
-    echo "ftpuser:ftppassword" | chpasswd
+RUN echo "ftpuser:ftppassword" | chpasswd
 
 # Copy a custom config (we’ll write this below)
 COPY containers/ftp/vsftpd.conf /etc/vsftpd/vsftpd.conf
@@ -34,6 +36,7 @@ ENV FTP_PASS=ftppassword
 # HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD nc -z localhost 21 || exit 1
 
 CMD ["/entrypoint.sh"]
+
 
 
 # FROM scratch

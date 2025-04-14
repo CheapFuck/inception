@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Default values
-# FTP_USER=${FTP_USER:-ftpuser}
-# FTP_PASS=${FTP_PASS:-ftppassword}
+FTP_USER=${FTP_USER:-ftpuser}
+FTP_PASS=${FTP_PASS:-ftppassword}
 
 
 # Make sure the user doesn’t already exist

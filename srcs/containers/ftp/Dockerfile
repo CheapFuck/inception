@@ -21,7 +21,7 @@ RUN chmod +x /entrypoint.sh
 # Expose FTP ports
 EXPOSE 20 21 21100-21110
 
-HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD nc -z localhost 21 || exit 1
+# HEALTHCHECK --interval=30s --timeout=10s --retries=3 CMD nc -z localhost 21 || exit 1
 
 CMD ["/entrypoint.sh"]
 # CMD ["/usr/sbin/vsftpd", "/etc/vsftpd/vsftpd.conf"]

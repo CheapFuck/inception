@@ -18,6 +18,12 @@ RUN useradd -m -d /var/www/html -s /bin/false ftpuser && \
 RUN mkdir -p /var/run/vsftpd/empty
 RUN chmod 755 /var/run/vsftpd/empty
 
+RUN mkdir -p /home/ftpuser && \
+    chown root:root /home/ftpuser && \
+    chmod 755 /home/ftpuser && \
+    mkdir -p /home/ftpuser/files && \
+    chown ftpuser:ftpuser /home/ftpuser/files
+
 # Create FTP user
 RUN echo "ftpuser:ftppassword" | chpasswd
 

@@ -79,12 +79,13 @@ services:
       - PASV_MIN_PORT=21100
       - PASV_MAX_PORT=21110
     healthcheck:
-      test: ["CMD", "lsof", "-i", ":21"]
-      interval: 30s
+      test: ["CMD-SHELL", "pgrep vsftpd && lsof -i :21"]      interval: 30s
       timeout: 5s
       retries: 3
     volumes:
-      - wordpress_data:/var/www/html 
+      - wordpress_data:/var/www/html
+    networks:
+      - inception 
   
 volumes:
   mariadb_data:  # Declare the named volume for MariaDB data

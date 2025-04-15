@@ -28,6 +28,7 @@ RUN chmod +x ./wp-cli.sh
 RUN chmod +x ./wait.sh
 # # Create necessary directories for WordPress and PHP-FPM
 RUN mkdir -p /var/www/html /run/php83-fpm
+RUN adduser -D -G www-data www-data &&\
 RUN chown -R root:root /var/www/html
 RUN chown -R www-data:www-data /var/www/html
 RUN mkdir /var/www/html/DOEIKDIT

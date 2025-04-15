@@ -28,26 +28,17 @@ RUN chmod +x wp-cli.sh
 RUN chmod +x wait.sh
 # # Create necessary directories for WordPress and PHP-FPM
 RUN mkdir -p /var/www/html /run/php83-fpm
-
 # Download and configure WordPress
 # RUN curl -O https://wordpress.org/latest.tar.gz && \
 #     tar -xvzf latest.tar.gz -C /var/www/html && \
 #     rm latest.tar.gz && \
     # chown -R root:root /var/www/html
-
-
-
 # RUN curl -O https://wordpress.org/latest.tar.gz && \
 #     tar -xvzf latest.tar.gz --strip-components=1 -C /var/www/html && \
 #     rm latest.tar.gz && \
 #     adduser -D -G www-data www-data &&\
 #     chown -R www-data:www-data /var/www/html
-
-
-
-
 # Expose the PHP-FPM port (9000)
 EXPOSE 9000
-
 # # Run PHP-FPM in the foreground
 CMD ["./wp-cli.sh"]

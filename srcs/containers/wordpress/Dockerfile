@@ -33,7 +33,7 @@ RUN mkdir -p /var/www/html /run/php83-fpm
 # RUN curl -O https://wordpress.org/latest.tar.gz && \
 #     tar -xvzf latest.tar.gz -C /var/www/html && \
 #     rm latest.tar.gz && \
-#     chown -R root:root /var/www/html
+    # chown -R root:root /var/www/html
 
 
 

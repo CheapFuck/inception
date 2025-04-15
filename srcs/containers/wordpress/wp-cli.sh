@@ -23,6 +23,10 @@ if [ ! -d "/var/www/html" ]; then
   mkdir -p /var/www/html
 fi
 
+adduser -D -G www-data www-data &&\
+chown -R root:root /var/www/html
+chown -R www-data:www-data /var/www/html
+
 # Change to the WordPress directory
 cd /var/www/html
 

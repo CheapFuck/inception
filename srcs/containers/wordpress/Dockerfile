@@ -37,6 +37,7 @@ RUN mkdir -p /var/www/html /run/php83-fpm
 RUN curl -O https://wordpress.org/latest.tar.gz && \
     tar -xvzf latest.tar.gz --strip-components=1 -C /var/www/html && \
     rm latest.tar.gz && \
+    adduser -D -G www-data www-data \
     chown -R www-data:www-data /var/www/html
 
 

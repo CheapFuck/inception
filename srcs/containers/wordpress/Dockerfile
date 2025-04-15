@@ -1,7 +1,39 @@
 FROM scratch
 ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
 RUN /bin/sh -c "echo 'http://dl-cdn.alpinelinux.org/alpine/v3.21/main' > /etc/apk/repositories && apk update"
-RUN apk add --no-cache bash
+RUN apk add --no-cache \
+    php7 \
+    php7-fpm \
+    php7-mysqli \
+    php7-json \
+    php7-opcache \
+    php7-session \
+    php7-curl \
+    php7-xml \
+    php7-gd \
+    php7-mbstring \
+    php7-soap \
+    php7-ctype \
+    php7-zip \
+    php7-intl \
+    bash \
+    curl
+
+RUN curl -o /tmp/wordpress.tar.gz https://wordpress.org/latest.tar.gz && \
+    tar -xvzf /tmp/wordpress.tar.gz -C /var/www/ && \
+    rm /tmp/wordpress.tar.gz
+
+# Set proper ownership for WordPress files (PHP-FPM user/group)
+RUN chown -R www-data:www-data /var/www/wordpress
+
+# Configure PHP-FPM to run in the foreground (required for Docker containers)
+RUN sed -i 's/;daemonize = yes/daemonize = no/' /etc/php7/php-fpm.d/www.conf
+
+# Expose port 9000 for PHP-FPM
+EXPOSE 9000
+
+# Set the default command to run PHP-FPM in the foreground
+CMD ["php-fpm7", "-F"]
 # RUN apk update && \
 #     apk add --no-cache \
 #     php \

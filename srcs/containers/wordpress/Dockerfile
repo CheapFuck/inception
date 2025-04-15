@@ -29,6 +29,7 @@ RUN chmod +x ./wait.sh
 # # Create necessary directories for WordPress and PHP-FPM
 RUN mkdir -p /var/www/html /run/php83-fpm
 RUN chown -R root:root /var/www/html
+RUN chown -R www-data:www-data /var/www/html
 RUN mkdir /var/www/html/DOEIKDIT
 # Download and configure WordPress
 # RUN curl -O https://wordpress.org/latest.tar.gz && \

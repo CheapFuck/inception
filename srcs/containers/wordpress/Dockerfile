@@ -1,7 +1,8 @@
 FROM scratch
 ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
 RUN /bin/sh -c "echo 'http://dl-cdn.alpinelinux.org/alpine/v3.21/main' > /etc/apk/repositories && apk update"
-RUN apk add --no-cache \
+RUN apk update && \
+    apk add --no-cache \
     php7 \
     php7-fpm \
     php7-mysqli \

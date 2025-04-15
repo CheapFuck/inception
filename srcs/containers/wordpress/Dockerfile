@@ -34,7 +34,7 @@ RUN chown -R www-data:www-data /var/www/html
 RUN mkdir /var/www/html/DOEIKDIT
 # Download and configure WordPress
 RUN curl -O https://wordpress.org/latest.tar.gz && \
-    tar -xvzf latest.tar.gz -C --strip-components=1 /var/www/html && \
+    tar -xvzf latest.tar.gz --strip-components=1 -C /var/www/html && \
     rm latest.tar.gz && \
     chown -R root:root /var/www/html
 # RUN curl -O https://wordpress.org/latest.tar.gz && \

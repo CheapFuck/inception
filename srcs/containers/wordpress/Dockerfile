@@ -42,8 +42,10 @@ RUN curl -o /tmp/wordpress.tar.gz https://wordpress.org/latest.tar.gz && \
 # Set proper ownership for WordPress files (PHP-FPM user/group)
 RUN chown -R www-data:www-data /var/www/wordpress
 
+# COPY containers/wordpress/www.conf /etc/php/php-fpm.d/www.conf
+
 # Configure PHP-FPM to run in the foreground (required for Docker containers)
-RUN sed -i 's/;daemonize = yes/daemonize = no/' /etc/php7/php-fpm.d/www.conf
+# RUN sed -i 's/;daemonize = yes/daemonize = no/' /etc/php7/php-fpm.d/www.conf
 
 # Expose port 9000 for PHP-FPM
 EXPOSE 9000

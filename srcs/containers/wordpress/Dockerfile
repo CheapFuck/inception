@@ -51,7 +51,7 @@ RUN chown -R www-data:www-data /var/www/wordpress
 EXPOSE 9000
 
 # Set the default command to run PHP-FPM in the foreground
-CMD ["php-fpm", "-F"]
+CMD ["php-fpm8", "-F"]
 
 # Download and extract WordPress
 # RUN curl -o /tmp/wordpress.tar.gz https://wordpress.org/latest.tar.gz && \

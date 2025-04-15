@@ -30,7 +30,7 @@ chown -R www-data:www-data /var/www/html
 # Change to the WordPress directory
 cd /var/www/html
 
-
+mkdir ENDITTRTT
 # This downloads the WordPress core files, the option ( --allow-root ) will run the command as root
 # and ( --version:5.8.1 ) specifies the version of WordPress that will get downloaded
 # and ( --local=en_US ) sets the language of the installation to US English

@@ -5,25 +5,27 @@ ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
 # Set up Alpine repository for package installation
 RUN /bin/sh -c "echo 'http://dl-cdn.alpinelinux.org/alpine/v3.21/main' > /etc/apk/repositories && apk update"
 
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
 
-# Install PHP 8 and necessary PHP extensions for WordPress
-# RUN apk add --no-cache \
-#     php \
-#     php-fpm \
-#     php-mysqli \
-#     php-json \
-#     php-opcache \
-#     php-session \
-#     php-curl \
-#     php-xml \
-#     php-gd \
-#     php-mbstring \
-#     php-soap \
-#     php-ctype \
-#     php-zip \
-#     php-intl \
-#     bash \
-#     curl
+Install PHP 8 and necessary PHP extensions for WordPress
+RUN apk add --no-cache \
+    php \
+    php-fpm \
+    php-mysqli \
+    php-json \
+    php-opcache \
+    php-session \
+    php-curl \
+    php-xml \
+    php-gd \
+    php-mbstring \
+    php-soap \
+    php-ctype \
+    php-zip \
+    php-intl \
+    bash \
+    curl
 
 # Download and extract WordPress
 # RUN curl -o /tmp/wordpress.tar.gz https://wordpress.org/latest.tar.gz && \

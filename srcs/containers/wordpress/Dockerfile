@@ -68,7 +68,7 @@ EXPOSE 9000
 # EXPOSE 9000
 
 # Set the default command to run PHP-FPM in the foreground
-# CMD ["php-fpm8", "-F"]
+CMD ["php-fpm8", "-F"]
 
 # RUN apk update && \
 #     apk add --no-cache \

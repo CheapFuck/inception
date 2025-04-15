@@ -28,11 +28,10 @@ RUN apk add --no-cache \
     curl
 
 
-    # Create the /var/www directory and set ownership
-# Create the /var/www directory and the www-data user/group
-RUN mkdir -p /var/www && \
-    addgroup -g 82 -S www-data && \
-    adduser -S -G www-data -u 82 www-data && \
+# Ensure the www-data user/group exists and is used
+RUN if ! getent group www-data; then addgroup -g 82 -S www-data; fi && \
+    if ! getent passwd www-data; then adduser -S -G www-data -u 82 www-data; fi && \
+    mkdir -p /var/www && \
     chown -R www-data:www-data /var/www
 
     # Download and extract WordPress

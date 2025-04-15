@@ -29,8 +29,13 @@ RUN apk add --no-cache \
 
 
     # Create the /var/www directory and set ownership
-RUN mkdir -p /var/www && chown -R www-data:www-data /var/www
-# Download and extract WordPress
+# Create the /var/www directory and the www-data user/group
+RUN mkdir -p /var/www && \
+    addgroup -g 82 -S www-data && \
+    adduser -S -G www-data -u 82 www-data && \
+    chown -R www-data:www-data /var/www
+
+    # Download and extract WordPress
 RUN curl -o /tmp/wordpress.tar.gz https://wordpress.org/latest.tar.gz && \
     tar -xvzf /tmp/wordpress.tar.gz -C /var/www/ && \
     rm /tmp/wordpress.tar.gz

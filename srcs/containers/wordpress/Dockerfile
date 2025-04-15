@@ -8,7 +8,7 @@ RUN /bin/sh -c "echo 'http://dl-cdn.alpinelinux.org/alpine/v3.21/main' > /etc/ap
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
 RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
 
-Install PHP 8 and necessary PHP extensions for WordPress
+# Install PHP 8 and necessary PHP extensions for WordPress
 RUN apk add --no-cache \
     php \
     php-fpm \

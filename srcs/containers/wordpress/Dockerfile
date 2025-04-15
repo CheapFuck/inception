@@ -24,8 +24,8 @@ COPY containers/wordpress/default/php-fpm.conf /etc/php83/php-fpm.conf
 COPY containers/wordpress/default/www.conf /etc/php83/php-fpm.d/www.conf
 COPY containers/wordpress/wp-cli.sh /
 COPY containers/wordpress/wait.sh /
-RUN chmod +x wp-cli.sh
-RUN chmod +x wait.sh
+RUN chmod +x ./wp-cli.sh
+RUN chmod +x ./wait.sh
 # # Create necessary directories for WordPress and PHP-FPM
 RUN mkdir -p /var/www/html /run/php83-fpm
 # Download and configure WordPress

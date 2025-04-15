@@ -20,6 +20,26 @@ RUN apk update && \
     bash \
     curl
 
+# Install PHP 8 and necessary PHP extensions for WordPress
+RUN apk add --no-cache \
+    php8 \
+    php8-fpm \
+    php8-mysqli \
+    php8-json \
+    php8-opcache \
+    php8-session \
+    php8-curl \
+    php8-xml \
+    php8-gd \
+    php8-mbstring \
+    php8-soap \
+    php8-ctype \
+    php8-zip \
+    php8-intl \
+    bash \
+    curl
+
+# Download and extract WordPress
 RUN curl -o /tmp/wordpress.tar.gz https://wordpress.org/latest.tar.gz && \
     tar -xvzf /tmp/wordpress.tar.gz -C /var/www/ && \
     rm /tmp/wordpress.tar.gz
@@ -28,13 +48,14 @@ RUN curl -o /tmp/wordpress.tar.gz https://wordpress.org/latest.tar.gz && \
 RUN chown -R www-data:www-data /var/www/wordpress
 
 # Configure PHP-FPM to run in the foreground (required for Docker containers)
-RUN sed -i 's/;daemonize = yes/daemonize = no/' /etc/php7/php-fpm.d/www.conf
+RUN sed -i 's/;daemonize = yes/daemonize = no/' /etc/php8/php-fpm.d/www.conf
 
 # Expose port 9000 for PHP-FPM
 EXPOSE 9000
 
 # Set the default command to run PHP-FPM in the foreground
-CMD ["php-fpm7", "-F"]
+CMD ["php-fpm8", "-F"]
+
 # RUN apk update && \
 #     apk add --no-cache \
 #     php \

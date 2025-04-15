@@ -80,5 +80,5 @@ CMD ["php-fpm7", "-F"]
 # EXPOSE 9000
 # # Run PHP-FPM in the foreground
 # CMD ["php-fpm83", "-F", "-R"]
-CMD ["tail", "-f", "/dev/null"]
+# CMD ["tail", "-f", "/dev/null"]
 

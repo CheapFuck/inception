@@ -19,12 +19,12 @@ if ! command -v wp > /dev/null 2>&1; then
 fi
 
 # Check if the "/var/www/html" folder exists, if not create it
-if [ ! -d "/var/www/html/wordpress" ]; then
-  mkdir -p /var/www/html/wordpress
+if [ ! -d "/var/www/html" ]; then
+  mkdir -p /var/www/html
 fi
 
 # Change to the WordPress directory
-cd /var/www/html/wordpress
+cd /var/www/html
 
 
 # This downloads the WordPress core files, the option ( --allow-root ) will run the command as root

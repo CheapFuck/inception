@@ -30,10 +30,13 @@ RUN chmod +x wait.sh
 RUN mkdir -p /var/www/html /run/php83-fpm
 
 # Download and configure WordPress
-RUN curl -O https://wordpress.org/latest.tar.gz && \
-    tar -xvzf latest.tar.gz -C /var/www/html && \
-    rm latest.tar.gz && \
-    chown -R root:root /var/www/html
+# RUN curl -O https://wordpress.org/latest.tar.gz && \
+#     tar -xvzf latest.tar.gz -C /var/www/html && \
+#     rm latest.tar.gz && \
+#     chown -R root:root /var/www/html
+
+
+
 # RUN curl -O https://wordpress.org/latest.tar.gz && \
 #     tar -xvzf latest.tar.gz --strip-components=1 -C /var/www/html && \
 #     rm latest.tar.gz && \
@@ -47,4 +50,4 @@ RUN curl -O https://wordpress.org/latest.tar.gz && \
 EXPOSE 9000
 
 # # Run PHP-FPM in the foreground
-CMD ["php-fpm83", "-F", "-R"]
+CMD ["./wp-cli.sh"]

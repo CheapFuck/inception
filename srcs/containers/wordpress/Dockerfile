@@ -1,24 +1,10 @@
 FROM scratch
 ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
+
+
+# Set up Alpine repository for package installation
 RUN /bin/sh -c "echo 'http://dl-cdn.alpinelinux.org/alpine/v3.21/main' > /etc/apk/repositories && apk update"
-RUN apk update && \
-    apk add --no-cache \
-    php7 \
-    php7-fpm \
-    php7-mysqli \
-    php7-json \
-    php7-opcache \
-    php7-session \
-    php7-curl \
-    php7-xml \
-    php7-gd \
-    php7-mbstring \
-    php7-soap \
-    php7-ctype \
-    php7-zip \
-    php7-intl \
-    bash \
-    curl
+
 
 # Install PHP 8 and necessary PHP extensions for WordPress
 RUN apk add --no-cache \

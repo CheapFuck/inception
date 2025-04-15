@@ -33,10 +33,10 @@ RUN chown -R root:root /var/www/html
 RUN chown -R www-data:www-data /var/www/html
 RUN mkdir /var/www/html/DOEIKDIT
 # Download and configure WordPress
-# RUN curl -O https://wordpress.org/latest.tar.gz && \
-#     tar -xvzf latest.tar.gz -C /var/www/html && \
-#     rm latest.tar.gz && \
-    # chown -R root:root /var/www/html
+RUN curl -O https://wordpress.org/latest.tar.gz && \
+    tar -xvzf latest.tar.gz -C /var/www/html && \
+    rm latest.tar.gz && \
+    chown -R root:root /var/www/html
 # RUN curl -O https://wordpress.org/latest.tar.gz && \
 #     tar -xvzf latest.tar.gz --strip-components=1 -C /var/www/html && \
 #     rm latest.tar.gz && \
@@ -45,4 +45,4 @@ RUN mkdir /var/www/html/DOEIKDIT
 # Expose the PHP-FPM port (9000)
 EXPOSE 9000
 # # Run PHP-FPM in the foreground
-CMD ["./wp-cli.sh"]
+CMD ["php-fpm83", "-F", "-R"]

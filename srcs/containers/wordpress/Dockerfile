@@ -69,7 +69,7 @@ EXPOSE 9000
 
 # Set the default command to run PHP-FPM in the foreground
 # CMD ["php-fpm83", "-F"]
-CMD ["wp-cli.sh"]
+CMD ["./wp-cli.sh"]
 # RUN apk update && \
 #     apk add --no-cache \
 #     php \

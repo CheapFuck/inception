@@ -30,7 +30,7 @@ RUN mkdir -p /etc/ftp && \
 # Create a user for FTP access
 # RUN mkdir -p /home/ftpuser/ftp && \
 #     chown -R ftpuser:ftpuser /home/ftpuser
-chown -R ftpuser:ftpuser /var/www/html
+RUN chown -R ftpuser:ftpuser /var/www/html
 # Expose FTP port and passive FTP port range
 EXPOSE 21 21100-21110
 

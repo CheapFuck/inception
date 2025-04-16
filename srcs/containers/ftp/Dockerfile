@@ -9,7 +9,9 @@ RUN apk update && \
     apk add --no-cache \
     pure-ftpd \
     shadow \
-    && adduser -S ftpuser -D \
+    && addgroup ftpuser \
+    # && adduser -S ftpuser -D \
+    && adduser -S -G ftpuser ftpuser \
     && echo "ftpuser:ftppassword" | chpasswd \
     && rm -rf /var/cache/apk/*
 

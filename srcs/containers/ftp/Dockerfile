@@ -7,7 +7,7 @@ ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
 # Install Pure-FTPd and clean up APK cache
 RUN apk update && \
     apk add --no-cache \
-    shadow \
+    # shadow \
     pure-ftpd \
     && rm -rf /var/cache/apk/*
 
@@ -32,7 +32,7 @@ RUN adduser -S -G ftpuser ftpuser
 RUN mkdir -p /var/www/html && chown -R ftpuser:ftpuser /var/www/html
 # RUN chown -R ftpuser:ftpuser /var/www/html
 # Expose FTP port and passive FTP port range
-RUN echo "ftpuser:ftppassword" | chpasswd
+# RUN echo "ftpuser:ftppassword" | chpasswd
 EXPOSE 21 21100-21110
 
 # Start Pure-FTPd on container start

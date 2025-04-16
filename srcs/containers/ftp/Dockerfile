@@ -28,7 +28,8 @@ RUN apk update && \
 #     chown -R ftpuser:ftpuser /home/ftpuser
 # RUN adduser -S -H ftpuser
 RUN addgroup ftpuser
-RUN adduser -S -G ftpuser ftpuser
+# RUN adduser -S -G ftpuser ftpuser
+RUN adduser -D -h -G /var/www/html ftpuser ftpuser
 RUN mkdir -p /var/www/html && chown -R ftpuser:ftpuser /var/www/html
 # RUN chown -R ftpuser:ftpuser /var/www/html
 # Expose FTP port and passive FTP port range

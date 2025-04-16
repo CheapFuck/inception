@@ -31,5 +31,5 @@ RUN adduser -D ftpuser && \
 EXPOSE 21 21100-21110
 
 # Start Pure-FTPd on container start
-# CMD ["pure-ftpd", "-B"]
-CMD ["tail", "-f", "/dev/null"]
+CMD ["pure-ftpd", "-B", "-d /var/www/html"]
+# CMD ["tail", "-f", "/dev/null"]

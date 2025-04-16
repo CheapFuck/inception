@@ -40,7 +40,7 @@ RUN if ! getent group www-data; then addgroup -g 82 -S www-data; fi && \
 #     rm /tmp/wordpress.tar.gz
 
 # Set proper ownership for WordPress files (PHP-FPM user/group)
-RUN chown -R www-data:www-data /var/www/wordpress
+# RUN chown -R www-data:www-data /var/www/wordpress
 
 # COPY containers/wordpress/www.conf /etc/php/php-fpm.d/www.conf
 

@@ -12,16 +12,16 @@ RUN apk update && \
     && rm -rf /var/cache/apk/*
 
 # Configure Pure-FTPd
-RUN echo "ChrootEveryone yes" >> /etc/pure-ftpd.conf && \
-    echo "NoAnonymous yes" >> /etc/pure-ftpd.conf && \
-    echo "MaxClientsNumber 10" >> /etc/pure-ftpd.conf && \
-    echo "MaxClientsPerIP 5" >> /etc/pure-ftpd.conf && \
-    echo "PassivePortRange 21100 21110" >> /etc/pure-ftpd.conf && \
-    # echo "CreateHomeDir yes" >> /etc/pure-ftpd.conf && \
-    # echo "TLS 1" >> /etc/pure-ftpd.conf && \
-    # echo "TLSCipherSuite HIGH:MEDIUM:+TLSv1.2" >> /etc/pure-ftpd.conf \
-    echo "DefaultRoot /var/www/html" >> /etc/pure-ftpd.conf \
-    echo "NoAnonymous yes" >> /etc/pure-ftpd.conf
+# RUN echo "ChrootEveryone yes" >> /etc/pure-ftpd.conf && \
+#     echo "NoAnonymous yes" >> /etc/pure-ftpd.conf && \
+#     echo "MaxClientsNumber 10" >> /etc/pure-ftpd.conf && \
+#     echo "MaxClientsPerIP 5" >> /etc/pure-ftpd.conf && \
+#     echo "PassivePortRange 21100 21110" >> /etc/pure-ftpd.conf && \
+#     # echo "CreateHomeDir yes" >> /etc/pure-ftpd.conf && \
+#     # echo "TLS 1" >> /etc/pure-ftpd.conf && \
+#     # echo "TLSCipherSuite HIGH:MEDIUM:+TLSv1.2" >> /etc/pure-ftpd.conf \
+#     echo "DefaultRoot /var/www/html" >> /etc/pure-ftpd.conf \
+#     echo "NoAnonymous yes" >> /etc/pure-ftpd.conf
 # Create a user for FTP access
 # RUN adduser -D ftpuser && \
 #     mkdir -p /home/ftpuser/ftp && \

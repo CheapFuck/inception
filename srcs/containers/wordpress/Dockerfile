@@ -104,7 +104,7 @@ RUN adduser -D -G www-data www-data
 RUN chown -R root:root /var/www/html
 RUN chown -R www-data:www-data /var/www/html
 RUN mkdir /var/www/html/DOEIKDIT
-Download and configure WordPress
+# Download and configure WordPress
 RUN curl -O https://wordpress.org/latest.tar.gz && \
     tar -xvzf latest.tar.gz -C /var/www/html && \
     rm latest.tar.gz && \
@@ -114,9 +114,9 @@ RUN curl -O https://wordpress.org/latest.tar.gz && \
     rm latest.tar.gz && \
     adduser -D -G www-data www-data &&\
     chown -R www-data:www-data /var/www/html
-Expose the PHP-FPM port (9000)
+# Expose the PHP-FPM port (9000)
 EXPOSE 9000
 # Run PHP-FPM in the foreground
 CMD ["php-fpm83", "-F", "-R"]
-CMD ["tail", "-f", "/dev/null"]
+# CMD ["tail", "-f", "/dev/null"]
 

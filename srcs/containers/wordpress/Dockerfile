@@ -112,7 +112,7 @@ RUN curl -O https://wordpress.org/latest.tar.gz && \
 # RUN curl -O https://wordpress.org/latest.tar.gz && \
 #     tar -xvzf latest.tar.gz -C /var/www/html && \
 #     rm latest.tar.gz && \
-RUN chown -R root:root /var/www/html
+# RUN chown -R root:root /var/www/html
 # RUN curl -O https://wordpress.org/latest.tar.gz && \
 #     tar -xvzf latest.tar.gz --strip-components=1 -C /var/www/html && \
 #     rm latest.tar.gz

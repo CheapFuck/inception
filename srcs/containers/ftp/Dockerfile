@@ -9,7 +9,7 @@ RUN apk update && \
     apk add --no-cache \
     pure-ftpd \
     shadow \
-    && adduser -S ftpuser \
+    && adduser -S ftpuser -D \
     && echo "ftpuser:ftppassword" | chpasswd \
     && rm -rf /var/cache/apk/*
 
@@ -25,11 +25,12 @@ RUN mkdir -p /etc/ftp && \
     echo "TLS 1" >> /etc/ftp/pure-ftpd.conf && \
     echo "TLSCipherSuite HIGH:MEDIUM:+TLSv1.2" >> /etc/ftp/pure-ftpd.conf \
     echo "UnixAuthentication yes" >> /etc/ftp/pure-ftpd.conf \
-    echo "DefaultRoot /var/www/html"
+    echo "DefaultRoot /var/www/html" >> /etc/ftp/pure-ftpd.conf \
+    echo "NoAnonymous yes" >> /etc/ftp/pure-ftpd.conf
 # Create a user for FTP access
 # RUN mkdir -p /home/ftpuser/ftp && \
 #     chown -R ftpuser:ftpuser /home/ftpuser
-
+chown -R ftpuser:ftpuser /var/www/html
 # Expose FTP port and passive FTP port range
 EXPOSE 21 21100-21110
 

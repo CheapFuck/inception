@@ -112,8 +112,8 @@ RUN curl -O https://wordpress.org/latest.tar.gz && \
 RUN curl -O https://wordpress.org/latest.tar.gz && \
     tar -xvzf latest.tar.gz --strip-components=1 -C /var/www/html && \
     rm latest.tar.gz && \
-    adduser -D -G www-data www-data &&\
-    chown -R www-data:www-data /var/www/html
+    # adduser -D -G www-data www-data &&\
+    # chown -R www-data:www-data /var/www/html
 # Expose the PHP-FPM port (9000)
 EXPOSE 9000
 # Run PHP-FPM in the foreground

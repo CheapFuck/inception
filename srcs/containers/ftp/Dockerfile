@@ -39,3 +39,15 @@ EXPOSE 21 21100-21110
 # Start Pure-FTPd on container start
 # CMD ["pure-ftpd", "-B"]
 CMD ["tail", "-f"]
+
+
+
+# OK: 8 MiB in 19 packages
+# / # nano /etc/pure-ftpd.conf 
+# / # mkdir -p /var/www/html
+# / # chown ftpuser:ftpuser /var/www/html
+# / # chmod 755 /var/www/html
+# / # killall pure-ftpd
+# / # pure-ftpd -B -A -j
+# / # killall pure-ftpd
+# / # pure-ftpd -B -p 21100:21110 -P 127.0.0.1

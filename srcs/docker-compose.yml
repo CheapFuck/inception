@@ -85,6 +85,15 @@ services:
       - wordpress_data:/var/www/html
     networks:
       - inception 
+
+  # redis:
+  #   image: redis:alpine
+  #   container_name: redis
+  #   restart: always
+  #   networks:
+  #     - inception
+  #   ports:
+  #     - "6379:6379"  # Optional unless you want to connect from the host
 volumes:
   mariadb_data:  # Declare the named volume for MariaDB data
   wordpress_data:  # Declare the named volume for WordPress data

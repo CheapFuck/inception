@@ -35,9 +35,9 @@ RUN if ! getent group www-data; then addgroup -g 82 -S www-data; fi && \
     chown -R www-data:www-data /var/www
 
     # Download and extract WordPress
-RUN curl -o /tmp/wordpress.tar.gz https://wordpress.org/latest.tar.gz && \
-    tar -xvzf /tmp/wordpress.tar.gz -C /var/www/ && \
-    rm /tmp/wordpress.tar.gz
+# RUN curl -o /tmp/wordpress.tar.gz https://wordpress.org/latest.tar.gz && \
+#     tar -xvzf /tmp/wordpress.tar.gz -C /var/www/ && \
+#     rm /tmp/wordpress.tar.gz
 
 # Set proper ownership for WordPress files (PHP-FPM user/group)
 RUN chown -R www-data:www-data /var/www/wordpress
@@ -68,8 +68,8 @@ EXPOSE 9000
 # EXPOSE 9000
 
 # Set the default command to run PHP-FPM in the foreground
-CMD ["php-fpm83", "-F"]
-
+# CMD ["php-fpm83", "-F"]
+CMD ["wp-cli.sh"]
 # RUN apk update && \
 #     apk add --no-cache \
 #     php \

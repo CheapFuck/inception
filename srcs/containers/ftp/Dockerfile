@@ -26,8 +26,8 @@ RUN mkdir -p /etc/ftp && \
     echo "TLSCipherSuite HIGH:MEDIUM:+TLSv1.2" >> /etc/ftp/pure-ftpd.conf
 
 # Create a user for FTP access
-RUN mkdir -p /home/ftpuser/ftp && \
-    chown -R ftpuser:ftpuser /home/ftpuser
+# RUN mkdir -p /home/ftpuser/ftp && \
+#     chown -R ftpuser:ftpuser /home/ftpuser
 
 # Expose FTP port and passive FTP port range
 EXPOSE 21 21100-21110

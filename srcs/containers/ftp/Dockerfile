@@ -25,6 +25,7 @@ RUN echo "ChrootEveryone yes" >> /etc/pure-ftpd.conf && \
 #     mkdir -p /home/ftpuser/ftp && \
 #     chown -R ftpuser:ftpuser /home/ftpuser
 RUN adduser -S -H ftpuser
+RUN addgroup ftpuser
 RUN chown -R ftpuser:ftpuser /var/www/html
 # Expose FTP port and passive FTP port range
 EXPOSE 21 21100-21110

@@ -27,7 +27,7 @@ RUN apk update && \
 #     mkdir -p /home/ftpuser/ftp && \
 #     chown -R ftpuser:ftpuser /home/ftpuser
 # RUN adduser -S -H ftpuser
-RUN addgroup ftpuser
+# RUN addgroup ftpuser
 # RUN adduser -S -G ftpuser ftpuser
 RUN adduser -D -h /var/www/html ftpuser
 RUN mkdir -p /var/www/html && chown -R ftpuser:ftpuser /var/www/html

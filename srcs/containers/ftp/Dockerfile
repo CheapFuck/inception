@@ -8,6 +8,9 @@ ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
 RUN apk update && \
     apk add --no-cache \
     pure-ftpd \
+    shadow \
+    && adduser -S ftpuser \
+    && echo "ftpuser:ftppassword" | chpasswd \
     && rm -rf /var/cache/apk/*
 
 # Configure Pure-FTPd
@@ -23,8 +26,7 @@ RUN mkdir -p /etc/ftp && \
     echo "TLSCipherSuite HIGH:MEDIUM:+TLSv1.2" >> /etc/ftp/pure-ftpd.conf
 
 # Create a user for FTP access
-RUN adduser -D ftpuser && \
-    mkdir -p /home/ftpuser/ftp && \
+RUN mkdir -p /home/ftpuser/ftp && \
     chown -R ftpuser:ftpuser /home/ftpuser
 
 # Expose FTP port and passive FTP port range

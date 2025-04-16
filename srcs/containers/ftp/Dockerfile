@@ -23,8 +23,9 @@ RUN mkdir -p /etc/ftp && \
     echo "PassivePortRange 21100 21110" >> /etc/ftp/pure-ftpd.conf && \
     echo "CreateHomeDir yes" >> /etc/ftp/pure-ftpd.conf && \
     echo "TLS 1" >> /etc/ftp/pure-ftpd.conf && \
-    echo "TLSCipherSuite HIGH:MEDIUM:+TLSv1.2" >> /etc/ftp/pure-ftpd.conf
-
+    echo "TLSCipherSuite HIGH:MEDIUM:+TLSv1.2" >> /etc/ftp/pure-ftpd.conf \
+    echo "UnixAuthentication yes" >> /etc/ftp/pure-ftpd.conf \
+    echo "DefaultRoot /var/www/html"
 # Create a user for FTP access
 # RUN mkdir -p /home/ftpuser/ftp && \
 #     chown -R ftpuser:ftpuser /home/ftpuser

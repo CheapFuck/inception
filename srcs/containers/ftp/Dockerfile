@@ -8,16 +8,10 @@ ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
 RUN apk update && \
     apk add --no-cache \
     pure-ftpd \
-    shadow \
-    && addgroup ftpuser \
-    # && adduser -S ftpuser -D \
-    && adduser -S -G ftpuser ftpuser \
-    && echo "ftpuser:ftppassword" | chpasswd \
     && rm -rf /var/cache/apk/*
 
 # Configure Pure-FTPd
-RUN echo "yes" > /etc/pure-ftpd.conf && \
-    echo "ChrootEveryone yes" >> /etc/pure-ftpd.conf && \
+RUN echo "ChrootEveryone yes" >> /etc/pure-ftpd.conf && \
     echo "NoAnonymous yes" >> /etc/pure-ftpd.conf && \
     echo "MaxClientsNumber 10" >> /etc/pure-ftpd.conf && \
     echo "MaxClientsPerIP 5" >> /etc/pure-ftpd.conf && \
@@ -25,16 +19,15 @@ RUN echo "yes" > /etc/pure-ftpd.conf && \
     echo "CreateHomeDir yes" >> /etc/pure-ftpd.conf && \
     echo "TLS 1" >> /etc/pure-ftpd.conf && \
     echo "TLSCipherSuite HIGH:MEDIUM:+TLSv1.2" >> /etc/pure-ftpd.conf \
-    echo "UnixAuthentication yes" >> /etc/pure-ftpd.conf \
-    echo "DefaultRoot /var/www/html" >> /etc/pure-ftpd.conf \
-    echo "NoAnonymous yes" >> /etc/pure-ftpd.conf
+    echo "DefaultRoot /var/www/html" >> /etc/pure-ftpd.conf
 # Create a user for FTP access
-# RUN mkdir -p /home/ftpuser/ftp && \
+# RUN adduser -D ftpuser && \
+#     mkdir -p /home/ftpuser/ftp && \
 #     chown -R ftpuser:ftpuser /home/ftpuser
-# RUN chown -R ftpuser:ftpuser /var/www/html
+RUN adduser -S -H ftpuser
+RUN chown -R ftpuser:ftpuser /var/www/html
 # Expose FTP port and passive FTP port range
 EXPOSE 21 21100-21110
 
 # Start Pure-FTPd on container start
-# CMD ["pure-ftpd", "-B"]
-CMD ["tail", "-f", "/dev/null"]
+CMD ["pure-ftpd", "-B"]

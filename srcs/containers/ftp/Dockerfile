@@ -13,18 +13,18 @@ RUN apk update && \
 # Create FTP user and ensure the directory exists with proper ownership
 RUN useradd -m -d /var/www/html -s /bin/false ftpuser && \
     mkdir -p /var/www/html && \
-    chown ftpuser:ftpuser /var/www/html
+    chown -R ftpuser:ftpuser /var/www/html
 
 RUN mkdir -p /var/run/vsftpd/empty
 RUN chmod 755 /var/run/vsftpd/empty
 
-RUN mkdir -p /home/ftpuser && \
-    chown root:root /home/ftpuser && \
-    chmod 755 /home/ftpuser && \
-    mkdir -p /home/ftpuser/files && \
-    chown ftpuser:ftpuser /home/ftpuser/files
+# RUN mkdir -p /home/ftpuser && \
+#     chown root:root /home/ftpuser && \
+#     chmod 755 /home/ftpuser && \
+#     mkdir -p /home/ftpuser/files && \
+#     chown ftpuser:ftpuser /home/ftpuser/files
 
-RUN usermod -d /home/ftpuser ftpuser
+# RUN usermod -d /home/ftpuser ftpuser
 # Create FTP user
 RUN echo "ftpuser:ftppassword" | chpasswd
 

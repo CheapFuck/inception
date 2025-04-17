@@ -96,10 +96,10 @@ services:
     ports:
       - "6379:6379"  # Optional unless you want to connect from the host
     volumes:
+      - redis-data:/data
       - ./containers/redis/data:/data  # Mount the host directory to persist Redis data
       - ./containers/redis/redis.conf:/usr/local/etc/redis/redis.conf  # Mount your custom redis.conf
     # command: ["redis-server", "/usr/local/etc/redis/redis.conf"]  # Start Redis with the custom config
-
 volumes:
   mariadb_data:  # Declare the named volume for MariaDB data
   wordpress_data:  # Declare the named volume for WordPress data

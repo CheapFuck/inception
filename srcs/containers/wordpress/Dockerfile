@@ -86,6 +86,7 @@ RUN apk update && \
     php-xml \
     php-gd \
     php-intl \
+    php-redis \
     bash \
     curl \
     mariadb-client \

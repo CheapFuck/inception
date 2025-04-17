@@ -103,7 +103,7 @@ RUN mkdir -p /var/www/html /run/php83-fpm
 RUN adduser -D -G www-data www-data
 RUN chown -R root:root /var/www/html
 RUN chown -R www-data:www-data /var/www/html
-RUN mkdir /var/www/html/DOEIKDIT
+# RUN mkdir /var/www/html/DOEIKDIT
 RUN pwd
 # Download and configure WordPress
 RUN curl -O https://wordpress.org/latest.tar.gz && \

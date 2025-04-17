@@ -8,9 +8,10 @@ ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
 RUN apk update && \
     apk add --no-cache \
     # shadow \
-    pure-ftpd \
+    redis \
     && rm -rf /var/cache/apk/*
-
+RUN rc-service redis start
+RUN rc-update add redis
 # Configure Pure-FTPd
 # RUN echo "ChrootEveryone yes" >> /etc/pure-ftpd.conf && \
 #     echo "NoAnonymous yes" >> /etc/pure-ftpd.conf && \
@@ -29,19 +30,17 @@ RUN apk update && \
 # RUN adduser -S -H ftpuser
 # RUN addgroup ftpuser
 # RUN adduser -S -G ftpuser ftpuser
-RUN adduser -D -h /var/www/html ftpuser
-RUN mkdir -p /var/www/html && chown -R ftpuser:ftpuser /var/www/html
-RUN chmod 755 /var/www/html
+# RUN adduser -D -h /var/www/html ftpuser
+# RUN mkdir -p /var/www/html && chown -R ftpuser:ftpuser /var/www/html
+# RUN chmod 755 /var/www/html
 # RUN chown -R ftpuser:ftpuser /var/www/html
 # Expose FTP port and passive FTP port range
-RUN echo "ftpuser:ftppassword" | chpasswd
-EXPOSE 21 21100-21110
-
+# RUN echo "ftpuser:ftppassword" | chpasswd
+EXPOSE 6379
 # Start Pure-FTPd on container start
 # CMD ["pure-ftpd", "-B"]
-CMD ["tail", "-f"]
-
-
+# CMD ["tail", "-f"]
+CMD ["redis-server", "/usr/local/etc/redis/redis.conf"]
 
 # OK: 8 MiB in 19 packages
 # / # nano /etc/pure-ftpd.conf 

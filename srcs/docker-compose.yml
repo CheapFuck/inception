@@ -85,15 +85,20 @@ services:
       - wordpress_data:/var/www/html
     networks:
       - inception 
+  redis:
+    build:
+      context: .  # Set the context to the parent directory (my_project)
+      dockerfile: containers/redis/Dockerfile  # Point to the WordPress Dockerfile
+    container_name: redis
+    restart: always
+    networks:
+      - inception
+    # ports:
+    #   - "6379:6379"  # Optional unless you want to connect from the host
+    volumes:
+    - /containers/redis/your/redis.conf:/usr/local/etc/redis/redis.conf  # Mount your custom redis.conf
+    # command: ["redis-server", "/usr/local/etc/redis/redis.conf"]  # Start Redis with the custom config
 
-  # redis:
-  #   image: redis:alpine
-  #   container_name: redis
-  #   restart: always
-  #   networks:
-  #     - inception
-  #   ports:
-  #     - "6379:6379"  # Optional unless you want to connect from the host
 volumes:
   mariadb_data:  # Declare the named volume for MariaDB data
   wordpress_data:  # Declare the named volume for WordPress data

@@ -10,8 +10,8 @@ RUN apk update && \
     # shadow \
     redis \
     && rm -rf /var/cache/apk/*
-RUN rc-service redis start
-RUN rc-update add redis
+# RUN rc-service redis start
+# RUN rc-update add redis
 # Configure Pure-FTPd
 # RUN echo "ChrootEveryone yes" >> /etc/pure-ftpd.conf && \
 #     echo "NoAnonymous yes" >> /etc/pure-ftpd.conf && \

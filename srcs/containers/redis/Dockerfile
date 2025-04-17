@@ -40,7 +40,7 @@ EXPOSE 6379
 # Start Pure-FTPd on container start
 # CMD ["pure-ftpd", "-B"]
 # CMD ["tail", "-f"]
-RUN echo vm.overcommit_memory = 1' >> /etc/sysctl.conf
+RUN echo "vm.overcommit_memory = 1" >> /etc/sysctl.conf
 CMD ["redis-server", "/usr/local/etc/redis/redis.conf"]
 
 # OK: 8 MiB in 19 packages

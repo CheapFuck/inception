@@ -14,5 +14,8 @@ RUN apk update && \
     && rm -rf /var/cache/apk/*
 
 EXPOSE 6379
+
+COPY containers/redis/redis.conf /usr/local/etc/redis/redis.conf
+
 RUN echo "vm.overcommit_memory = 1" >> /etc/sysctl.conf
 CMD ["redis-server", "/usr/local/etc/redis/redis.conf"]

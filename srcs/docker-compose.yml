@@ -96,8 +96,8 @@ services:
     ports:
       - "6379:6379"  # Optional unless you want to connect from the host
     volumes:
-    - ./containers/redis/redis.conf:/usr/local/etc/redis/redis.conf  # Mount your custom redis.conf
-    - ./containers/redis/data:/data  # Mount the host directory to persist Redis data
+    # - ./containers/redis/redis.conf:/usr/local/etc/redis/redis.conf  # Mount your custom redis.conf
+    - containers/redis/data:/data  # Mount the host directory to persist Redis data
     # command: ["redis-server", "/usr/local/etc/redis/redis.conf"]  # Start Redis with the custom config
 
 volumes:

@@ -93,8 +93,8 @@ services:
     restart: always
     networks:
       - inception
-    # ports:
-    #   - "6379:6379"  # Optional unless you want to connect from the host
+    ports:
+      - "6379:6379"  # Optional unless you want to connect from the host
     volumes:
     - /containers/redis/your/redis.conf:/usr/local/etc/redis/redis.conf  # Mount your custom redis.conf
     # command: ["redis-server", "/usr/local/etc/redis/redis.conf"]  # Start Redis with the custom config

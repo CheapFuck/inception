@@ -30,6 +30,7 @@ sed -i "s|alpine-minirootfs-[0-9.]*-x86_64.tar.gz|alpine-minirootfs-${penultimat
 sed -i "s|alpine-minirootfs-[0-9.]*-x86_64.tar.gz|alpine-minirootfs-${penultimate_version}-x86_64.tar.gz|" srcs/containers/mariadb/Dockerfile
 sed -i "s|alpine-minirootfs-[0-9.]*-x86_64.tar.gz|alpine-minirootfs-${penultimate_version}-x86_64.tar.gz|" srcs/containers/wordpress/Dockerfile
 sed -i "s|alpine-minirootfs-[0-9.]*-x86_64.tar.gz|alpine-minirootfs-${penultimate_version}-x86_64.tar.gz|" srcs/containers/ftp/Dockerfile
+sed -i "s|alpine-minirootfs-[0-9.]*-x86_64.tar.gz|alpine-minirootfs-${penultimate_version}-x86_64.tar.gz|" srcs/containers/redis/Dockerfile
 
 
 

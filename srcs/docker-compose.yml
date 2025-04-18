@@ -124,7 +124,7 @@ services:
     networks:
       - inception 
   peercoind:
-    container_name: mariadb
+    container_name: peercoin
     build:
       context: .  # Set the context to the parent directory (my_project)
       dockerfile: containers/peercoin/Dockerfile  # Point to the WordPress Dockerfile    restart: always

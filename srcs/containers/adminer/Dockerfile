@@ -6,8 +6,8 @@ ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
 # ADD alpin6 "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
 
 # Install required packages
-# RUN apk add --no-cache php php-session php-pdo php-mysqli php-pdo_mysql php-mbstring php-openssl php-json php-phar php-zlib curl
-RUN apk add curl
+RUN apk add --no-cache php php-session php-pdo php-mysqli php-pdo_mysql php-mbstring php-openssl php-json php-phar php-zlib curl
+# RUN apk add curl
 # Create a directory for Adminer
 RUN mkdir -p /var/www/html/adminer
 WORKDIR /var/www/html/adminer

@@ -7,8 +7,10 @@ ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
 RUN apk --no-cache add autoconf
 RUN apk --no-cache add automake
 RUN apk --no-cache add build-base
-RUN apk --no-cache add openssl
+RUN apk --no-cache add openssl 
 RUN apk add build-base linux-headers
+RUN apk add musl-dev
+RUN apk add autoconf automake libtool
 # Define variables
 # ARG BERKELEYDB_VERSION=db-4.8.30.NC
 # ARG BERKELEYDB_PREFIX=/opt/berkeleydb

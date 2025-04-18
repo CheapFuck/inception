@@ -8,7 +8,7 @@ RUN apk --no-cache add autoconf
 RUN apk --no-cache add automake
 RUN apk --no-cache add build-base
 RUN apk --no-cache add openssl
-
+RUN add build-base linux-headers
 # Define variables
 # ARG BERKELEYDB_VERSION=db-4.8.30.NC
 # ARG BERKELEYDB_PREFIX=/opt/berkeleydb

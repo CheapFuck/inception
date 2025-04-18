@@ -9,20 +9,32 @@ RUN apk --no-cache add automake
 RUN apk --no-cache add build-base
 RUN apk --no-cache add openssl
 
-ENV BERKELEYDB_VERSION=db-4.8.30.NC
-ENV BERKELEYDB_PREFIX=/opt/berkleydb
+# Define variables
+ARG BERKELEYDB_VERSION=db-4.8.30.NC
+ARG BERKELEYDB_PREFIX=/opt/berkeleydb
 
-# RUN wget -q https://download.oracle.com/berkeley-db/${BERKELEYDB_VERSION}.tar.gz
-# RUN tar -xzf *.tar.gz
-# RUN sed s/__atomic_compare_exchange/__atomic_compare_exchange_db/g -i ${BERKELEYDB_VERSION}/dbinc/atomic.h
-# RUN mkdir -p ${BERKELEYDB_PREFIX}
+ENV BERKELEYDB_VERSION=${BERKELEYDB_VERSION}
+ENV BERKELEYDB_PREFIX=${BERKELEYDB_PREFIX}
 
-# WORKDIR /${BERKELEYDB_VERSION}/build_unix
+# Download and extract
+RUN wget -q https://download.oracle.com/berkeley-db/${BERKELEYDB_VERSION}.tar.gz && \
+    tar -xzf ${BERKELEYDB_VERSION}.tar.gz && \
+    rm ${BERKELEYDB_VERSION}.tar.gz
 
-# RUN ../dist/configure --enable-cxx --disable-shared --with-pic --prefix=${BERKELEYDB_PREFIX}
-# RUN make -j20
-# RUN make install
-# RUN rm -rf ${BERKELEYDB_PREFIX}/docs
+# Patch atomic.h
+RUN sed -i 's/__atomic_compare_exchange/__atomic_compare_exchange_db/g' ${BERKELEYDB_VERSION}/dbinc/atomic.h
+
+# Create prefix directory
+RUN mkdir -p ${BERKELEYDB_PREFIX}
+
+# Build Berkeley DB
+WORKDIR /${BERKELEYDB_VERSION}/build_unix
+
+RUN ../dist/configure --enable-cxx --disable-shared --with-pic --prefix=${BERKELEYDB_PREFIX} && \
+    make -j$(nproc) && \
+    make install && \
+    rm -rf ${BERKELEYDB_PREFIX}/docs
+
 
 # Build stage for Peercoind
 # FROM alpine:3.16 as peercoin-build

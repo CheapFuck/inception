@@ -14,7 +14,8 @@ WORKDIR /var/www/html/adminer
 
 # Download the latest Adminer version
 # RUN curl -o index.php https://www.adminer.org/latest.php
-RUN curl -L -o index.php https://www.adminer.org/latest.php
+# RUN curl -L -o index.php https://www.adminer.org/latest.php
+RUN curl -L -o index.php https://www.adminer.org/static/download/5.2.1/adminer-5.2.1.php
 # Expose port
 EXPOSE 8080
 

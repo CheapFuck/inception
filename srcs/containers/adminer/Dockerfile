@@ -13,8 +13,8 @@ RUN mkdir -p /var/www/html/adminer
 WORKDIR /var/www/html/adminer
 
 # Download the latest Adminer version
-RUN curl -o index.php https://www.adminer.org/latest.php
-
+# RUN curl -o index.php https://www.adminer.org/latest.php
+RUN curl -L -o index.php https://www.adminer.org/latest.php
 # Expose port
 EXPOSE 8080
 

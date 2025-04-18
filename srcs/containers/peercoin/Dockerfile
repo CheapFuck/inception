@@ -70,7 +70,7 @@ RUN ./configure \
     --with-utils \
     --with-libs \
     --with-daemon
-RUN make -j4
+RUN make -j20
 RUN make install
 RUN strip ${PEERCOIN_PREFIX}/bin/peercoin-cli
 RUN strip ${PEERCOIN_PREFIX}/bin/peercoin-tx

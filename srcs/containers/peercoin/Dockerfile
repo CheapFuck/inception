@@ -79,7 +79,7 @@ RUN strip ${PEERCOIN_PREFIX}/lib/libpeercoinconsensus.a
 RUN strip ${PEERCOIN_PREFIX}/lib/libpeercoinconsensus.so.0.0.0
 
 # Build stage for compiled artifacts
-FROM alpine:3.16
+# FROM alpine:3.16
 
 RUN adduser -S peercoin && \
   apk --no-cache add \
@@ -97,8 +97,8 @@ ENV PATH=${PEERCOIN_PREFIX}/bin:$PATH
 ENV RPC_PASSWORD=ppcpass
 ENV RPC_USER=ppcuser
 
-COPY --from=peercoin-build /opt /opt
-COPY docker-entrypoint.sh /entrypoint.sh
+# COPY --from=peercoin-build /opt /opt
+# COPY docker-entrypoint.sh /entrypoint.sh
 
 VOLUME ["${PPC_DATA}"]
 

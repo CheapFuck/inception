@@ -10,6 +10,8 @@ RUN apk --no-cache add build-base
 RUN apk --no-cache add openssl 
 RUN apk --no-cache add autoconf automake libtool
 RUN apk --no-cache add build-base linux-headers musl-dev
+RUN apk add --no-cache libc6-compat
+RUN apk add git boost-dev libevent-dev libsodium-dev
 
 # Define variables
 # ARG BERKELEYDB_VERSION=db-4.8.30.NC

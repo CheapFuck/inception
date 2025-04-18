@@ -1,5 +1,6 @@
 # Use the Alpine mini root filesystem as a base
 FROM scratch
+ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
 
 # Add the Alpine mini rootfs to the image
 # ADD alpin6 "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories

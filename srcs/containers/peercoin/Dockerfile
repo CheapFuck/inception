@@ -104,7 +104,7 @@ ENV BERKELEYDB_PREFIX=/opt/berkleydb
 
 # EXPOSE 9901 9902 9903 9904
 
-# # ENTRYPOINT ["/entrypoint.sh"]
+# ENTRYPOINT ["/entrypoint.sh"]
 
 # # CMD ["peercoind"]
 CMD ["tail", "-f", "/dev/null"]

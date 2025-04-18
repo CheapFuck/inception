@@ -136,10 +136,10 @@ services:
       - type: bind
         source: /tmp/ololo
         target: /data
-    command:
-      -nominting
-      -rpcbind=0.0.0.0
-      -rpcallowip=0.0.0.0/0
+    # command:
+    #   -nominting
+    #   -rpcbind=0.0.0.0
+    #   -rpcallowip=0.0.0.0/0
     ports:
       - '19901:9901'
       - '19903:9903'

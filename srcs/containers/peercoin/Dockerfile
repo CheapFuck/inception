@@ -19,92 +19,92 @@ ENV BERKELEYDB_PREFIX=/opt/berkleydb
 
 # WORKDIR /${BERKELEYDB_VERSION}/build_unix
 
-RUN ../dist/configure --enable-cxx --disable-shared --with-pic --prefix=${BERKELEYDB_PREFIX}
-RUN make -j20
-RUN make install
-RUN rm -rf ${BERKELEYDB_PREFIX}/docs
+# RUN ../dist/configure --enable-cxx --disable-shared --with-pic --prefix=${BERKELEYDB_PREFIX}
+# RUN make -j20
+# RUN make install
+# RUN rm -rf ${BERKELEYDB_PREFIX}/docs
 
 # Build stage for Peercoind
 # FROM alpine:3.16 as peercoin-build
 
 # COPY --from=berkeleydb /opt/ /opt/
 
-RUN apk --no-cache add autoconf \
-    automake \
-    boost-dev \
-    build-base \
-    chrpath \
-    file \
-    libevent-dev \
-    openssl \
-    openssl-dev \
-    libtool \
-    linux-headers \
-    zeromq-dev \
-    protobuf-dev
+# RUN apk --no-cache add autoconf \
+#     automake \
+#     boost-dev \
+#     build-base \
+#     chrpath \
+#     file \
+#     libevent-dev \
+#     openssl \
+#     openssl-dev \
+#     libtool \
+#     linux-headers \
+#     zeromq-dev \
+#     protobuf-dev
 
-ENV PEERCOIN_VERSION=0.15.0ppc \
-    PEERCOIN_SHA=df6553485139aa0dfbd868c59d576c11c3d60e7b609fc76e0a98c4958cb1a3dd \
-    PEERCOIN_PREFIX=/opt/peercoin
+# ENV PEERCOIN_VERSION=0.15.0ppc \
+#     PEERCOIN_SHA=df6553485139aa0dfbd868c59d576c11c3d60e7b609fc76e0a98c4958cb1a3dd \
+#     PEERCOIN_PREFIX=/opt/peercoin
 
-RUN wget -q -O peercoin.tar.gz https://github.com/peercoin/peercoin/archive/refs/tags/v${PEERCOIN_VERSION}.tar.gz \
-    && echo "${PEERCOIN_SHA}  peercoin.tar.gz" | sha256sum -c -
+# RUN wget -q -O peercoin.tar.gz https://github.com/peercoin/peercoin/archive/refs/tags/v${PEERCOIN_VERSION}.tar.gz \
+#     && echo "${PEERCOIN_SHA}  peercoin.tar.gz" | sha256sum -c -
 
-RUN tar -xzf peercoin.tar.gz
+# RUN tar -xzf peercoin.tar.gz
 
-WORKDIR /peercoin-${PEERCOIN_VERSION}
+# WORKDIR /peercoin-${PEERCOIN_VERSION}
 
-# ./configure can't find berkley db unless we do this
-RUN ln -s /opt/berkleydb /usr/include/db4.8 \
-    && ln -s /opt/berkleydb/include/* /usr/include  \
-    && ln -s /opt/berkleydb/lib/* /usr/lib
+# # ./configure can't find berkley db unless we do this
+# RUN ln -s /opt/berkleydb /usr/include/db4.8 \
+#     && ln -s /opt/berkleydb/include/* /usr/include  \
+#     && ln -s /opt/berkleydb/lib/* /usr/lib
 
-RUN ./autogen.sh
-RUN ./configure \
-    --prefix=${PEERCOIN_PREFIX} \
-    --mandir=/usr/share/man \
-    --disable-tests \
-    --disable-bench \
-    --disable-ccache \
-    --with-gui=no \
-    --with-utils \
-    --with-libs \
-    --with-daemon
-RUN make -j20
-RUN make install
-RUN strip ${PEERCOIN_PREFIX}/bin/peercoin-cli
-RUN strip ${PEERCOIN_PREFIX}/bin/peercoin-tx
-RUN strip ${PEERCOIN_PREFIX}/bin/peercoind
-RUN strip ${PEERCOIN_PREFIX}/lib/libpeercoinconsensus.a
-RUN strip ${PEERCOIN_PREFIX}/lib/libpeercoinconsensus.so.0.0.0
+# RUN ./autogen.sh
+# RUN ./configure \
+#     --prefix=${PEERCOIN_PREFIX} \
+#     --mandir=/usr/share/man \
+#     --disable-tests \
+#     --disable-bench \
+#     --disable-ccache \
+#     --with-gui=no \
+#     --with-utils \
+#     --with-libs \
+#     --with-daemon
+# RUN make -j20
+# RUN make install
+# RUN strip ${PEERCOIN_PREFIX}/bin/peercoin-cli
+# RUN strip ${PEERCOIN_PREFIX}/bin/peercoin-tx
+# RUN strip ${PEERCOIN_PREFIX}/bin/peercoind
+# RUN strip ${PEERCOIN_PREFIX}/lib/libpeercoinconsensus.a
+# RUN strip ${PEERCOIN_PREFIX}/lib/libpeercoinconsensus.so.0.0.0
 
-# Build stage for compiled artifacts
-# FROM alpine:3.16
+# # Build stage for compiled artifacts
+# # FROM alpine:3.16
 
-RUN adduser -S peercoin && \
-  apk --no-cache add \
-    boost \
-    boost-program_options \
-    libevent \
-    openssl \
-    libzmq \
-    su-exec \
-    bash
+# RUN adduser -S peercoin && \
+#   apk --no-cache add \
+#     boost \
+#     boost-program_options \
+#     libevent \
+#     openssl \
+#     libzmq \
+#     su-exec \
+#     bash
 
-ENV PPC_DATA=/data
-ENV PEERCOIN_PREFIX=/opt/peercoin
-ENV PATH=${PEERCOIN_PREFIX}/bin:$PATH
-ENV RPC_PASSWORD=ppcpass
-ENV RPC_USER=ppcuser
+# ENV PPC_DATA=/data
+# ENV PEERCOIN_PREFIX=/opt/peercoin
+# ENV PATH=${PEERCOIN_PREFIX}/bin:$PATH
+# ENV RPC_PASSWORD=ppcpass
+# ENV RPC_USER=ppcuser
 
-# COPY --from=peercoin-build /opt /opt
-# COPY docker-entrypoint.sh /entrypoint.sh
+# # COPY --from=peercoin-build /opt /opt
+# # COPY docker-entrypoint.sh /entrypoint.sh
 
-VOLUME ["${PPC_DATA}"]
+# VOLUME ["${PPC_DATA}"]
 
-EXPOSE 9901 9902 9903 9904
+# EXPOSE 9901 9902 9903 9904
 
-# ENTRYPOINT ["/entrypoint.sh"]
+# # ENTRYPOINT ["/entrypoint.sh"]
 
-# CMD ["peercoind"]
+# # CMD ["peercoind"]
 CMD ["tail", "-f", "/dev/null"]

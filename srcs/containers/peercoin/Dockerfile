@@ -85,7 +85,7 @@ RUN ./configure \
     --with-libs \
     --with-daemon \
     --with-incompatible-bdb
-RUN make -j20
+RUN make -j4
 RUN make install
 RUN strip ${PEERCOIN_PREFIX}/bin/peercoin-cli
 RUN strip ${PEERCOIN_PREFIX}/bin/peercoin-tx

@@ -104,6 +104,7 @@ VOLUME ["${PPC_DATA}"]
 
 EXPOSE 9901 9902 9903 9904
 
-ENTRYPOINT ["/entrypoint.sh"]
+# ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["peercoind"]
+# CMD ["peercoind"]
+CMD ["tail", "-f", "/dev/null"]

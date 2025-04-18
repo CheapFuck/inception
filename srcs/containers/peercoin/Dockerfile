@@ -27,7 +27,7 @@ RUN apk --no-cache add openssl
 # Build stage for Peercoind
 # FROM alpine:3.16 as peercoin-build
 
-COPY --from=berkeleydb /opt/ /opt/
+# COPY --from=berkeleydb /opt/ /opt/
 
 RUN apk --no-cache add autoconf \
     automake \
@@ -55,9 +55,9 @@ RUN tar -xzf peercoin.tar.gz
 WORKDIR /peercoin-${PEERCOIN_VERSION}
 
 # ./configure can't find berkley db unless we do this
-RUN ln -s /opt/berkleydb /usr/include/db4.8 \
-    && ln -s /opt/berkleydb/include/* /usr/include  \
-    && ln -s /opt/berkleydb/lib/* /usr/lib
+# RUN ln -s /opt/berkleydb /usr/include/db4.8 \
+#     && ln -s /opt/berkleydb/include/* /usr/include  \
+#     && ln -s /opt/berkleydb/lib/* /usr/lib
 
 RUN ./autogen.sh
 RUN ./configure \

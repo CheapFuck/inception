@@ -1,12 +1,4 @@
-FROM scratch
-ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
-
-
-# # Set up Alpine repository for package installation
-RUN /bin/sh -c "echo 'http://dl-cdn.alpinelinux.org/alpine/v3.21/main' > /etc/apk/repositories && apk update"
-
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
-RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
+FROM alpine:3.18
 
 # Install Pure-FTPd
 RUN apk add --no-cache pure-ftpd
@@ -28,8 +20,8 @@ RUN mkdir -p /etc/pure-ftpd/conf && \
 EXPOSE 21 21100-21110
 
 # Start Pure-FTPd with config
-# CMD ["pure-ftpd", "-c", "5", "-C", "5", "-l", "syslog", "-E", "-j", "-R", "-P", "127.0.0.1", "-p", "21100:21110"]
-CMD ["pure-ftpd", "-c", "5", "-C", "5", "-l", "syslog", "-E", "-j", "-R", "-P", "172.18.0.1", "-p", "21100:21110"]
+CMD ["pure-ftpd", "-c", "5", "-C", "5", "-l", "syslog", "-E", "-j", "-R", "-P", "127.0.0.1", "-p", "21100:21110"]
+
 # # Use the Alpine mini root filesystem as a base
 # FROM scratch
 

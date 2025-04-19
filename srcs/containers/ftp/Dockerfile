@@ -1,4 +1,12 @@
-FROM alpine:3.18
+FROM scratch
+ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
+
+
+# # Set up Alpine repository for package installation
+RUN /bin/sh -c "echo 'http://dl-cdn.alpinelinux.org/alpine/v3.21/main' > /etc/apk/repositories && apk update"
+
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+RUN echo "http://dl-cdn.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
 
 # Install Pure-FTPd
 RUN apk add --no-cache pure-ftpd

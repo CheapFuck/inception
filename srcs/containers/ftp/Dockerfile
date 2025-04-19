@@ -43,7 +43,8 @@ EXPOSE 21 21100-21110
 
 # Start Pure-FTPd on container start
 # CMD ["pure-ftpd"]
-CMD pure-ftpd -A -j -lpuredb:/etc/pure-ftpd/pureftpd.pdb -P 127.0.0.1 -p 21100:21110
+# CMD pure-ftpd -A -j -lpuredb:/etc/pure-ftpd/pureftpd.pdb -P 127.0.0.1 -p 21100:21110
+CMD pure-ftpd -A -j -lpuredb:/etc/pure-ftpd/pureftpd.pdb -P 127.0.0.1 -p 21100:21110 -4
 # CMD ["tail", "-f"]
 
 

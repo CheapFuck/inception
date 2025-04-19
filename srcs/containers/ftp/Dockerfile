@@ -20,8 +20,8 @@ RUN mkdir -p /etc/pure-ftpd/conf && \
 EXPOSE 21 21100-21110
 
 # Start Pure-FTPd with config
-CMD ["pure-ftpd", "-c", "5", "-C", "5", "-l", "syslog", "-E", "-j", "-R", "-P", "127.0.0.1", "-p", "21100:21110"]
-
+# CMD ["pure-ftpd", "-c", "5", "-C", "5", "-l", "syslog", "-E", "-j", "-R", "-P", "127.0.0.1", "-p", "21100:21110"]
+CMD ["pure-ftpd", "-c", "5", "-C", "5", "-l", "syslog", "-E", "-j", "-R", "-P", "172.18.0.1", "-p", "21100:21110"]
 # # Use the Alpine mini root filesystem as a base
 # FROM scratch
 

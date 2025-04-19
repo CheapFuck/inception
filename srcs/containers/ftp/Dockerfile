@@ -42,7 +42,8 @@ RUN echo "ftpuser:ftppassword" | chpasswd
 EXPOSE 21 21100-21110
 
 # Start Pure-FTPd on container start
-CMD ["pure-ftpd"]
+# CMD ["pure-ftpd"]
+CMD pure-ftpd -p 21100:21110 -P 127.0.0.1
 
 # CMD ["tail", "-f"]
 

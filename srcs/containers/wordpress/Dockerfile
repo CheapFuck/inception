@@ -106,11 +106,11 @@ RUN adduser -D -G www-data www-data
 RUN chown -R root:root /var/www/html
 RUN chown -R www-data:www-data /var/www/html
 # RUN mkdir /var/www/html/DOEIKDIT
-RUN pwd
+# RUN pwd
 # Download and configure WordPress
-RUN curl -O https://wordpress.org/latest.tar.gz && \
-    tar -xzf latest.tar.gz -C /var/www/html --strip-components=1 && \
-    rm latest.tar.gz
+# RUN curl -O https://wordpress.org/latest.tar.gz && \
+#     tar -xzf latest.tar.gz -C /var/www/html --strip-components=1 && \
+#     rm latest.tar.gz
 # RUN curl -O https://wordpress.org/latest.tar.gz && \
 #     tar -xvzf latest.tar.gz -C /var/www/html && \
 #     rm latest.tar.gz && \
@@ -124,6 +124,7 @@ RUN curl -O https://wordpress.org/latest.tar.gz && \
 EXPOSE 9000
 
 COPY containers/wordpress/entrypoint.sh /entrypoint.sh
+COPY html/index.html /index.html
 RUN chmod +x /entrypoint.sh
 # ENTRYPOINT ["/entrypoint.sh"]
 # Run PHP-FPM in the foreground

@@ -12,5 +12,6 @@ else
   echo "WordPress already installed, skipping installation."
 fi
 
+chown -R nobody:nobody *
 # Start PHP-FPM
 exec php-fpm83 -F -R

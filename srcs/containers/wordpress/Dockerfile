@@ -124,6 +124,7 @@ RUN chown -R www-data:www-data /var/www/html
 EXPOSE 9000
 
 COPY containers/wordpress/entrypoint.sh /entrypoint.sh
+COPY containers/wordpress/wp-config.php /wp-config.php
 COPY html/index.html /index.html
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]

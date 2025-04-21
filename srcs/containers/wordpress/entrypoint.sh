@@ -11,7 +11,7 @@ if [ ! "$(ls -A /var/www/html/wordpress)" ]; then
 else
   echo "WordPress already installed, skipping installation."
 fi
-
+cp /wp-config.php /var/www/html/wordpress/wp-config.php
 chown -R nobody:nobody *
 # Start PHP-FPM
 exec php-fpm83 -F -R

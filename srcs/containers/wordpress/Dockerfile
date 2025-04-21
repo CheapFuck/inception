@@ -122,7 +122,11 @@ RUN curl -O https://wordpress.org/latest.tar.gz && \
 # RUN chown -R www-data:www-data /var/www/html
 # Expose the PHP-FPM port (9000)
 EXPOSE 9000
+
+COPY containers/wordpress/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 # Run PHP-FPM in the foreground
-CMD ["php-fpm83", "-F", "-R"]
+# CMD ["php-fpm83", "-F", "-R"]
 # CMD ["tail", "-f", "/dev/null"]
 

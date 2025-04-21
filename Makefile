@@ -10,7 +10,7 @@ run_script:
 up:
 	@echo "up target executed"
 	@docker compose -f srcs/docker-compose.yml up --build -d
-
+# docker compose -f srcs/docker-compose.yml down -v
 down:
 	@docker compose -f srcs/docker-compose.yml down
 

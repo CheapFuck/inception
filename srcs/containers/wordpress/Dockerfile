@@ -128,6 +128,6 @@ COPY html/index.html /index.html
 RUN chmod +x /entrypoint.sh
 # ENTRYPOINT ["/entrypoint.sh"]
 # Run PHP-FPM in the foreground
-# CMD ["php-fpm83", "-F", "-R"]
-CMD ["tail", "-f", "/dev/null"]
+CMD ["php-fpm83", "-F", "-R"]
+# CMD ["tail", "-f", "/dev/null"]
 

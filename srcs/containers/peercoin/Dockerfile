@@ -4,6 +4,11 @@ FROM scratch
 # Add the Alpine mini rootfs to the image
 ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
 
+RUN apk update
+RUN apk --no-cache build-base
+RUN apk --no-cache zlib-dev
+RUN apk --no-cache add openssl-dev
+RUN apk --no-cache add python3-dev
 RUN apk --no-cache add autoconf
 RUN apk --no-cache add automake
 RUN apk --no-cache add build-base
@@ -12,6 +17,10 @@ RUN apk --no-cache add autoconf automake libtool
 RUN apk --no-cache add build-base linux-headers musl-dev
 RUN apk add --no-cache libc6-compat
 RUN apk add git boost-dev libevent-dev libsodium-dev
+
+RUN cd /peercoin/db-4.8.30.NC
+RUN cd dist
+RUN sh s_config
 
 RUN wget https://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 RUN tar -xzf db-4.8.30.NC.tar.gz

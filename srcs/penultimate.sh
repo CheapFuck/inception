@@ -7,7 +7,7 @@ versions=$(curl -s https://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/
 echo "Available versions:"
 echo "$versions"
 
-# Get the latest version (last in the sorted list)
+# Get the latest version  (last in the sorted list)
 latest_version=$(echo "$versions" | tail -n 1)
 
 # Get the penultimate version (second-to-last in the sorted list)
@@ -21,8 +21,17 @@ echo "Penultimate version: ${penultimate_version}"
 url="https://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/x86_64/alpine-minirootfs-${penultimate_version}-x86_64.tar.gz"
 
 # Download the tarball
-pwd
-wget -q $url -O srcs/alpine-minirootfs-${penultimate_version}-x86_64.tar.gz
+# pwd
+# wget -q $url -O srcs/alpine-minirootfs-${penultimate_version}-x86_64.tar.gz
+filename="srcs/alpine-minirootfs-${penultimate_version}-x86_64.tar.gz"
+
+if [ -f "$filename" ]; then
+    echo "File $filename already exists. Skipping download."
+else
+    wget -q "$url" -O "$filename"
+fi
+
+
 
 # Output the downloaded penultimate version
 echo "Downloaded Alpine penultimate version: ${penultimate_version}"

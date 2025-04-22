@@ -28,13 +28,13 @@ WORKDIR /${BERKELEYDB_VERSION}/build_unix
 
 
 
-# RUN cd /peercoin/db-4.8.30.NC
+RUN cd /db-4.8.30.NC
 RUN cd dist
 RUN sh s_config
 RUN ln -s /opt/berkleydb /usr/include/db4.8 \
     && ln -s /opt/berkleydb/include/* /usr/include  \
     && ln -s /opt/berkleydb/lib/* /usr/lib
-    
+
 RUN ../dist/configure --enable-cxx --disable-shared --with-pic --prefix=${BERKELEYDB_PREFIX} && \
     make -j$(nproc) && \
     make install && \

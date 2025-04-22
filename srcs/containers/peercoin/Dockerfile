@@ -18,24 +18,38 @@ RUN apk --no-cache add build-base linux-headers musl-dev
 RUN apk add --no-cache libc6-compat
 RUN apk add git boost-dev libevent-dev libsodium-dev
 
-RUN cd /peercoin/db-4.8.30.NC
+ARG BERKELEYDB_VERSION=db-4.8.30.NC
+ARG BERKELEYDB_PREFIX=/opt/berkeleydb
+
+ENV BERKELEYDB_VERSION=${BERKELEYDB_VERSION}
+ENV BERKELEYDB_PREFIX=${BERKELEYDB_PREFIX}
+RUN mkdir -p ${BERKELEYDB_PREFIX}
+WORKDIR /${BERKELEYDB_VERSION}/build_unix
+
+
+
+# RUN cd /peercoin/db-4.8.30.NC
 RUN cd dist
 RUN sh s_config
+RUN ln -s /opt/berkleydb /usr/include/db4.8 \
+    && ln -s /opt/berkleydb/include/* /usr/include  \
+    && ln -s /opt/berkleydb/lib/* /usr/lib
+    
+RUN ../dist/configure --enable-cxx --disable-shared --with-pic --prefix=${BERKELEYDB_PREFIX} && \
+    make -j$(nproc) && \
+    make install && \
+    rm -rf ${BERKELEYDB_PREFIX}/docs
 
-RUN wget https://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
-RUN tar -xzf db-4.8.30.NC.tar.gz
-RUN cd db-4.8.30.NC/build_unix
-RUN ../dist/configure --prefix=/opt/berkeleydb --enable-cxx --disable-shared
-RUN make -j$(nproc)
-RUN make install
+# RUN wget https://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
+# RUN tar -xzf db-4.8.30.NC.tar.gz
+# RUN cd db-4.8.30.NC/build_unix
+# RUN ../dist/configure --prefix=/opt/berkeleydb --enable-cxx --disable-shared
+# RUN make -j$(nproc)
+# RUN make install
 
 
 # Define variables
-# ARG BERKELEYDB_VERSION=db-4.8.30.NC
-# ARG BERKELEYDB_PREFIX=/opt/berkeleydb
 
-# ENV BERKELEYDB_VERSION=${BERKELEYDB_VERSION}
-# ENV BERKELEYDB_PREFIX=${BERKELEYDB_PREFIX}
 
 # # Download and extract
 # RUN wget -q https://download.oracle.com/berkeley-db/${BERKELEYDB_VERSION}.tar.gz && \

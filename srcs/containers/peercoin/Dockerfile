@@ -5,8 +5,8 @@ FROM scratch
 ADD alpine-minirootfs-3.21.2-x86_64.tar.gz /
 
 RUN apk update
-RUN apk --no-cache build-base
-RUN apk --no-cache zlib-dev
+RUN apk --no-cache add build-base
+RUN apk --no-cache add zlib-dev
 RUN apk --no-cache add openssl-dev
 RUN apk --no-cache add python3-dev
 RUN apk --no-cache add autoconf

@@ -16,7 +16,7 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
   cd /var/www/html/wordpress
   wp core download --allow-root
   wp core config --dbhost="mariadb":"3306" --dbname="my_database" --dbuser="my_user" --dbpass="my_password" --allow-root
-  wp core install --url="localhost/wordpress/" --title="sitymcsiteface" --admin_user="bawse" --admin_password="wafwaf" --admin_email="thivan-d@student.codam.nl" --allow-root
+  wp core install --title="sitymcsiteface" --admin_user="bawse" --admin_password="wafwaf" --admin_email="thivan-d@student.codam.nl" --allow-root
   until wp db check --allow-root --path=/var/www/html/wordpress; do
     echo "Waiting for database..."
     sleep 2
@@ -37,3 +37,6 @@ fi
 chown -R nobody:nobody *
 # Start PHP-FPM
 exec php-fpm83 -F -R
+
+
+# --url="localhost/wordpress/"

@@ -123,7 +123,9 @@ RUN chown -R www-data:www-data /var/www/html
 # RUN chown -R www-data:www-data /var/www/html
 # Expose the PHP-FPM port (9000)
 EXPOSE 9000
-
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
+    chmod +x wp-cli.phar && \
+    mv wp-cli.phar /usr/local/bin/wp
 COPY containers/wordpress/entrypoint.sh /entrypoint.sh
 COPY containers/wordpress/wp-config.php /wp-config.php
 COPY html/index.html /index.html

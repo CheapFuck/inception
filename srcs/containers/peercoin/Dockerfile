@@ -59,16 +59,19 @@ RUN apk --no-cache add autoconf \
     zeromq-dev \
     protobuf-dev
 
-ENV PEERCOIN_VERSION=0.15.0ppc \
-    PEERCOIN_SHA=df6553485139aa0dfbd868c59d576c11c3d60e7b609fc76e0a98c4958cb1a3dd \
-    PEERCOIN_PREFIX=/opt/peercoin
+# ENV PEERCOIN_VERSION=0.15.0ppc \
+#     PEERCOIN_SHA=df6553485139aa0dfbd868c59d576c11c3d60e7b609fc76e0a98c4958cb1a3dd \
+#     PEERCOIN_PREFIX=/opt/peercoin
 
-RUN wget -q -O peercoin.tar.gz https://github.com/peercoin/peercoin/archive/refs/tags/v${PEERCOIN_VERSION}.tar.gz \
-    && echo "${PEERCOIN_SHA}  peercoin.tar.gz" | sha256sum -c -
+# RUN wget -q -O peercoin.tar.gz https://github.com/peercoin/peercoin/archive/refs/tags/v${PEERCOIN_VERSION}.tar.gz \
+#     && echo "${PEERCOIN_SHA}  peercoin.tar.gz" | sha256sum -c -
 
-RUN tar -xzf peercoin.tar.gz
+# RUN tar -xzf peercoin.tar.gz
 
-WORKDIR /peercoin-${PEERCOIN_VERSION}
+# WORKDIR /peercoin-${PEERCOIN_VERSION}+
+RUN mkdir -p /peercoin 
+COPY peercoind /peercoin/peercoind
+RUN chmod +x /peercoin/peercoind
 
 # # ./configure can't find berkley db unless we do this
 # RUN ln -s /opt/berkleydb /usr/include/db4.8 \

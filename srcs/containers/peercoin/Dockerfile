@@ -13,55 +13,63 @@ RUN apk --no-cache add build-base linux-headers musl-dev
 RUN apk add --no-cache libc6-compat
 RUN apk add git boost-dev libevent-dev libsodium-dev
 
+RUN wget https://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
+RUN tar -xzf db-4.8.30.NC.tar.gz
+RUN cd db-4.8.30.NC/build_unix
+RUN ../dist/configure --prefix=/opt/berkeleydb --enable-cxx --disable-shared
+RUN make -j$(nproc)
+RUN make install
+
+
 # Define variables
-ARG BERKELEYDB_VERSION=db-4.8.30.NC
-ARG BERKELEYDB_PREFIX=/opt/berkeleydb
+# ARG BERKELEYDB_VERSION=db-4.8.30.NC
+# ARG BERKELEYDB_PREFIX=/opt/berkeleydb
 
-ENV BERKELEYDB_VERSION=${BERKELEYDB_VERSION}
-ENV BERKELEYDB_PREFIX=${BERKELEYDB_PREFIX}
+# ENV BERKELEYDB_VERSION=${BERKELEYDB_VERSION}
+# ENV BERKELEYDB_PREFIX=${BERKELEYDB_PREFIX}
 
-# Download and extract
-RUN wget -q https://download.oracle.com/berkeley-db/${BERKELEYDB_VERSION}.tar.gz && \
-    tar -xzf ${BERKELEYDB_VERSION}.tar.gz && \
-    rm ${BERKELEYDB_VERSION}.tar.gz
+# # Download and extract
+# RUN wget -q https://download.oracle.com/berkeley-db/${BERKELEYDB_VERSION}.tar.gz && \
+#     tar -xzf ${BERKELEYDB_VERSION}.tar.gz && \
+#     rm ${BERKELEYDB_VERSION}.tar.gz
 
-# Patch atomic.h
-RUN sed -i 's/__atomic_compare_exchange/__atomic_compare_exchange_db/g' ${BERKELEYDB_VERSION}/dbinc/atomic.h
+# # Patch atomic.h
+# RUN sed -i 's/__atomic_compare_exchange/__atomic_compare_exchange_db/g' ${BERKELEYDB_VERSION}/dbinc/atomic.h
 
-# Create prefix directory
-RUN mkdir -p ${BERKELEYDB_PREFIX}
+# # Create prefix directory
+# RUN mkdir -p ${BERKELEYDB_PREFIX}
 
-# Build Berkeley DB
-WORKDIR /${BERKELEYDB_VERSION}/build_unix
+# # Build Berkeley DB
+# WORKDIR /${BERKELEYDB_VERSION}/build_unix
 
-RUN ../dist/configure --enable-cxx --disable-shared --with-pic --prefix=${BERKELEYDB_PREFIX} && \
-    make -j$(nproc) && \
-    make install && \
-    rm -rf ${BERKELEYDB_PREFIX}/docs
+# RUN ../dist/configure --enable-cxx --disable-shared --with-pic --prefix=${BERKELEYDB_PREFIX} && \
+#     make -j$(nproc) && \
+#     make install && \
+#     rm -rf ${BERKELEYDB_PREFIX}/docs
 
 
-# Build stage for Peercoind
-# FROM alpine:3.16 as peercoin-build
+# # Build stage for Peercoind
+# # FROM alpine:3.16 as peercoin-build
 
-COPY --from=berkeleydb /opt/ /opt/
+# COPY --from=berkeleydb /opt/ /opt/
 
-RUN apk --no-cache add autoconf \
-    automake \
-    boost-dev \
-    build-base \
-    chrpath \
-    file \
-    libevent-dev \
-    openssl \
-    openssl-dev \
-    libtool \
-    linux-headers \
-    zeromq-dev \
-    protobuf-dev
+# RUN apk --no-cache add autoconf \
+#     automake \
+#     boost-dev \
+#     build-base \
+#     chrpath \
+#     file \
+#     libevent-dev \
+#     openssl \
+#     openssl-dev \
+#     libtool \
+#     linux-headers \
+#     zeromq-dev \
+#     protobuf-dev
 
-ENV PEERCOIN_VERSION=0.15.0ppc \
-    PEERCOIN_SHA=df6553485139aa0dfbd868c59d576c11c3d60e7b609fc76e0a98c4958cb1a3dd \
-    PEERCOIN_PREFIX=/opt/peercoin
+# ENV PEERCOIN_VERSION=0.15.0ppc \
+#     PEERCOIN_SHA=df6553485139aa0dfbd868c59d576c11c3d60e7b609fc76e0a98c4958cb1a3dd \
+#     PEERCOIN_PREFIX=/opt/peercoin
 
 # RUN wget -q -O peercoin.tar.gz https://github.com/peercoin/peercoin/archive/refs/tags/v${PEERCOIN_VERSION}.tar.gz \
 #     && echo "${PEERCOIN_SHA}  peercoin.tar.gz" | sha256sum -c -

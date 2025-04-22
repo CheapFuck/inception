@@ -27,13 +27,13 @@ else
 fi
 cp /wp-config.php /var/www/html/wordpress/wp-config.php
 # Create user "miauw" if it doesn't exist
-echo "Checking if 'miauw' exists..."
-if ! wp user get miauw --allow-root --path=/var/www/html/wordpress > /dev/null 2>&1; then
-  echo "'miauw' not found. Creating user..."
-  wp user create "miauw" "thiiiiivan-d@student.codam.nl" --user_pass="waf" --role=subscriber --allow-root --path=/var/www/html/wordpress
-else
-  echo "User 'miauw' already exists."
-fi
+# echo "Checking if 'miauw' exists..."
+# if ! wp user get miauw --allow-root --path=/var/www/html/wordpress > /dev/null 2>&1; then
+#   echo "'miauw' not found. Creating user..."
+#   wp user create "miauw" "thiiiiivan-d@student.codam.nl" --user_pass="waf" --role=subscriber --allow-root --path=/var/www/html/wordpress
+# else
+#   echo "User 'miauw' already exists."
+# fi
 chown -R nobody:nobody *
 # Start PHP-FPM
 exec php-fpm83 -F -R

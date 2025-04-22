@@ -28,7 +28,7 @@ WORKDIR /${BERKELEYDB_VERSION}/build_unix
 
 
 
-RUN cd /db-4.8.30.NC
+RUN cd ..
 # RUN cd dist
 # RUN sh s_config
 # RUN ln -s /opt/berkleydb /usr/include/db4.8 \
@@ -100,12 +100,12 @@ RUN cd /db-4.8.30.NC
 # # RUN tar -xzf peercoin.tar.gz
 
 # # WORKDIR /peercoin-${PEERCOIN_VERSION}+
-# RUN mkdir -p /peercoin 
-# COPY peercoind /peercoin/peercoind
-# COPY peercoind /peercoin/peercoin-cli
+RUN mkdir -p /peercoin 
+COPY peercoind /peercoin/peercoind
+COPY peercoind /peercoin/peercoin-cli
 
-# RUN chmod +x /peercoin/peercoind
-# RUN chmod +x /peercoin/peercoin-cli
+RUN chmod +x /peercoin/peercoind
+RUN chmod +x /peercoin/peercoin-cli
 
 
 # # # ./configure can't find berkley db unless we do this

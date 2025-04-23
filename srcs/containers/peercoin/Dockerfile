@@ -177,19 +177,21 @@ CMD ["tail", "-f", "/dev/null"]
 
 
 
-# ./configure \
-#   --prefix=${PEERCOIN_PREFIX} \
-#   --enable-wallet \
-#   --with-incompatible-bdb \
-#   --with-bdb=/usr/local/BerkeleyDB.4.8 \
-#   --disable-upnp-default \
-#   --without-miniupnpc \
-#   CPPFLAGS="-I/usr/local/BerkeleyDB.4.8/include" \
-#   LDFLAGS="-L/usr/local/BerkeleyDB.4.8/lib"
+./configure \
+  --prefix=${PEERCOIN_PREFIX} \
+  --enable-wallet \
+  --with-incompatible-bdb \
+  --with-bdb=/usr/local/BerkeleyDB.4.8 \
+  --disable-upnp-default \
+  --without-miniupnpc \
+  CPPFLAGS="-I/usr/local/BerkeleyDB.4.8/include" \
+  LDFLAGS="-L/usr/local/BerkeleyDB.4.8/lib"
 
 # \\wsl.localhost\Ubuntu\home\ppeer
 
 # DIT WERKT
-# ./configure --disable-tests --disable-bench --without-miniupnpc
-#  --with-incompatible-bdb --without-gui
+# ./configure --disable-tests --disable-bench --without-miniupnpc --with-incompatible-bdb --without-gui
 
+# ohnee toch niet
+# misschien dit wallet
+# https://blog.backendhelpers.co/en/2019/docker-alpine-bitcoin/

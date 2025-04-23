@@ -39,7 +39,11 @@ RUN cd ..
 #     make -j$(nproc) && \
 #     make install && \
 #     rm -rf ${BERKELEYDB_PREFIX}/docs
-
+# apk add build-base bash linux-headers musl-dev
+# ../dist/configure --prefix=/usr/local \
+#   --enable-cxx \
+#   --disable-shared \
+#   --with-mutex=UNIX/fcntl
 # # RUN wget https://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz
 # # RUN tar -xzf db-4.8.30.NC.tar.gz
 # # RUN cd db-4.8.30.NC/build_unix

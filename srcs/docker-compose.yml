@@ -145,7 +145,7 @@ services:
   #     - '19903:9903'
   #   networks:
   #     - inception 
-  peercoind:
+  peercoindtest:
     container_name: peercointest
     build:
       context: .  # Set the context to the parent directory (my_project)

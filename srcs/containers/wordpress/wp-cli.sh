@@ -45,6 +45,7 @@ wp core install --allow-root --admin_user="root" --admin_password="1d0ntkn0w!?" 
 
 # This create a new WordPress user, and sets its role to author ( --role=author )
 wp user create "my_user" "thivan-d@student.codam.nl" --user_pass="my_password" --role=author
+wp plugin install redis-cache --activate
 
 # This is the command that will keep WordPress up and running
 exec php-fpm83 -F -R

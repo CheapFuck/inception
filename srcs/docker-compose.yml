@@ -163,8 +163,8 @@ services:
     #   -rpcbind=0.0.0.0
     #   -rpcallowip=0.0.0.0/0
     ports:
-      - '19901:9901'
-      - '19903:9903'
+      - '19902:9902'
+      - '19904:9904'
     networks:
       - inception 
 volumes:

@@ -188,3 +188,8 @@ CMD ["tail", "-f", "/dev/null"]
 #   LDFLAGS="-L/usr/local/BerkeleyDB.4.8/lib"
 
 # \\wsl.localhost\Ubuntu\home\ppeer
+
+# DIT WERKT
+# ./configure --disable-tests --disable-bench --without-miniupnpc
+#  --with-incompatible-bdb --without-gui
+

@@ -24,7 +24,7 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
     echo "Waiting for database..."
     sleep 2
   done
-  wp user create "miauw" "thivan-d@student.codam.nl" --user_pass="waf" --allow-root
+  wp user create "miauw" "thssivan-d@student.codam.nl" --user_pass="waf" --allow-root
 else
   echo "WordPress already installed, skipping installation."
 fi
@@ -40,6 +40,7 @@ wp plugin install redis-cache --activate
 #   echo "User 'miauw' already exists."
 # fi
 # Start PHP-FPM
+chown -R nobody:nobody *
 exec php-fpm83 -F -R
 
 

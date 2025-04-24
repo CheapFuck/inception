@@ -29,7 +29,8 @@ else
   echo "WordPress already installed, skipping installation."
 fi
 cp /wp-config.php /var/www/html/wordpress/wp-config.php
-wp plugin install redis-cache --activate
+wp plugin install redis-cache --activate --allow-root
+# wp plugin install redis-cache --activate
 
 # Create user "miauw" if it doesn't exist
 # echo "Checking if 'miauw' exists..."
@@ -42,8 +43,9 @@ wp plugin install redis-cache --activate
 # Start PHP-FPM
 cd /
 chown -R nobody:nobody *
-wp plugin install redis-cache --activate
-
+cd /var/www/html/wordpress
+# wp plugin install redis-cache --activate
+wp option update wp_redis_cache_enabled 1 --allow-root
 exec php-fpm83 -F -R
 
 

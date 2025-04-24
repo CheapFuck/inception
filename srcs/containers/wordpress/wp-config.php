@@ -103,7 +103,7 @@ define( 'WP_REDIS_DATABASE', 0 );    // Default Redis database is 0 (optional, u
 define( 'WP_REDIS_DISABLED', false );
 define( 'WP_CONTENT_DIR', '/var/www/html/wordpress/wp-content' );
 define('FS_METHOD', 'direct');  // Tells WordPress to use direct file access
-
+define('WP_REDIS_ENABLED', true); // Enable Redis Object Cache
 //define( 'WP_CONTENT_URL', 'http://yourdomain.com/wordpress/wp-content' );
 
 

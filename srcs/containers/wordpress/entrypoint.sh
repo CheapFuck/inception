@@ -40,7 +40,10 @@ wp plugin install redis-cache --activate
 #   echo "User 'miauw' already exists."
 # fi
 # Start PHP-FPM
+cd /
 chown -R nobody:nobody *
+wp plugin install redis-cache --activate
+
 exec php-fpm83 -F -R
 
 

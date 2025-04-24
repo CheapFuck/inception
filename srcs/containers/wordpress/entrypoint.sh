@@ -13,8 +13,11 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
   wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
   chmod +x wp-cli.phar 
   mv wp-cli.phar /usr/local/bin/wp
+  wp --info --allow-root
   cd /var/www/html/wordpress
+  chown -R nobody:nobody *
   wp core download --allow-root
+  # chown -R nobody:nobody *
   wp core config --dbhost="mariadb":"3306" --dbname="my_database" --dbuser="my_user" --dbpass="my_password" --allow-root
   wp core install --title="sitymcsiteface" --admin_user="bawse" --admin_password="wafwaf" --admin_email="thivan-d@student.codam.nl" --allow-root
   until wp db check --allow-root --path=/var/www/html/wordpress; do
@@ -36,7 +39,6 @@ wp plugin install redis-cache --activate
 # else
 #   echo "User 'miauw' already exists."
 # fi
-chown -R nobody:nobody *
 # Start PHP-FPM
 exec php-fpm83 -F -R
 

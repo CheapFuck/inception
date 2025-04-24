@@ -18,17 +18,18 @@ RUN apk --no-cache add build-base linux-headers musl-dev
 RUN apk --no-cache add libc6-compat
 RUN apk --no-cache add git boost-dev libevent-dev libsodium-dev
 RUN apk --no-cache add zeromq zeromq-dev
-ARG BERKELEYDB_VERSION=db-4.8.30.NC
-ARG BERKELEYDB_PREFIX=/opt/berkeleydb
+RUN apk --no-cache add db db-dev db-c++
+# ARG BERKELEYDB_VERSION=db-4.8.30.NC
+# ARG BERKELEYDB_PREFIX=/opt/berkeleydb
 
-ENV BERKELEYDB_VERSION=${BERKELEYDB_VERSION}
-ENV BERKELEYDB_PREFIX=${BERKELEYDB_PREFIX}
-RUN mkdir -p ${BERKELEYDB_PREFIX}
-WORKDIR /${BERKELEYDB_VERSION}/build_unix
+# ENV BERKELEYDB_VERSION=${BERKELEYDB_VERSION}
+# ENV BERKELEYDB_PREFIX=${BERKELEYDB_PREFIX}
+# RUN mkdir -p ${BERKELEYDB_PREFIX}
+# WORKDIR /${BERKELEYDB_VERSION}/build_unix
 
 
 
-RUN cd ..
+# RUN cd ..
 # RUN cd dist
 # RUN sh s_config
 # RUN ln -s /opt/berkleydb /usr/include/db4.8 \
@@ -177,15 +178,15 @@ CMD ["tail", "-f", "/dev/null"]
 
 
 
-./configure \
-  --prefix=${PEERCOIN_PREFIX} \
-  --enable-wallet \
-  --with-incompatible-bdb \
-  --with-bdb=/usr/local/BerkeleyDB.4.8 \
-  --disable-upnp-default \
-  --without-miniupnpc \
-  CPPFLAGS="-I/usr/local/BerkeleyDB.4.8/include" \
-  LDFLAGS="-L/usr/local/BerkeleyDB.4.8/lib"
+# ./configure \
+#   --prefix=${PEERCOIN_PREFIX} \
+#   --enable-wallet \
+#   --with-incompatible-bdb \
+#   --with-bdb=/usr/local/BerkeleyDB.4.8 \
+#   --disable-upnp-default \
+#   --without-miniupnpc \
+#   CPPFLAGS="-I/usr/local/BerkeleyDB.4.8/include" \
+#   LDFLAGS="-L/usr/local/BerkeleyDB.4.8/lib"
 
 # \\wsl.localhost\Ubuntu\home\ppeer
 

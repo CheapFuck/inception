@@ -99,11 +99,11 @@ define('WP_DEBUG_LOG', true);
 // Redis Cache Settings
 define( 'WP_REDIS_HOST', 'redis' );  // The Redis service name defined in docker-compose.yml
 define( 'WP_REDIS_PORT', 6379 );     // The port Redis is running on (default is 6379)
-define( 'WP_REDIS_DATABASE', 0 );    // Default Redis database is 0 (optional, use if needed)
-define( 'WP_REDIS_DISABLED', false );
+// define( 'WP_REDIS_DATABASE', 0 );    // Default Redis database is 0 (optional, use if needed)
+// define( 'WP_REDIS_DISABLED', false );
 define( 'WP_CONTENT_DIR', '/var/www/html/wordpress/wp-content' );
 define('FS_METHOD', 'direct');  // Tells WordPress to use direct file access
-define('WP_REDIS_ENABLED', true); // Enable Redis Object Cache
+// define('WP_REDIS_ENABLED', true); // Enable Redis Object Cache
 //define( 'WP_CONTENT_URL', 'http://yourdomain.com/wordpress/wp-content' );
 
 

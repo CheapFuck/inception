@@ -45,6 +45,7 @@ wp plugin install redis-cache --activate --allow-root
 
 # cd /var/www/html/wordpress
 # wp plugin install redis-cache --activate
+wp redis flush --allow-root
 wp option update wp_redis_cache_enabled 1 --allow-root
 chown -R nobody:nobody *
 exec php-fpm83 -F -R

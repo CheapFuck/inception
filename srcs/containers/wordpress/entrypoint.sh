@@ -13,8 +13,8 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
   wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
   chmod +x wp-cli.phar 
   mv wp-cli.phar /usr/local/bin/wp
-  wp --info --allow-root
-  chown -R nobody:nobody *
+  # wp --info --allow-root
+  # chown -R nobody:nobody *
   cd /var/www/html/wordpress
   wp core download --allow-root
   # chown -R nobody:nobody *
@@ -45,7 +45,7 @@ wp plugin install redis-cache --activate --allow-root
 
 # cd /var/www/html/wordpress
 # wp plugin install redis-cache --activate
-wp redis flush --allow-root
+# wp redis flush --allow-root
 wp option update wp_redis_cache_enabled 1 --allow-root
 chown -R nobody:nobody *
 exec php-fpm83 -F -R

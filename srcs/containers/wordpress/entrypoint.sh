@@ -28,8 +28,11 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
 else
   echo "WordPress already installed, skipping installation."
 fi
+
 cp /wp-config.php /var/www/html/wordpress/wp-config.php
-wp plugin install redis-cache --activate --allow-root
+# wp plugin install redis-cache --activate --allow-root
+# wp option update wp_redis_cache_enabled 1 --allow-root
+
 # wp plugin install redis-cache --activate
 
 # Create user "miauw" if it doesn't exist
@@ -46,7 +49,6 @@ wp plugin install redis-cache --activate --allow-root
 # cd /var/www/html/wordpress
 # wp plugin install redis-cache --activate
 # wp redis flush --allow-root
-wp option update wp_redis_cache_enabled 1 --allow-root
 chown -R nobody:nobody *
 exec php-fpm83 -F -R
 

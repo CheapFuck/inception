@@ -30,7 +30,8 @@ else
 fi
 
 cp /wp-config.php /var/www/html/wordpress/wp-config.php
-# wp plugin install redis-cache --activate --allow-root
+wp plugin install redis-cache --activate --allow-root
+wp redis enable --allow-root
 # wp option update wp_redis_cache_enabled 1 --allow-root
 
 # wp plugin install redis-cache --activate

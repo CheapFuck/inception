@@ -135,9 +135,7 @@ services:
       - RPC_USER=peercoind
       - RPC_PASSWORD=peercoindrpc
     volumes:
-      - type: bind
-        source: /tmp/ololo
-        target: /data
+      - data:/data
     # command:
     #   -nominting
     #   -rpcbind=0.0.0.0
@@ -171,7 +169,7 @@ services:
   #     - inception 
 volumes:
   mariadb_data:  # Declare the named volume for MariaDB data
-  data:  # Declare the named volume for WordPress data
+  data:  # Declare the named volume for all the data
     driver: local
     driver_opts:
       type: none

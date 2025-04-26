@@ -157,7 +157,7 @@ RUN chmod +x /peercoin/peercoin-cli
 #     su-exec \
 #     bash
 
-ENV PPC_DATA=/data
+ENV PPC_DATA=/data/peercoin
 # ENV PEERCOIN_PREFIX=/opt/peercoin
 # ENV PATH=${PEERCOIN_PREFIX}/bin:$PATH
 ENV RPC_PASSWORD=ppcpass

@@ -172,11 +172,8 @@ services:
 volumes:
   mariadb_data:  # Declare the named volume for MariaDB data
   wordpress_data:  # Declare the named volume for WordPress data
-
-
-  # wordpress_data:  # Declare the named volume for WordPress data
-  #   driver: local
-  #   driver_opts:
-  #     type: none
-  #     device: /home/thivan-d/data/wordpress
-  #     o: bind
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/thivan-d/data/wordpress
+      o: bind

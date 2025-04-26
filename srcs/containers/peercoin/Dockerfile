@@ -164,7 +164,7 @@ ENV RPC_PASSWORD=ppcpass
 ENV RPC_USER=ppcuser
 
 # # # COPY --from=peercoin-build /opt /opt
-COPY docker-entrypoint.sh /entrypoint.sh
+COPY containers/peercoin/entrypoint.sh /entrypoint.sh
 
 # # VOLUME ["${PPC_DATA}"]
 

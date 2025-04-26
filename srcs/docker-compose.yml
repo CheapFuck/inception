@@ -54,7 +54,8 @@ services:
       WORDPRESS_DB_USER: my_user  # Database user
       WORDPRESS_DB_PASSWORD: my_password  # Database user password
     volumes:
-      - wordpress_data:/var/www/html  # Persist WordPress data
+      # - wordpress_data:/var/www/html  # Persist WordPress data
+      - /home/login/data:/var/www/html/wordpress
     networks:
       - inception
     depends_on:

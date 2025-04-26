@@ -175,5 +175,5 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/thivan-d/data/wordpress
+      device: /home/thivan-d/data
       o: bind

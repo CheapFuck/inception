@@ -8,7 +8,7 @@ fi
 
 if [ "$(echo "$1" | cut -c1)" = "-" ] || [ "$1" = "peercoind" ]; then
 
-  mkdir -p "$PPC_DATA"
+  # mkdir -p "$PPC_DATA"
   chmod 700 "$PPC_DATA"
   chown -R peercoin "$PPC_DATA"
 

@@ -32,3 +32,7 @@ if [ "$1" = "peercoind" ] || [ "$1" = "peercoin-cli" ] || [ "$1" = "peercoin-tx"
 fi
 
 exec "$@"
+
+
+# ./peercoind -daemon -datadir/data/peercoin
+# ./peercoin-cli -datadir=/data/peercoin -getinfo

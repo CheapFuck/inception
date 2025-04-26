@@ -14,7 +14,7 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
   chmod +x wp-cli.phar 
   mv wp-cli.phar /usr/local/bin/wp
   # wp --info --allow-root
-  # chown -R nobody:nobody *
+  chown -R nobody:nobody *
   cd /var/www/html/wordpress
   wp core download --allow-root
   # chown -R nobody:nobody *

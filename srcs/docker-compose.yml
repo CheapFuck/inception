@@ -55,7 +55,8 @@ services:
       WORDPRESS_DB_PASSWORD: my_password  # Database user password
     volumes:
       # - wordpress_data:/var/www/html  # Persist WordPress data
-      - /home/thivan-d/data:/var/www/html
+      - /home/thivan-d/data/wordpress:/var/www/html
+      # - /home/thivan-d/data:/var/www/html
     networks:
       - inception
     depends_on:

@@ -34,5 +34,5 @@ fi
 exec "$@"
 
 
-# ./peercoind -daemon -datadir/data/peercoin
+# ./peercoind -daemon -datadir=/data/peercoin
 # ./peercoin-cli -datadir=/data/peercoin -getinfo

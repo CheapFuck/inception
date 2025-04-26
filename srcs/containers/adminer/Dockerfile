@@ -15,9 +15,11 @@ WORKDIR /var/www/html/adminer
 # Download the latest Adminer version
 # RUN curl -o index.php https://www.adminer.org/latest.php
 # RUN curl -L -o index.php https://www.adminer.org/latest.php
-RUN curl -L -o index.php https://www.adminer.org/static/download/5.2.1/adminer-5.2.1.php
+# RUN curl -L -o index.php https://www.adminer.org/static/download/5.2.1/adminer-5.2.1.php
+
 # Expose port
 EXPOSE 8080
 
 # Start built-in PHP server
-CMD ["php", "-S", "0.0.0.0:8080"]
+# CMD ["php", "-S", "0.0.0.0:8080"]
+CMD sh -c 'mkdir -p /var/www/html/adminer && curl -L -o /var/www/html/adminer/index.php https://www.adminer.org/static/download/5.2.1/adminer-5.2.1.php && php -S 0.0.0.0:8080 -t /var/www/html'

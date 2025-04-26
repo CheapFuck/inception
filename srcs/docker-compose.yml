@@ -110,17 +110,6 @@ services:
     build:
       context: .  # Set the context to the parent directory (my_project)
       dockerfile: containers/adminer/Dockerfile  # Point to the WordPress Dockerfile
-    # environment:
-    #   - FTP_USER=ftpuser
-    #   - FTP_PASS=ftppassword
-    #   - PASV_ADDRESS=localhost
-    #   - PASV_MIN_PORT=21100
-    #   - PASV_MAX_PORT=21110
-    # healthcheck:
-    #   test: ["CMD-SHELL", "pgrep pure-ftpd && lsof -i :21"]
-    #   interval: 30s
-    #   timeout: 5s
-    #   retries: 3
     volumes:
       - data:/var/www/html
     networks:

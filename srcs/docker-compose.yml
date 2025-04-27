@@ -159,8 +159,8 @@ services:
 volumes:
   mariadb_data:  # Declare the named volume for MariaDB data
   data:  # Declare the named volume for all the data
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/thivan-d/data
-      o: bind
+    # driver: local
+    # driver_opts:
+    #   type: none
+    #   device: /home/thivan-d/data
+    #   o: bind

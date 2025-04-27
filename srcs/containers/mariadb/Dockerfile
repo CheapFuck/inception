@@ -6,7 +6,7 @@ RUN apk update && \
     mariadb mariadb-client \
     bash \
     && rm -rf /var/cache/apk/* \
-    # && mkdir /maria \
+    && mkdir /maria \
     && cd /maria \
     && mkdir -p data logs socket dump/import dump/export config/my.cnf.daemon
 

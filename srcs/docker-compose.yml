@@ -159,7 +159,6 @@ services:
   #     - inception 
 volumes:
   mariadb_data:  # Declare the named volume for MariaDB data
-    data:  # Declare the named volume for all the data
     driver: local
     driver_opts:
       type: none

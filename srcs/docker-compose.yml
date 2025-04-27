@@ -158,15 +158,17 @@ services:
   #   networks:
   #     - inception 
 volumes:
-  mariadb_data:  # Declare the named volume for MariaDB data
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/thivan-d/data/mariadb
-      o: bind
+  # mariadb_data:  # Declare the named volume for MariaDB data
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     device: /home/thivan-d/data/mariadb
+  #     o: bind
   data:  # Declare the named volume for all the data
     driver: local
     driver_opts:
       type: none
       device: /home/thivan-d/data
       o: bind
+
+

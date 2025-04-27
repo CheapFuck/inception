@@ -31,8 +31,7 @@ services:
       MYSQL_USER: my_user  # Create a user with privileges
       MYSQL_PASSWORD: my_password  # Password for the user
     volumes:
-      # - mariadb_data:/var/lib/mysql  # Persist data between container restarts
-      - /home/thivan-d/data/mariadb:/var/lib/mysql
+      - mariadb_data:/var/lib/mysql  # Persist data between container restarts
       - ./containers/mariadb/my.cnf:/etc/mysql/my.cnf
     networks:
       - inception

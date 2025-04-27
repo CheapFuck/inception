@@ -18,7 +18,7 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
   cd /var/www/html/wordpress
   wp core download --allow-root
   wp core config --dbhost="mariadb":"3306" --dbname="my_database" --dbuser="my_user" --dbpass="my_password" --allow-root
-  # chown -R nobody:nobody *
+  chown -R nobody:nobody *
   until wp db check --allow-root --path=/var/www/html/wordpress; do
     echo "Waiting for database..."
     sleep 2

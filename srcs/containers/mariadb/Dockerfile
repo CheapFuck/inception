@@ -18,14 +18,14 @@ ENV MYSQL_ROOT_PASSWORD=root_password \
     MYSQL_USER=my_user \
     MYSQL_PASSWORD=my_password
 # Create a directory for the database
-RUN mkdir -p /var/lib/mysql && \
-    chown -R mysql:mysql /var/lib/mysql
+RUN mkdir -p /test/var/lib/mysql && \
+    chown -R mysql:mysql /test/var/lib/mysql
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
-RUN chown -R mysql:mysql /var/lib/mysql
+# RUN chown -R mysql:mysql /test/var/lib/mysql
 COPY containers/mariadb/init.sql /init.sql
 COPY containers/mariadb/my.cnf /etc/mysql/my.cnf
 # Initialize MariaDB
-RUN mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+RUN mariadb-install-db --user=mysql --basedir=/usr --datadir=/test/var/lib/mysql
 # Expose the MariaDB default port
 EXPOSE 3306
 # Initialize MariaDB (create database, users) on container start

@@ -38,11 +38,11 @@ services:
     networks:
       - inception
     restart: always
-    healthcheck:
-      test: ["CMD", "mariadb-admin", "ping", "-h", "localhost"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+    # healthcheck:
+    #   test: ["CMD", "mariadb-admin", "ping", "-h", "localhost"]
+    #   interval: 5s
+    #   timeout: 5s
+    #   retries: 5
     # ports:
     #   - "3306:3306"  # Expose port 3306 to the host for MariaDB connections
   wordpress:

@@ -19,7 +19,7 @@ ENV MYSQL_ROOT_PASSWORD=root_password \
     MYSQL_PASSWORD=my_password
 # Create a directory for the database
 RUN mkdir -p /maria/var/lib/mysql && \
-RUN chown -R mysql:mysql /maria/var/lib/mysql
+    chown -R mysql:mysql /maria/var/lib/mysql
 RUN mkdir -p /maria/run/mysqld && chown -R mysql:mysql /maria/run/mysqld
 RUN chown -R mysql:mysql /maria/var/lib/mysql
 COPY containers/mariadb/init.sql /init.sql

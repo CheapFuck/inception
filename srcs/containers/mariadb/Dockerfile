@@ -21,7 +21,7 @@ ENV MYSQL_ROOT_PASSWORD=root_password \
 RUN mkdir -p /maria/var/lib/mysql && \
     chown -R mysql:mysql /maria/var/lib/mysql
 RUN mkdir -p /maria/run/mysqld && chown -R mysql:mysql /maria/run/mysqld
-RUN chown -R mysql:mysql /var/lib/mysql
+RUN chown -R mysql:mysql /maria/var/lib/mysql
 COPY containers/mariadb/init.sql /init.sql
 COPY containers/mariadb/my.cnf /etc/mysql/my.cnf
 # Initialize MariaDB

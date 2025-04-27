@@ -32,6 +32,7 @@ services:
       MYSQL_PASSWORD: my_password  # Password for the user
     volumes:
       - mariadb_data:/var/lib/mysql  # Persist data between container restarts
+      - test:/test
       - ./containers/mariadb/my.cnf:/etc/mysql/my.cnf
     networks:
       - inception
@@ -158,6 +159,12 @@ services:
   #     - inception 
 volumes:
   mariadb_data:  # Declare the named volume for MariaDB data
+  test:  # Declare the named volume for all the data
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/thivan-d/data/mariadb
+      o: bind
   data:  # Declare the named volume for all the data
     driver: local
     driver_opts:

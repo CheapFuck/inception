@@ -18,7 +18,7 @@ RUN mkdir -p /var/lib/mysql /run/mysqld && \
     # Copy configuration and initialization files
 COPY containers/mariadb/init.sql /init.sql
 COPY containers/mariadb/my.cnf /etc/mysql/my.cnf
-
+COPY containers/mariadb/init.sql /docker-entrypoint-initdb.d/
 
 
 

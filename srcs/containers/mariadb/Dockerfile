@@ -11,6 +11,16 @@ RUN apk update && \
     && mkdir -p data logs socket dump/import dump/export config/my.cnf.daemon
 
 
+# Create necessary directories
+RUN mkdir -p /var/lib/mysql /run/mysqld && \
+    chown -R mysql:mysql /var/lib/mysql /run/mysqld
+
+    # Copy configuration and initialization files
+COPY containers/mariadb/init.sql /init.sql
+COPY containers/mariadb/my.cnf /etc/mysql/my.cnf
+
+
+
 
 # Set up environment variables for MariaDB
 ENV MYSQL_ROOT_PASSWORD=root_password \
@@ -18,9 +28,9 @@ ENV MYSQL_ROOT_PASSWORD=root_password \
     MYSQL_USER=my_user \
     MYSQL_PASSWORD=my_password
 # Create a directory for the database
-RUN mkdir -p /var/lib/mysql && \
-    chown -R mysql:mysql /var/lib/mysql
-RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
+# RUN mkdir -p /var/lib/mysql && \
+#     chown -R mysql:mysql /var/lib/mysql
+# RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 # RUN chown -R mysql:mysql /test/var/lib/mysql
 COPY containers/mariadb/init.sql /init.sql
 COPY containers/mariadb/my.cnf /etc/mysql/my.cnf

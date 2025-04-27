@@ -31,7 +31,6 @@ services:
       MYSQL_USER: my_user  # Create a user with privileges
       MYSQL_PASSWORD: my_password  # Password for the user
     volumes:
-      # - /home/thivan-d/data/mariadb:/var/lib/mysql  # Mount the host directory for MariaDB data
       - mariadb_data:/var/lib/mysql  # Persist data between container restarts
       - ./containers/mariadb/my.cnf:/etc/mysql/my.cnf
     networks:
@@ -159,16 +158,9 @@ services:
   #     - inception 
 volumes:
   mariadb_data:  # Declare the named volume for MariaDB data
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/thivan-d/data/mariadb
-      o: bind
   data:  # Declare the named volume for all the data
     driver: local
     driver_opts:
       type: none
       device: /home/thivan-d/data
       o: bind
-
-

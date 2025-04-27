@@ -11,16 +11,6 @@ RUN apk update && \
     && mkdir -p data logs socket dump/import dump/export config/my.cnf.daemon
 
 
-# Create necessary directories
-RUN mkdir -p /var/lib/mysql /run/mysqld && \
-    chown -R mysql:mysql /var/lib/mysql /run/mysqld
-
-    # Copy configuration and initialization files
-COPY containers/mariadb/init.sql /init.sql
-COPY containers/mariadb/my.cnf /etc/mysql/my.cnf
-COPY containers/mariadb/init.sql /docker-entrypoint-initdb.d/
-
-
 
 # Set up environment variables for MariaDB
 ENV MYSQL_ROOT_PASSWORD=root_password \
@@ -28,15 +18,13 @@ ENV MYSQL_ROOT_PASSWORD=root_password \
     MYSQL_USER=my_user \
     MYSQL_PASSWORD=my_password
 # Create a directory for the database
-# RUN mkdir -p /var/lib/mysql && \
-#     chown -R mysql:mysql /var/lib/mysql
-# RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
-# RUN chown -R mysql:mysql /test/var/lib/mysql
+RUN mkdir -p /var/lib/mysql && \
+    chown -R mysql:mysql /var/lib/mysql
+RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
+RUN chown -R mysql:mysql /var/lib/mysql
 COPY containers/mariadb/init.sql /init.sql
 COPY containers/mariadb/my.cnf /etc/mysql/my.cnf
 # Initialize MariaDB
-RUN chown -R mysql:mysql /var/lib/mysql
-RUN chmod -R 755 /var/lib/mysql
 RUN mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 # Expose the MariaDB default port
 EXPOSE 3306
@@ -46,8 +34,5 @@ EXPOSE 3306
 # CMD ["mariadbd", "--user=mysql"]
 # CMD ["sh", "-c", "mariadbd --user=mysql --init-file=/init.sql"]
 # CMD ["mariadbd", "--user=mysql", "--bind-address=0.0.0.0", "--port=3306"]
-# COPY containers/mariadb/init.sh /init.sh
-# RUN chmod +x /init.sh
-# ENTRYPOINT ["/init.sh"]
 CMD ["sh", "-c", "mariadbd --user=mysql --bind-address=0.0.0.0 --port=3306 --init-file=/init.sql"]
 

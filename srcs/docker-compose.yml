@@ -31,8 +31,7 @@ services:
       MYSQL_USER: my_user  # Create a user with privileges
       MYSQL_PASSWORD: my_password  # Password for the user
     volumes:
-      - data:/data
-      # - mariadb_data:/var/lib/mysql  # Persist data between container restarts
+      - mariadb_data:/var/lib/mysql  # Persist data between container restarts
       - ./containers/mariadb/my.cnf:/etc/mysql/my.cnf
     networks:
       - inception
@@ -158,7 +157,7 @@ services:
   #   networks:
   #     - inception 
 volumes:
-  # mariadb_data:  # Declare the named volume for MariaDB data
+  mariadb_data:  # Declare the named volume for MariaDB data
   data:  # Declare the named volume for all the data
     driver: local
     driver_opts:

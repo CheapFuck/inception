@@ -129,10 +129,10 @@ EXPOSE 9000
 COPY containers/wordpress/entrypoint.sh /entrypoint.sh
 COPY containers/wordpress/wp-config.php /wp-config.php
 COPY html/index.html /index.html
-# RUN chmod +x /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 # Run PHP-FPM in the foreground
 # CMD ["php-fpm83", "-F", "-R"]
-CMD ["tail", "-f", "/dev/null"]
+# CMD ["tail", "-f", "/dev/null"]
 

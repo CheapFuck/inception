@@ -23,7 +23,7 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
   #   echo "Waiting for database..."
   #   sleep 2
   # done
-  wp core config --dbhost="mariadb":"3306" --dbname="my_database" --dbuser="my_user" --dbpass="my_password" --allow-root
+  # wp core config --dbhost="mariadb":"3306" --dbname="my_database" --dbuser="my_user" --dbpass="my_password" --allow-root
   wp core install --url="http://localhost:4430/wordpress" --title="sitymcsiteface" --admin_user="bawse" --admin_password="wafwaf" --admin_email="thivan-d@student.codam.nl" --allow-root
   wp user create "miauw" "thssivan-d@student.codam.nl" --user_pass="waf" --allow-root
 else

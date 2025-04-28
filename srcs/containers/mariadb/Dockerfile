@@ -18,14 +18,14 @@ ENV MYSQL_ROOT_PASSWORD=root_password \
     MYSQL_USER=my_user \
     MYSQL_PASSWORD=my_password
 # Create a directory for the database
-# RUN mkdir -p /var/lib/mysql && \
-#     chown -R mysql:mysql /var/lib/mysql
+RUN mkdir -p /var/lib/mysql && \
+    chown -R mysql:mysql /var/lib/mysql
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
-# RUN chown -R mysql:mysql /var/lib/mysql
+RUN chown -R mysql:mysql /var/lib/mysql
 COPY containers/mariadb/init.sql /init.sql
 COPY containers/mariadb/my.cnf /etc/mysql/my.cnf
 # Initialize MariaDB
-# RUN mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+RUN mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 # Expose the MariaDB default port
 EXPOSE 3306
 # Initialize MariaDB (create database, users) on container start
@@ -33,10 +33,6 @@ EXPOSE 3306
 # CMD ["mysqld", "--user=mysql"]
 # CMD ["mariadbd", "--user=mysql"]
 # CMD ["sh", "-c", "mariadbd --user=mysql --init-file=/init.sql"]
-CMD ["mariadbd", "--user=mysql", "--bind-address=0.0.0.0", "--port=3306"]
-# COPY containers/mariadb/entrypoint.sh /entrypoint.sh
-# RUN chmod +x /entrypoint.sh
-# ENTRYPOINT ["/entrypoint.sh"]
-
-# CMD ["sh", "-c", "/entrypoint.sh"]
+# CMD ["mariadbd", "--user=mysql", "--bind-address=0.0.0.0", "--port=3306"]
+CMD ["sh", "-c", "mariadbd --user=mysql --bind-address=0.0.0.0 --port=3306 --init-file=/init.sql"]
 

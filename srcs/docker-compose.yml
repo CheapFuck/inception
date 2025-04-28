@@ -168,5 +168,5 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /home/thivan-d/data/mariadb
+      device: /home/thivan-d/data/test
       o: bind

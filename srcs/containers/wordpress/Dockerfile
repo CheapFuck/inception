@@ -126,12 +126,12 @@ EXPOSE 9000
 # RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
 #     chmod +x wp-cli.phar && \
 #     mv wp-cli.phar /usr/local/bin/wp
-COPY containers/wordpress/entrypoint.sh /entrypoint.sh
+# COPY containers/wordpress/entrypoint.sh /entrypoint.sh
 COPY containers/wordpress/wp-config.php /wp-config.php
 COPY html/index.html /index.html
 RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+# ENTRYPOINT ["entrypoint.sh"]
 # Run PHP-FPM in the foreground
 # CMD ["php-fpm83", "-F", "-R"]
-# CMD ["tail", "-f", "/dev/null"]
+CMD ["tail", "-f", "/dev/null"]
 

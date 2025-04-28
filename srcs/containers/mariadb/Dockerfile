@@ -34,7 +34,9 @@ EXPOSE 3306
 # CMD ["mariadbd", "--user=mysql"]
 # CMD ["sh", "-c", "mariadbd --user=mysql --init-file=/init.sql"]
 # CMD ["mariadbd", "--user=mysql", "--bind-address=0.0.0.0", "--port=3306"]
-# CMD ["sh", "-c", "mariadbd --user=mysql --bind-address=0.0.0.0 --port=3306 --init-file=/init.sql"]
-COPY containers/mariadb/entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-# ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["sh", "-c", "/entrypoint.sh"]
+

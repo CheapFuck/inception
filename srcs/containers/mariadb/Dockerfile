@@ -3,12 +3,12 @@ ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
 
 RUN apk update && \
     apk add --no-cache \
-    mariadb mariadb-client \
+    mariadb mariadb-server mariadb-client \
     bash \
     && rm -rf /var/cache/apk/* \
-    && mkdir /maria \
-    && cd /maria \
-    && mkdir -p data logs socket dump/import dump/export config/my.cnf.daemon
+    # && mkdir /maria \
+    # && cd /maria \
+    # && mkdir -p data logs socket dump/import dump/export config/my.cnf.daemon
 
 
 
@@ -18,8 +18,8 @@ ENV MYSQL_ROOT_PASSWORD=root_password \
     MYSQL_USER=my_user \
     MYSQL_PASSWORD=my_password
 # Create a directory for the database
-RUN mkdir -p /var/lib/mysql && \
-    chown -R mysql:mysql /var/lib/mysql
+# RUN mkdir -p /var/lib/mysql && \
+# RUN chown -R mysql:mysql /var/lib/mysql
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 RUN chown -R mysql:mysql /var/lib/mysql
 COPY containers/mariadb/init.sql /init.sql

@@ -3,7 +3,7 @@ ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
 
 RUN apk update && \
     apk add --no-cache \
-    mariadb mariadb-server mariadb-client \
+    mariadb mariadb-client \
     bash \
     && rm -rf /var/cache/apk/* \
     # && mkdir /maria \

@@ -30,7 +30,7 @@ else
   echo "WordPress already installed, skipping installation."
 fi
 
-cp /wp-config.php /var/www/html/wordpress/wp-config.php
+# cp /wp-config.php /var/www/html/wordpress/wp-config.php
 wp plugin activate hello --allow-root
 wp plugin install redis-cache --activate --allow-root
 wp redis enable --allow-root
@@ -52,7 +52,7 @@ wp redis enable --allow-root
 # cd /var/www/html/wordpress
 # wp plugin install redis-cache --activate
 # wp redis flush --allow-root
-chown -R nobody:nobody *
+# chown -R nobody:nobody *
 exec php-fpm83 -F -R
 
 

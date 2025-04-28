@@ -164,9 +164,9 @@ volumes:
       type: none
       device: /home/thivan-d/data
       o: bind
-  mariadb_data:
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/thivan-d/data/mariadb
-      o: bind
+  # mariadb_data:
+  #   driver: local
+  #   driver_opts:
+  #     type: none
+  #     device: /home/thivan-d/data/mariadb
+  #     o: bind

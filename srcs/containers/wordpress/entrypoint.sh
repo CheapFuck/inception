@@ -18,6 +18,7 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
   # chown -R nobody:nobody *
   wp core download --allow-root
   cp /wp-config.php /var/www/html/wordpress/wp-config.php
+  cp /doing-it-wrong.php /var/www/html/wordpress/wp-content/mu-plugins/doing-it-wrong.php
   chown -R nobody:nobody *
   # until wp db check --allow-root --path=/var/www/html/wordpress; do
   #   echo "Waiting for database..."

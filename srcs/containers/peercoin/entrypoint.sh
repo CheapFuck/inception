@@ -32,7 +32,8 @@ if [ "$1" = "peercoind" ] || [ "$1" = "peercoin-cli" ] || [ "$1" = "peercoin-tx"
   echo
   exec su-exec peercoin "$@"
 fi
-cd peercoin
+# cd peercoin
+export PATH="/peercoin:$PATH"
 exec "$@"
 
 

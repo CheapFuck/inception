@@ -1,0 +1,50 @@
+2025-04-29T14:31:11Z Pre-synchronizing blockheaders, height: 746962 (~93.71%)
+2025-04-29T14:31:11Z [net] received: headers (172003 bytes) peer=0
+2025-04-29T14:31:11Z [net] sending getheaders (1029 bytes) peer=0
+2025-04-29T14:31:11Z [net] more getheaders (from 61ac3a4dec617bff6133e3de0c89186cd0eda337fa7a11df177ecbe957b0b115) to peer=0
+2025-04-29T14:31:11Z Pre-synchronizing blockheaders, height: 748962 (~93.92%)
+2025-04-29T14:31:11Z [net] received: headers (172003 bytes) peer=0
+2025-04-29T14:31:11Z [net] Initial headers sync transition with peer=0: reached sufficient work at height=750962, redownloading from height=494962
+2025-04-29T14:31:11Z [net] sending getheaders (1029 bytes) peer=0
+2025-04-29T14:31:11Z [net] more getheaders (from a68bde0055a6fd855490bae81993a4194d724afb63abe66eca168735d0ce9a1a) to peer=0
+2025-04-29T14:31:11Z [net] received: headers (172003 bytes) peer=0
+2025-04-29T14:31:12Z [net] sending getheaders (1029 bytes) peer=0
+2025-04-29T14:31:12Z [net] more getheaders (from 88efc0e9d3d75cc14a28974f6a5fd6146c4de4a5b62feca95407c83ef3a44bb2) to peer=0
+2025-04-29T14:31:12Z [net] received: headers (172003 bytes) peer=0
+2025-04-29T14:31:12Z [net] sending getheaders (1029 bytes) peer=0
+2025-04-29T14:31:12Z [net] more getheaders (from 0000000000000000442e0ba5a045fdf7b993bc9a69763100645d7f474ecb177e) to peer=0
+2025-04-29T14:31:12Z [net] received: headers (172003 bytes) peer=0
+2025-04-29T14:31:12Z [net] sending getheaders (1029 bytes) peer=0
+2025-04-29T14:31:12Z [net] more getheaders (from 00000000000000003cb0403274fe22dcc808ab3f14eaba7d4a62d0549e2b4d01) to peer=0
+2025-04-29T14:31:12Z [net] received: headers (172003 bytes) peer=0
+2025-04-29T14:31:12Z [net] sending getheaders (1029 bytes) peer=0
+2025-04-29T14:31:12Z [net] more getheaders (from 80b1ed90c8a4fbfd7f746ce14d9f2809eb7f467a26ffd9599f55020b827882bc) to peer=0
+2025-04-29T14:31:13Z [net] received: headers (172003 bytes) peer=0
+2025-04-29T14:31:13Z [net] sending getheaders (1029 bytes) peer=0
+2025-04-29T14:31:13Z [net] more getheaders (from af05b47d0268bbee65826e081a3aaefe2dfdc93a410cf788438b2daa4e8df7fb) to peer=0
+2025-04-29T14:31:13Z [net] received: headers (172003 bytes) peer=0
+2025-04-29T14:31:13Z [net] sending getheaders (1029 bytes) peer=0
+2025-04-29T14:31:13Z [net] more getheaders (from fdd3272df0a72a1897d89c9aa5efac1a6065d1aeba72fef8d4752223202f494f) to peer=0
+2025-04-29T14:31:13Z [net] received: headers (172003 bytes) peer=0
+2025-04-29T14:31:13Z [net] sending getheaders (1029 bytes) peer=0
+2025-04-29T14:31:13Z [net] more getheaders (from 3bb6a2e4559a417bed4572d863a8bee2549e1b12fa0fe4ae55c284491741b822) to peer=0
+2025-04-29T14:31:13Z [validation] AcceptBlockHeader: block 4d6494d89a76de04f519b6ff68ae6285265899e808fee7a11cf0b2c9fd178717 is marked invalid
+2025-04-29T14:31:13Z [net] Misbehaving: peer=0 (0 -> 100) DISCOURAGE THRESHOLD EXCEEDED: invalid header received
+2025-04-29T14:31:13Z [net] Disconnecting and discouraging peer 0!
+2025-04-29T14:31:13Z [net] disconnect by subnet matched peer=0; disconnecting
+2025-04-29T14:31:13Z [net] disconnecting peer=0
+2025-04-29T14:31:13Z [net] Cleared nodestate for peer=0
+2025-04-29T14:31:14Z [net] sending getheaders (997 bytes) peer=7
+2025-04-29T14:31:14Z [net] initial getheaders (494962) to peer=7 (startheight:806743)
+2025-04-29T14:31:14Z [net] received: headers (172003 bytes) peer=7
+2025-04-29T14:31:14Z [net] Initial headers sync started with peer=7: height=494962, max_commitments=1623502, min_work=000000000000000000000000000000000000000000000000006c0ada6e6d2117
+2025-04-29T14:31:14Z [net] sending getheaders (1029 bytes) peer=7
+2025-04-29T14:31:14Z [net] more getheaders (from 88efc0e9d3d75cc14a28974f6a5fd6146c4de4a5b62feca95407c83ef3a44bb2) to peer=7
+2025-04-29T14:31:14Z Pre-synchronizing blockheaders, height: 496962 (~65.49%)
+2025-04-29T14:31:14Z [addrman] Selected [2601:182:1082:2f60::85fa]:9901 from new
+2025-04-29T14:31:14Z [net:debug] trying connection [2601:182:1082:2f60::85fa]:9901 lastseen=391.6hrs
+2025-04-29T14:31:14Z [net] connect() to [2601:182:1082:2f60::85fa]:9901 failed: Network unreachable (101)
+2025-04-29T14:31:14Z [net] received: headers (172003 bytes) peer=7
+2025-04-29T14:31:14Z [net] sending getheaders (1029 bytes) peer=7
+2025-04-29T14:31:14Z [net] more getheaders (from 0000000000000000442e0ba5a045fdf7b993bc9a69763100645d7f474ecb177e) to peer=7
+2025-04-29T14:31:14Z [net] received: headers (172003 bytes) peer=7

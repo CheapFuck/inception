@@ -18,7 +18,7 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
   # chown -R nobody:nobody *
   wp core download --allow-root
   cp /wp-config.php /var/www/html/wordpress/wp-config.php
-  cp /doing-it-wrong-filter.php /var/www/html/wordpress/wp-content/mu-plugins/doing-it-wrong-filter.php
+  # cp /doing-it-wrong-filter.php /var/www/html/wordpress/wp-content/mu-plugins/doing-it-wrong-filter.php
   chown -R nobody:nobody *
   # until wp db check --allow-root --path=/var/www/html/wordpress; do
   #   echo "Waiting for database..."
@@ -50,10 +50,10 @@ wp redis enable --allow-root
 # Start PHP-FPM
 # cd /
 
-# cd /var/www/html/wordpress
+cd /var/www/html/wordpress
 # wp plugin install redis-cache --activate
 # wp redis flush --allow-root
-# chown -R nobody:nobody *
+chown -R nobody:nobody *
 exec php-fpm83 -F -R
 
 

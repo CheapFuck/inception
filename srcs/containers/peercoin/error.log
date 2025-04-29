@@ -93,3 +93,55 @@
 2025-04-29T14:33:48Z [net] received: pong (8 bytes) peer=12
 2025-04-29T14:33:49Z [net] received: headers (172003 bytes) peer=1
 2025-04-29T14:33:49Z [net] sending getheaders (1029 bytes) peer=1
+
+
+29T14:34:46Z [net] received: headers (172003 bytes) peer=1
+2025-04-29T14:34:46Z [net] sending getheaders (1029 bytes) peer=1
+2025-04-29T14:34:46Z [net] more getheaders (from 7b4fb0047fafe411542dbeb52c848602423d72b8cc8cabfdbc377646dd0ac029) to peer=1
+2025-04-29T14:34:46Z Pre-synchronizing blockheaders, height: 730962 (~92.07%)
+2025-04-29T14:34:47Z [net] received: headers (172003 bytes) peer=1
+2025-04-29T14:34:47Z [net] sending getheaders (1029 bytes) peer=1
+2025-04-29T14:34:47Z [net] more getheaders (from 0000000000000000355d923017253f98d4f868d6605e928fa7d5f984083c3a4f) to peer=1
+2025-04-29T14:34:47Z Pre-synchronizing blockheaders, height: 732962 (~92.28%)
+2025-04-29T14:34:48Z [libevent:debug] epoll_dispatch: epoll_wait reports 0
+2025-04-29T14:34:48Z [libevent:debug] event_del: 0x7fc93e145640 (fd -1), callback 0x5590920bdb34
+2025-04-29T14:34:48Z [libevent:debug] timeout_process: event: 0x7fc93e145640, call 0x5590920bdb34
+2025-04-29T14:34:48Z [libevent:debug] event_active: 0x7fc93e145640 (fd -1), res 1, callback 0x5590920bdb34
+2025-04-29T14:34:48Z [libevent:debug] event_del: 0x7fc93e145640 (fd -1), callback 0x5590920bdb34
+2025-04-29T14:34:48Z [libevent:debug] event_process_active: event: 0x7fc93e145640,    call 0x5590920bdb34
+2025-04-29T14:34:48Z [libevent:debug] event_add: event: 0x7fc93aa094b0 (fd -1), EV_READ    call 0x7fc9414dbb90
+2025-04-29T14:34:48Z [libevent:debug] event_add: event: 0x7fc93aa09530 (fd -1),  EV_WRITE   call 0x7fc9414dbde4
+2025-04-29T14:34:48Z [libevent:debug] event_del: 0x7fc93aa094b0 (fd -1), callback 0x7fc9414dbb90
+2025-04-29T14:34:48Z [libevent:debug] event_del: 0x7fc93aa09530 (fd -1), callback 0x7fc9414dbde4
+2025-04-29T14:34:48Z [libevent:debug] event_add: event: 0x7fc93aa094b0 (fd 38), EV_READ    call 0x7fc9414dbb90
+2025-04-29T14:34:48Z [libevent:debug] Epoll ADD(1) on fd 38 okay. Old events were 0; read change was 1 (add); write change was 0 (none); close change was 0 (none)
+2025-04-29T14:34:48Z [libevent:debug] event_add: event: 0x7fc93aa09530 (fd 38),  EV_WRITE   call 0x7fc9414dbde4
+2025-04-29T14:34:48Z [libevent:debug] Epoll MOD(5) on fd 38 okay. Old events were 2; read change was 0 (none); write change was 1 (add); close change was 0 (none)
+2025-04-29T14:34:48Z [libevent:debug] event_add: event: 0x7fc93aa09530 (fd 38),  EV_WRITE   call 0x7fc9414dbde4
+2025-04-29T14:34:48Z [libevent:debug] epoll_dispatch: epoll_wait reports 1
+2025-04-29T14:34:48Z [libevent:debug] event_active: 0x7fc93aa09530 (fd 38), res 4, callback 0x7fc9414dbde4
+2025-04-29T14:34:48Z [libevent:debug] event_active: 0x7fc93aa094b0 (fd 38), res 2, callback 0x7fc9414dbb90
+2025-04-29T14:34:48Z [libevent:debug] event_process_active: event: 0x7fc93aa09530,  EV_WRITE  call 0x7fc9414dbde4
+2025-04-29T14:34:48Z [libevent:debug] event_del: 0x7fc93aa09530 (fd 38), callback 0x7fc9414dbde4
+2025-04-29T14:34:48Z [libevent:debug] Epoll MOD(1) on fd 38 okay. Old events were 6; read change was 0 (none); write change was 2 (del); close change was 0 (none)
+2025-04-29T14:34:48Z [libevent:debug] event_del: 0x7fc93aa094b0 (fd 38), callback 0x7fc9414dbb90
+2025-04-29T14:34:48Z [libevent:debug] Epoll DEL(1) on fd 38 okay. Old events were 2; read change was 2 (del); write change was 0 (none); close change was 0 (none)
+2025-04-29T14:34:48Z [tor] Error connecting to Tor control socket
+2025-04-29T14:34:48Z [tor] Not connected to Tor control port 127.0.0.1:9051, trying to reconnect
+2025-04-29T14:34:48Z [libevent:debug] event_add: event: 0x7fc93e145640 (fd -1),    EV_TIMEOUT call 0x5590920bdb34
+2025-04-29T14:34:48Z [libevent:debug] event_add: event 0x7fc93e145640, timeout in 129 seconds 746000 useconds, call 0x5590920bdb34
+2025-04-29T14:34:48Z [libevent:debug] event_callback_finalize_many_: 3 events finalizing
+2025-04-29T14:34:48Z [libevent:debug] event_del: 0x7fc93aa094b0 (fd 38), callback 0x7fc9414dbb90
+2025-04-29T14:34:48Z [libevent:debug] event_del: 0x7fc93aa09530 (fd 38), callback 0x7fc9414dbde4
+2025-04-29T14:34:48Z [libevent:debug] event_process_active: event: 0x7fc93aa09530,  EV_WRITE  call 0x7fc9414d8918
+2025-04-29T14:34:48Z [libevent:debug] timeout_next: event: 0x7fc93e145640, in 129 seconds, 746000 useconds
+2025-04-29T14:34:48Z [net] received: ping (8 bytes) peer=4
+2025-04-29T14:34:48Z [net] sending pong (8 bytes) peer=4
+2025-04-29T14:34:48Z [net] sending ping (8 bytes) peer=4
+2025-04-29T14:34:48Z [net] received: pong (8 bytes) peer=4
+2025-04-29T14:34:49Z [net] received: headers (172003 bytes) peer=1
+2025-04-29T14:34:49Z [net] sending getheaders (1029 bytes) peer=1
+2025-04-29T14:34:49Z [net] more getheaders (from 39edeb4c65cd285fde57043644fcbab64fc158d47c3b027c8d52bf6d496913c2) to peer=1
+2025-04-29T14:34:49Z Pre-synchronizing blockheaders, height: 734962 (~92.49%)
+2025-04-29T14:34:51Z [net] received: headers (172003 bytes) peer=1
+2025-04-29T14:34:51Z [net] sending getheaders (1029 bytes) peer=1

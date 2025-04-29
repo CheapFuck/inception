@@ -19,6 +19,7 @@ RUN apk --no-cache add libc6-compat
 RUN apk --no-cache add git boost-dev libevent-dev libsodium-dev
 RUN apk --no-cache add zeromq zeromq-dev
 RUN apk --no-cache add db db-dev db-c++
+RUN apk --no-cache add bash su-exec
 # ARG BERKELEYDB_VERSION=db-4.8.30.NC
 # ARG BERKELEYDB_PREFIX=/opt/berkeleydb
 

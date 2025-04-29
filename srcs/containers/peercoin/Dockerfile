@@ -172,8 +172,8 @@ COPY containers/peercoin/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["peercoind", "--daemon", "--datadir=/data/peercoin"]
-# CMD ["tail", "-f", "/dev/null"]
+# CMD ["peercoind", "--daemon", "--datadir=/data/peercoin"]
+CMD ["tail", "-f", "/dev/null"]
 
 
 

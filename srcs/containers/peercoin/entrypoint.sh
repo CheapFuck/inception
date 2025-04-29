@@ -5,7 +5,7 @@ if [ "$(echo "$1" | cut -c1)" = "-" ]; then
   echo "$0: assuming arguments for peercoind"
   set -- peercoind "$@"
 fi
-
+adduser -D peercoin
 if [ "$(echo "$1" | cut -c1)" = "-" ] || [ "$1" = "peercoind" ]; then
 
   echo "Creating directory: $PPC_DATA"

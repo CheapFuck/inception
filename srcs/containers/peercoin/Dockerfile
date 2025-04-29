@@ -170,10 +170,10 @@ COPY containers/peercoin/entrypoint.sh /entrypoint.sh
 
 # EXPOSE 9901 9902 9903 9904
 RUN chmod +x /entrypoint.sh
-# ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 
-# # # CMD ["peercoind"]
-CMD ["tail", "-f", "/dev/null"]
+CMD ["peercoind", "--daemon", "--datadir=/data/peercoin"]
+# CMD ["tail", "-f", "/dev/null"]
 
 
 

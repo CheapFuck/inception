@@ -27,13 +27,13 @@ if [ "$(echo "$1" | cut -c1)" = "-" ] || [ "$1" = "peercoind" ]; then
 
   set -- "$@" -datadir="$PPC_DATA"
 fi
-
+export PATH="/peercoin:$PATH"
 if [ "$1" = "peercoind" ] || [ "$1" = "peercoin-cli" ] || [ "$1" = "peercoin-tx" ]; then
   echo
   exec su-exec peercoin "$@"
 fi
 # cd peercoin
-export PATH="/peercoin:$PATH"
+# export PATH="/peercoin:$PATH"
 exec "$@"
 
 

@@ -4,6 +4,19 @@ FROM scratch
 # Add the Alpine mini rootfs to the image
 ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
 
+RUN apk update
+
+# Install only the necessary runtime dependencies
+RUN apk --no-cache add \
+    openssl \
+    zlib \
+    bash \
+    libevent \
+    libsodium \
+    zeromq \
+    db \
+    db-c++
+
 # RUN apk update
 # RUN apk --no-cache add build-base
 # RUN apk --no-cache add zlib-dev
@@ -170,11 +183,11 @@ COPY containers/peercoin/entrypoint.sh /entrypoint.sh
 # # VOLUME ["${PPC_DATA}"]
 
 # EXPOSE 9901 9902 9903 9904
-# RUN chmod +x /entrypoint.sh
-# ENTRYPOINT ["/entrypoint.sh"]
-# CMD ["--datadir=/data/peercoin"]
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["--datadir=/data/peercoin"]
 
-CMD ["tail", "-f", "/dev/null"]
+# CMD ["tail", "-f", "/dev/null"]
 
 
 

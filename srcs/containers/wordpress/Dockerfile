@@ -24,11 +24,9 @@ RUN apk update && \
     && rm -rf /var/cache/apk/*
 # Copy PHP-FPM configuration files (create them in your local context)
 COPY containers/wordpress/php.ini /etc/php83/php.ini
-COPY containers/wordpress/default/php-fpm.conf /etc/php83/php-fpm.conf
-COPY containers/wordpress/default/www.conf /etc/php83/php-fpm.d/www.conf
-COPY containers/wordpress/wp-cli.sh /
-COPY containers/wordpress/wait.sh /
-COPY containers/wordpress/doing-it-wrong-filter.php /doing-it-wrong-filter.php
+# COPY containers/wordpress/default/php-fpm.conf /etc/php83/php-fpm.conf
+# COPY containers/wordpress/default/www.conf /etc/php83/php-fpm.d/www.conf
+
 RUN chmod +x ./wp-cli.sh
 RUN chmod +x ./wait.sh
 # Create necessary directories for WordPress and PHP-FPM

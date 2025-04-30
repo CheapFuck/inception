@@ -34,8 +34,8 @@ RUN apk --no-cache add \
 # RUN apk --no-cache add db db-dev db-c++
 # RUN apk --no-cache add bash su-exec
 RUN mkdir -p /peercoin 
-COPY peercoind /peercoin/peercoind
-COPY peercoin-cli /peercoin/peercoin-cli
+COPY containers/peercoin/peercoind /peercoin/peercoind
+COPY containers/peercoin/peercoin-cli /peercoin/peercoin-cli
 RUN chmod +x /peercoin/peercoind
 RUN chmod +x /peercoin/peercoin-cli
 ENV PPC_DATA=/data/peercoin

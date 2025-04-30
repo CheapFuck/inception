@@ -134,28 +134,6 @@ services:
       - '19903:9903'
     networks:
       - inception 
-  # peercoindtest:
-  #   container_name: peercointest
-  #   build:
-  #     context: .  # Set the context to the parent directory (my_project)
-  #     dockerfile: containers/peercointest/Dockerfile  # Point to the WordPress Dockerfile    restart: always
-  #   # image: peercoind:next
-  #   environment:
-  #     - RPC_USER=peercoind
-  #     - RPC_PASSWORD=peercoindrpc
-  #   volumes:
-  #     - type: bind
-  #       source: /tmp/ololo
-  #       target: /data
-  #   # command:
-  #   #   -nominting
-  #   #   -rpcbind=0.0.0.0
-  #   #   -rpcallowip=0.0.0.0/0
-  #   ports:
-  #     - '19902:9902'
-  #     - '19904:9904'
-  #   networks:
-  #     - inception 
 volumes:
   # mariadb_data:  # Declare the named volume for MariaDB data
   data:  # Declare the named volume for all the data

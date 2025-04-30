@@ -5,8 +5,8 @@ services:
   nginx:
     container_name: nginx
     build:
-      context: .  # Set the context to the parent directory (my_project)
-      dockerfile: containers/nginx/Dockerfile  # Point to the Dockerfile inside containers/nginx
+      context: .
+      dockerfile: containers/nginx/Dockerfile
     ports:
       - "443:443"
       # - "80:80"
@@ -23,15 +23,15 @@ services:
   mariadb:
     container_name: mariadb
     build:
-      context: .  # Set the context to the parent directory (my_project)
-      dockerfile: containers/mariadb/Dockerfile  # Point to the WordPress Dockerfile
+      context: .
+      dockerfile: containers/mariadb/Dockerfile
     environment:
       MYSQL_ROOT_PASSWORD: root_password  # Root password for the database
       MYSQL_DATABASE: my_database  # Name of the database to create on startup
       MYSQL_USER: my_user  # Create a user with privileges
       MYSQL_PASSWORD: my_password  # Password for the user
     volumes:
-      - mariadb_data:/var/lib/mysql  # Persist data between container restarts
+      - mariadb_data:/var/lib/mysql
       - ./containers/mariadb/my.cnf:/etc/mysql/my.cnf
     networks:
       - inception
@@ -42,21 +42,19 @@ services:
       timeout: 5s
       retries: 5
     ports:
-      - "3306:3306"  # Expose port 3306 to the host for MariaDB connections
+      - "3306:3306"  # Expose port 3306 to the host for MariaDB connections, kan mss weg
   wordpress:
     container_name: wordpress
     build:
-      context: .  # Set the context to the parent directory (my_project)
-      dockerfile: containers/wordpress/Dockerfile  # Point to the WordPress Dockerfile
+      context: .
+      dockerfile: containers/wordpress/Dockerfile
     environment:
       WORDPRESS_DB_HOST: mariadb:3306  # Database service to connect to
       WORDPRESS_DB_NAME: my_database  # Database name
       WORDPRESS_DB_USER: my_user  # Database user
       WORDPRESS_DB_PASSWORD: my_password  # Database user password
     volumes:
-      - data:/var/www/html  # Persist WordPress data
-      # - /home/thivan-d/data/wordpress:/var/www/html/wordpress
-      # - /home/thivan-d/data:/var/www/html
+      - data:/var/www/html
     networks:
       - inception
     depends_on:
@@ -101,14 +99,13 @@ services:
       - redis-data:/data
       - ./containers/redis/data:/data  # Mount the host directory to persist Redis data
       - ./containers/redis/redis.conf:/usr/local/etc/redis/redis.conf  # Mount your custom redis.conf
-    # command: ["redis-server", "/usr/local/etc/redis/redis.conf"]  # Start Redis with the custom config
   adminer:
     container_name: adminer
     restart: always
     ports:
       - "8080:8080"
     build:
-      context: .  # Set the context to the parent directory (my_project)
+      context: .
       dockerfile: containers/adminer/Dockerfile  # Point to the WordPress Dockerfile
     volumes:
       - data:/var/www/html
@@ -117,9 +114,9 @@ services:
   peercoind:
     container_name: peercoin
     build:
-      context: .  # Set the context to the parent directory (my_project)
-      dockerfile: containers/peercoin/Dockerfile  # Point to the WordPress Dockerfile    restart: always
-    # image: peercoind:next
+      context: .
+      dockerfile: containers/peercoin/Dockerfile 
+    restart: always
     environment:
       - RPC_USER=peercoind
       - RPC_PASSWORD=peercoindrpc
@@ -134,31 +131,8 @@ services:
       - '19903:9903'
     networks:
       - inception 
-  # peercoindtest:
-  #   container_name: peercointest
-  #   build:
-  #     context: .  # Set the context to the parent directory (my_project)
-  #     dockerfile: containers/peercointest/Dockerfile  # Point to the WordPress Dockerfile    restart: always
-  #   # image: peercoind:next
-  #   environment:
-  #     - RPC_USER=peercoind
-  #     - RPC_PASSWORD=peercoindrpc
-  #   volumes:
-  #     - type: bind
-  #       source: /tmp/ololo
-  #       target: /data
-  #   # command:
-  #   #   -nominting
-  #   #   -rpcbind=0.0.0.0
-  #   #   -rpcallowip=0.0.0.0/0
-  #   ports:
-  #     - '19902:9902'
-  #     - '19904:9904'
-  #   networks:
-  #     - inception 
 volumes:
-  # mariadb_data:  # Declare the named volume for MariaDB data
-  data:  # Declare the named volume for all the data
+  data:
     driver: local
     driver_opts:
       type: none

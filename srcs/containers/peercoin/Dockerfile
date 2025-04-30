@@ -15,7 +15,8 @@ RUN apk --no-cache add \
     libsodium \
     zeromq \
     db \
-    db-c++
+    db-c++ \
+    su-exec
 
 # RUN apk update
 # RUN apk --no-cache add build-base

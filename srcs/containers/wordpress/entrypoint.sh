@@ -31,7 +31,7 @@ else
   echo "WordPress already installed, skipping installation."
 fi
 
-# cp /wp-config.php /var/www/html/wordpress/wp-config.php
+
 wp plugin activate hello --allow-root
 wp plugin install redis-cache --activate --allow-root
 wp redis enable --allow-root

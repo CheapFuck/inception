@@ -87,7 +87,7 @@ $table_prefix = 'wp_';
  */
 # define( 'WP_DEBUG', false );
 define('WP_DEBUG', false);
-define('WP_DEBUG_LOG', true);
+define('WP_DEBUG_LOG', false);
 # define('WP_DEBUG_DISPLAY', false);  // Hides errors from the frontend, logs them instead
 
 

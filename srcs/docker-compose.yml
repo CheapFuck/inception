@@ -61,6 +61,14 @@ services:
       WP_ADMIN: ${WP_ADMIN}
       WP_ADMIN_PW: ${WP_ADMIN_PW}
       WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL}
+      AUTH_KEY: ${AUTH_KEY}
+      SECURE_AUTH_KEY: ${SECURE_AUTH_KEY}
+      LOGGED_IN_KEY: ${LOGGED_IN_KEY}
+      NONCE_KEY: ${NONCE_KEY}
+      AUTH_SALT: ${AUTH_SALT}
+      SECURE_AUTH_SALT: ${SECURE_AUTH_SALT}
+      LOGGED_IN_SALT: ${LOGGED_IN_SALT}
+      NONCE_SALT: ${NONCE_SALT}
     volumes:
       - data:/var/www/html  # Persist WordPress data
       # - /home/thivan-d/data/wordpress:/var/www/html/wordpress

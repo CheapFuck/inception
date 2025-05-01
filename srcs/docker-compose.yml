@@ -85,11 +85,10 @@ services:
       - PASV_MIN_PORT=${PASV_MIN_PORT}
       - PASV_MAX_PORT=${PASV_MAX_PORT}
     healthcheck:
-      test: ["CMD", "nc", "-z", "localhost", "21"]
+      test: ["CMD-SHELL", "pgrep pure-ftpd && lsof -i :21"]
       interval: 30s
-      retries: 3
-      start_period: 10s
       timeout: 5s
+      retries: 3
     volumes:
       - data:/var/www/html
     networks:

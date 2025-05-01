@@ -75,9 +75,9 @@ services:
       args:
         FTP_USER: ${FTP_USER}
         FTP_PASS: ${FTP_PASS}
-        PASV_ADDRESS: ${PASV_ADDRESS}
-        PASV_MIN_PORT: ${PASV_MIN_PORT}
-        PASV_MAX_PORT: ${PASV_MAX_PORT}
+        # PASV_ADDRESS: ${PASV_ADDRESS}
+        # PASV_MIN_PORT: ${PASV_MIN_PORT}
+        # PASV_MAX_PORT: ${PASV_MAX_PORT}
     environment:
     #   - FTP_USER=${FTP_USER}
     #   - FTP_PASS=${FTP_PASS}

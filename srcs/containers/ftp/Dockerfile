@@ -12,8 +12,17 @@ RUN adduser -D -h /var/www/html ftpuser
 RUN mkdir -p /var/www/html && chown -R ftpuser:ftpuser /var/www/html
 RUN chmod 755 /var/www/html
 
+
+ARG FTP_USER
+ARG FTP_PASS
+ARG PASV_ADDRESS
+ARG PASV_MIN_PORT
+ARG PASV_MAX_PORT
+
+
 # Expose FTP port and passive FTP port range
-RUN echo "ftpuser:ftppassword" | chpasswd
+# RUN echo "ftpuser:ftppassword" | chpasswd
+RUN echo "$FTP_USER:$FTP_PASSWORD" | chpasswd
 EXPOSE 21 21100-21110
 
 # Start Pure-FTPd on container start

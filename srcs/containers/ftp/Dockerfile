@@ -26,4 +26,7 @@ RUN echo "$FTP_USER:$FTP_PASS" | chpasswd
 EXPOSE 21 21100-21110
 
 # Start Pure-FTPd on container start
-CMD ["pure-ftpd", "-p", "${PASV_MIN_PORT}:${PASV_MAX_PORT}", "-P", "${PASV_ADDRESS}"]
+# CMD ["pure-ftpd", "-p", "${PASV_MIN_PORT}:${PASV_MAX_PORT}", "-P", "${PASV_ADDRESS}"]
+# CMD pure-ftpd -p ${PASV_MIN_PORT}:${PASV_MAX_PORT} -P ${PASV_ADDRESS}
+ENTRYPOINT ["pure-ftpd"]
+CMD ["-p", "${PASV_MIN_PORT}:${PASV_MAX_PORT}", "-P", "${PASV_ADDRESS}"]

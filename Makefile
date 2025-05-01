@@ -12,7 +12,7 @@ create_dirs:
 	@for dir in $(DIRS); do \
 		if [ ! -d $$dir ]; then \
 			echo "Creating directory $$dir"; \
-			mkdir -p $$dir; \
+			sudo mkdir -p $$dir; \
 		else \
 			echo "Directory $$dir already exists"; \
 		fi \

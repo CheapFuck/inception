@@ -27,4 +27,4 @@ EXPOSE 21 21100-21110
 
 # Start Pure-FTPd on container start
 # CMD ["pure-ftpd", "-p", "21100:21110", "-P", "127.0.0.1"]
-CMD pure-ftpd -p ${PASV_MIN_PORT}:${PASV_MAX_PORT} -P ${PASV_ADDRESS}
+CMD pure-ftpd -p $PASV_MIN_PORT:$PASV_MAX_PORT -P $PASV_ADDRESS

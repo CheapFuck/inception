@@ -5,7 +5,7 @@ RUN apk update && \
     apk add --no-cache \
     mariadb mariadb-client \
     bash \
-    && rm -rf /var/cache/apk/* \
+    && rm -rf /var/cache/apk/* 
 
 # Set up environment variables for MariaDB
 # ENV MYSQL_ROOT_PASSWORD=root_password \

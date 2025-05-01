@@ -86,7 +86,7 @@ services:
       - PASV_MAX_PORT=${PASV_MAX_PORT}
     healthcheck:
       test: ["CMD-SHELL", "pgrep pure-ftpd && lsof -i :21"]
-      interval: 30s
+      interval: 5s
       timeout: 5s
       retries: 3
     volumes:

@@ -22,11 +22,8 @@ ARG PASV_MAX_PORT
 
 # Expose FTP port and passive FTP port range
 # RUN echo "ftpuser:ftppassword" | chpasswd
-RUN echo "$FTP_USER:$FTP_PASS" | chpasswd
+RUN echo "$FTP_USER:$FTP_PASSWORD" | chpasswd
 EXPOSE 21 21100-21110
 
 # Start Pure-FTPd on container start
-# CMD ["pure-ftpd", "-p", "${PASV_MIN_PORT}:${PASV_MAX_PORT}", "-P", "${PASV_ADDRESS}"]
-# CMD pure-ftpd -p ${PASV_MIN_PORT}:${PASV_MAX_PORT} -P ${PASV_ADDRESS}
-ENTRYPOINT ["pure-ftpd"]
-CMD ["-p", "${PASV_MIN_PORT}:${PASV_MAX_PORT}", "-P", "${PASV_ADDRESS}"]
+CMD ["pure-ftpd", "-p", "21100:21110", "-P", "127.0.0.1"]

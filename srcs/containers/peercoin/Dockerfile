@@ -19,9 +19,9 @@ COPY containers/peercoin/peercoind /peercoin/peercoind
 COPY containers/peercoin/peercoin-cli /peercoin/peercoin-cli
 RUN chmod +x /peercoin/peercoind
 RUN chmod +x /peercoin/peercoin-cli
-ENV PPC_DATA=/data/peercoin
-ENV RPC_PASSWORD=ppcpass
-ENV RPC_USER=ppcuser
+# ENV PPC_DATA=${PPC_DATA}
+# ENV RPC_PASSWORD=${RPC_PASSWORD}
+# ENV RPC_USER=${RPC_USER}
 COPY containers/peercoin/entrypoint.sh /entrypoint.sh
 # EXPOSE 9901 9902 9903 9904
 RUN chmod +x /entrypoint.sh

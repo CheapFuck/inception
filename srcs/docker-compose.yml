@@ -127,8 +127,9 @@ services:
       dockerfile: containers/peercoin/Dockerfile  # Point to the WordPress Dockerfile    restart: always
     # image: peercoind:next
     environment:
-      - RPC_USER=peercoind
-      - RPC_PASSWORD=peercoindrpc
+      - PPC_DATA=${PPC_DATA}
+      - RPC_PASSWORD=${RPC_PASSWORD}
+      - RPC_USER=${RPC_USER}
     volumes:
       - data:/data
     # command:

@@ -26,10 +26,10 @@ services:
       context: .  # Set the context to the parent directory (my_project)
       dockerfile: containers/mariadb/Dockerfile  # Point to the WordPress Dockerfile
     environment:
-      MYSQL_ROOT_PASSWORD: root_password  # Root password for the database
-      MYSQL_DATABASE: my_database  # Name of the database to create on startup
-      MYSQL_USER: my_user  # Create a user with privileges
-      MYSQL_PASSWORD: my_password  # Password for the user
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}  # Root password for the database
+      MYSQL_DATABASE: ${MYSQL_DATABASE}  # Name of the database to create on startup
+      MYSQL_USER: ${MYSQL_USER}  # Create a user with privileges
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}  # Password for the user
     volumes:
       - mariadb_data:/var/lib/mysql  # Persist data between container restarts
       - ./containers/mariadb/my.cnf:/etc/mysql/my.cnf

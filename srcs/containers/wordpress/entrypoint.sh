@@ -14,7 +14,7 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
   wp core download --allow-root
   cp /wp-config.php /var/www/html/wordpress/wp-config.php
   chown -R nobody:nobody *
-  wp core install --url="http://localhost/wordpress" --title="sitymcsiteface" --admin_user="bawse" --admin_password="wafwaf" --admin_email="thivan-d@student.codam.nl" --allow-root
+  wp core install --url="http://thivan-d.42.nl/wordpress" --title="sitymcsiteface" --admin_user="bawse" --admin_password="wafwaf" --admin_email="thivan-d@student.codam.nl" --allow-root
   wp user create "miauw" "thssivan-d@student.codam.nl" --user_pass="waf" --allow-root
   wp plugin activate hello --allow-root
   wp plugin install redis-cache --activate --allow-root

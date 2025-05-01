@@ -78,12 +78,12 @@ services:
         PASV_ADDRESS: ${PASV_ADDRESS}
         PASV_MIN_PORT: ${PASV_MIN_PORT}
         PASV_MAX_PORT: ${PASV_MAX_PORT}
-    # environment:
+    environment:
     #   - FTP_USER=${FTP_USER}
     #   - FTP_PASS=${FTP_PASS}
-    #   - PASV_ADDRESS=${PASV_ADDRESS}
-    #   - PASV_MIN_PORT=${PASV_MIN_PORT}
-    #   - PASV_MAX_PORT=${PASV_MAX_PORT}
+      - PASV_ADDRESS=${PASV_ADDRESS}
+      - PASV_MIN_PORT=${PASV_MIN_PORT}
+      - PASV_MAX_PORT=${PASV_MAX_PORT}
     healthcheck:
       test: ["CMD-SHELL", "pgrep pure-ftpd && lsof -i :21"]
       interval: 30s

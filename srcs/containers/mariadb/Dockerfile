@@ -8,10 +8,10 @@ RUN apk update && \
     && rm -rf /var/cache/apk/* \
 
 # Set up environment variables for MariaDB
-ENV MYSQL_ROOT_PASSWORD=root_password \
-    MYSQL_DATABASE=my_database \
-    MYSQL_USER=my_user \
-    MYSQL_PASSWORD=my_password
+# ENV MYSQL_ROOT_PASSWORD=root_password \
+#     MYSQL_DATABASE=my_database \
+#     MYSQL_USER=my_user \
+#     MYSQL_PASSWORD=my_password
 # Create a directory for the database
 RUN mkdir -p /run/mysqld && chown -R mysql:mysql /run/mysqld
 RUN chown -R mysql:mysql /var/lib/mysql

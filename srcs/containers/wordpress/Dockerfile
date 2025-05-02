@@ -38,4 +38,5 @@ COPY containers/wordpress/entrypoint.sh /entrypoint.sh
 COPY containers/wordpress/wp-config.php /wp-config.php
 COPY html/index.html /index.html
 RUN chmod +x /entrypoint.sh
+ENV MY_TEST_VARIABLE=${MY_TEST_VARIABLE}
 ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]

@@ -3,6 +3,7 @@ ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
 RUN apk update && \
     apk add --no-cache \
     nginx \
+    tini \
     openssl \
     ca-certificates && \
     rm -rf /var/cache/apk/* && \
@@ -17,4 +18,5 @@ RUN chmod 600 /etc/ssl/private/my_key.key
 RUN chmod 644 /etc/ssl/certs/cert.pem
 # RUN chmod a+x wait.sh
 EXPOSE 80
+ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["nginx", "-g", "daemon off;"]

@@ -45,8 +45,6 @@ services:
       - "3306:3306"  # Expose port 3306 to the host for MariaDB connections
   wordpress:
     container_name: wordpress
-    env_file:
-      - .env
     build:
       context: .  # Set the context to the parent directory (my_project)
       dockerfile: containers/wordpress/Dockerfile  # Point to the WordPress Dockerfile

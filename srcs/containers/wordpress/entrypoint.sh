@@ -12,6 +12,8 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
   # wp --info --allow-root
   cd /var/www/html/wordpress
   wp core download --allow-root
+  chown -R www-data:www-data *
+
   # cp /wp-config.php /var/www/html/wordpress/wp-config.php
   wp config create --dbname="${WORDPRESS_DB_NAME}" \
                  --dbuser="${WORDPRESS_DB_USER}" \
@@ -34,7 +36,7 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
                  --wp-content-dir="/var/www/html/wordpress/wp-content" \
                  --fs-method=direct
 
-  chown -R www-data:www-data *
+  # chown -R www-data:www-data *
   wp core install --url="${WP_URL}" --title="${WP_TITLE}" --admin_user="${WP_ADMIN}" --admin_password="${WP_ADMIN_PW}" --admin_email="${WP_ADMIN_EMAIL}" --allow-root
   wp user create "${WP_USER}" "${WP_EMAIL}" --user_pass="${WP_USER_PASS}" --allow-root
   wp plugin activate hello --allow-root

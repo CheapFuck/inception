@@ -1,5 +1,4 @@
-FROM scratch
-ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
+FROM alpine:3.15
 
 # Install dependencies and PHP
 RUN apk update && apk add --no-cache \
@@ -47,4 +46,4 @@ COPY html/index.html /index.html
 RUN chmod +x /entrypoint.sh
 
 # Use Tini to manage the process
-ENTRYPOINT ["/usr/bin/tini", "--", "/entrypoint.sh"]
+ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]

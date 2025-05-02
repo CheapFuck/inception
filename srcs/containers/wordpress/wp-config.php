@@ -93,7 +93,7 @@ define('WP_DEBUG', true);
 define('WP_DEBUG_LOG', true);
 // define('WP_DEBUG_DISPLAY', false);  // Hides errors from the frontend, logs them instead
 define('WP_DEBUG_DISPLAY', true);  // Hides errors from the frontend, logs them instead
-
+ini_set( 'display_errors', 1 );
 
 
 

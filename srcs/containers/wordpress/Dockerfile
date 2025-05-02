@@ -40,3 +40,10 @@ COPY html/index.html /index.html
 RUN chmod +x /entrypoint.sh
 
 ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]
+
+
+
+# php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+# php composer-setup.php
+# php -r "unlink('composer-setup.php');"
+# mv composer.phar /usr/local/bin/composer

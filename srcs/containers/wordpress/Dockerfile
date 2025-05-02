@@ -1,8 +1,7 @@
 FROM scratch
 ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
-
-RUN apk update && \
-    apk add --no-cache \
+# Install dependencies and PHP
+RUN apk update && apk add --no-cache \
     php \
     php-fpm \
     php-mysqli \
@@ -21,8 +20,8 @@ RUN apk update && \
     bash \
     curl \
     mariadb-client \
-    tini \
-    && rm -rf /var/cache/apk/*
+    tini && \
+    rm -rf /var/cache/apk/*
 # Copy PHP-FPM configuration files (create them in your local context)
 COPY containers/wordpress/php.ini /etc/php83/php.ini
 COPY containers/wordpress/default/php-fpm.conf /etc/php83/php-fpm.conf

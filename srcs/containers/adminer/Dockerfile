@@ -7,5 +7,5 @@ RUN apk add --no-cache php php-session php-pdo php-mysqli php-pdo_mysql php-mbst
 RUN mkdir -p /var/www/html/adminer
 WORKDIR /var/www/html/adminer
 EXPOSE 8080
-ENTRYPOINT ["/usr/bin/tini", "--"]
+ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["sh", "-c", "mkdir -p /var/www/html/adminer && curl -L -o /var/www/html/adminer/index.php https://www.adminer.org/static/download/5.2.1/adminer-5.2.1.php && php -S 0.0.0.0:8080 -t /var/www/html"]

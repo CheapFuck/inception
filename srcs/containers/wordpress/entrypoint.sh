@@ -13,7 +13,8 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
   cd /var/www/html/wordpress
   wp core download --allow-root
   cp /wp-config.php /var/www/html/wordpress/wp-config.php
-  chown -R nobody:nobody *
+  # chown -R nobody:nobody *
+  chown -R www-data:www-data *
   wp core install --url="${WP_URL}" --title="${WP_TITLE}" --admin_user="${WP_ADMIN}" --admin_password="${WP_ADMIN_PW}" --admin_email="${WP_ADMIN_EMAIL}" --allow-root
   wp user create "${WP_USER}" "${WP_EMAIL}" --user_pass="${WP_USER_PASS}" --allow-root
   wp plugin activate hello --allow-root
@@ -25,5 +26,5 @@ fi
 
 cp /index.html /var/www/html/index.html
 cd /var/www/html/wordpress
-chown -R nobody:nobody *
+chown -R www-data:www-data *
 exec php-fpm83 -F -R

@@ -23,6 +23,11 @@ else
   echo "WordPress already installed, skipping installation."
 fi
 
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+php composer-setup.php
+php -r "unlink('composer-setup.php');"
+mv composer.phar /usr/local/bin/composer
+composer require vlucas/phpdotenv
 cp /index.html /var/www/html/index.html
 cd /var/www/html/wordpress
 chown -R nobody:nobody *

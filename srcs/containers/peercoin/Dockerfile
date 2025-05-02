@@ -13,7 +13,8 @@ RUN apk --no-cache add \
     zeromq \
     db \
     db-c++ \
-    su-exec
+    su-exec \
+    tini 
 RUN mkdir -p /peercoin 
 COPY containers/peercoin/peercoind /peercoin/peercoind
 COPY containers/peercoin/peercoin-cli /peercoin/peercoin-cli
@@ -25,7 +26,7 @@ RUN chmod +x /peercoin/peercoin-cli
 COPY containers/peercoin/entrypoint.sh /entrypoint.sh
 # EXPOSE 9901 9902 9903 9904
 RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]
 CMD ["--datadir=/data/peercoin"]
 
 

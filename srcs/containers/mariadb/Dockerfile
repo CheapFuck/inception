@@ -5,6 +5,7 @@ RUN apk update && \
     apk add --no-cache \
     mariadb mariadb-client \
     bash \
+    tini \
     && rm -rf /var/cache/apk/* 
 
 # Set up environment variables for MariaDB
@@ -20,6 +21,8 @@ COPY containers/mariadb/my.cnf /etc/mysql/my.cnf
 # Initialize MariaDB
 RUN mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 # Expose the MariaDB default port
+ENTRYPOINT ["/sbin/tini", "--"]
+
 EXPOSE 3306
 CMD ["sh", "-c", "mariadbd --user=mysql --bind-address=0.0.0.0 --port=3306 --init-file=/init.sql"]
 

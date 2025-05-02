@@ -7,6 +7,7 @@ ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
 RUN apk update && \
     apk add --no-cache \
     pure-ftpd \
+    tini \
     && rm -rf /var/cache/apk/*
 RUN adduser -D -h /var/www/html ftpuser
 RUN mkdir -p /var/www/html && chown -R ftpuser:ftpuser /var/www/html
@@ -24,6 +25,7 @@ ARG PASV_MAX_PORT
 # RUN echo "ftpuser:ftppassword" | chpasswd
 RUN echo "$FTP_USER:$FTP_PASS" | chpasswd
 EXPOSE 21 21100-21110
+ENTRYPOINT ["/sbin/tini", "--"]
 
 # Start Pure-FTPd on container start
 # CMD ["pure-ftpd", "-p", "21100:21110", "-P", "127.0.0.1"]

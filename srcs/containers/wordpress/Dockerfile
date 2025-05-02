@@ -21,6 +21,7 @@ RUN apk update && \
     bash \
     curl \
     mariadb-client \
+    tini \
     && rm -rf /var/cache/apk/*
 # Copy PHP-FPM configuration files (create them in your local context)
 COPY containers/wordpress/php.ini /etc/php83/php.ini
@@ -37,4 +38,4 @@ COPY containers/wordpress/entrypoint.sh /entrypoint.sh
 COPY containers/wordpress/wp-config.php /wp-config.php
 COPY html/index.html /index.html
 RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]

@@ -23,6 +23,9 @@
  $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
  $dotenv->load();
  
+ file_put_contents(__DIR__ . '/env-test.txt', 'DB_NAME=' . ($_ENV['DB_NAME'] ?? 'NOT SET'));
+
+ 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', $_ENV['WORDPRESS_DB_NAME'] );

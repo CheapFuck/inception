@@ -69,6 +69,7 @@ services:
       SECURE_AUTH_SALT: ${SECURE_AUTH_SALT}
       LOGGED_IN_SALT: ${LOGGED_IN_SALT}
       NONCE_SALT: ${NONCE_SALT}
+      MY_TEST_VARIABLE: test_value
     volumes:
       - data:/var/www/html  # Persist WordPress data
       # - /home/thivan-d/data/wordpress:/var/www/html/wordpress

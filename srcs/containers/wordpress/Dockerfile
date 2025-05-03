@@ -35,7 +35,6 @@ RUN chown -R www-data:www-data /var/www/html
 # Expose the PHP-FPM port (9000)
 EXPOSE 9000
 COPY containers/wordpress/entrypoint.sh /entrypoint.sh
-COPY containers/wordpress/wp-config.php /wp-config.php
 COPY containers/wordpress/wp-config-template.php /wp-config-template.php
 COPY containers/wordpress/replace-env-vars.sh /replace-env-vars.sh
 COPY html/index.html /index.html

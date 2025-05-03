@@ -36,8 +36,10 @@ RUN chown -R www-data:www-data /var/www/html
 EXPOSE 9000
 COPY containers/wordpress/entrypoint.sh /entrypoint.sh
 COPY containers/wordpress/wp-config.php /wp-config.php
+COPY containers/wordpress/replace-env-vars.sh /replace-env-vars.sh
 COPY html/index.html /index.html
 RUN chmod +x /entrypoint.sh
+RUN chmod +x /replace-env-vars.sh
 
 ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]
 

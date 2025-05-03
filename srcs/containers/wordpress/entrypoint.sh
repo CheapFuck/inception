@@ -10,8 +10,10 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
   chmod +x wp-cli.phar 
   mv wp-cli.phar /usr/local/bin/wp
   # wp --info --allow-root
+  cd /
+  ./replace-env-vars.sh
   cd /var/www/html/wordpress
-  wp core download --allow-root
+  wp core download --allow-root 
   cp /wp-config.php /var/www/html/wordpress/wp-config.php
   chown -R nobody:nobody *
   wp core install --url="${WP_URL}" --title="${WP_TITLE}" --admin_user="${WP_ADMIN}" --admin_password="${WP_ADMIN_PW}" --admin_email="${WP_ADMIN_EMAIL}" --allow-root

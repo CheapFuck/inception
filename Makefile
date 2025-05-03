@@ -4,7 +4,7 @@
 DIRS := $(HOME)/data/peercoin $(HOME)/data/mariadb
 
 # Ensure that 'run_script' and 'create_dirs' are part of the 'all' target
-all: create_dirs run_script up
+all: create_dirs update-yml run_script up
 	@echo "all target executed"
 
 # Target to check and create directories
@@ -20,15 +20,19 @@ create_dirs:
 
 YML_FILE=srcs/docker-compose.yml
 
-# Get the current username
-USER_NAME=$(shell whoami)
 # Run your script
 run_script:
 	./srcs/penultimate.sh
 
+# Get the current username
+username=$(whoami)
+
+# yml
+yml_file=srcs/docker-compose.yml
+
 update-yml:
 	@echo "Updating YML file with current username..."
-	@sed -i "s|/home/___USERNAME___|/home/$(USER_NAME)|g" $(YML_FILE)
+	@sed -i "s|/home/___USERNAME___|/home/$username|g" srcs/docker-compose.yml
 	@echo "YML file updated successfully!"
 
 # Docker up (builds and starts containers)

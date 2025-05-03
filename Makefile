@@ -25,14 +25,14 @@ run_script:
 	./srcs/penultimate.sh
 
 # Get the current username
-username=$(whoami)
+USER_NAME=$(shell whoami)
 
 # yml
 yml_file=srcs/docker-compose.yml
 
 update-yml:
 	@echo "Updating YML file with current username..."
-	@sed -i "s|/home/___USERNAME___|/home/$username|g" srcs/docker-compose.yml
+	@sed -i "s|/home/___USERNAME___|/home/$(USER_NAME)|g" srcs/docker-compose.yml
 	@echo "YML file updated successfully!"
 
 # Docker up (builds and starts containers)

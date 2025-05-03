@@ -31,7 +31,7 @@ define( 'DB_USER', '${WORDPRESS_DB_USER}' );
 define( 'DB_PASSWORD', '${WORDPRESS_DB_PASSWORD}' );
 
 /** Database hostname */
-define( 'DB_HOST', '${WORDPRESS_DB_HOST' );
+define( 'DB_HOST', '${WORDPRESS_DB_HOST}' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
@@ -51,7 +51,7 @@ define( 'DB_COLLATE', '' );
  * @since 2.6.0
  */
 define( 'AUTH_KEY',         '${AUTH_KEY}' );
-define( 'SECURE_AUTH_KEY',  '${SECURE_AUTH_KEY' );
+define( 'SECURE_AUTH_KEY',  '${SECURE_AUTH_KEY}' );
 define( 'LOGGED_IN_KEY',    '${LOGGED_IN_KEY}' );
 define( 'NONCE_KEY',        '${NONCE_KEY}' );
 define( 'AUTH_SALT',        '${AUTH_SALT}' );

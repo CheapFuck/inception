@@ -18,9 +18,18 @@ create_dirs:
 		fi \
 	done
 
+YML_FILE=srcs/docker-compose.yml
+
+# Get the current username
+USER_NAME=$(shell whoami)
 # Run your script
 run_script:
 	./srcs/penultimate.sh
+
+update-yml:
+	@echo "Updating YML file with current username..."
+	@sed -i "s|/home/___USERNAME___|/home/$(USER_NAME)|g" $(YML_FILE)
+	@echo "YML file updated successfully!"
 
 # Docker up (builds and starts containers)
 up:

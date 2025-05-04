@@ -14,8 +14,8 @@ RUN mkdir -p /var/www/html && chown -R ftpuser:ftpuser /var/www/html
 RUN chmod 755 /var/www/html
 
 
-# ARG FTP_USER
-# ARG FTP_PASS
+ARG FTP_USER
+ARG FTP_PASS
 # ARG PASV_ADDRESS
 # ARG PASV_MIN_PORT
 # ARG PASV_MAX_PORT

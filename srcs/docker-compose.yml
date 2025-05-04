@@ -83,9 +83,9 @@ services:
   ftp:
     container_name: ftp
     restart: always
-    # ports:
-    #   - "21:21"
-    #   - "21100-21110:21100-21110"
+    ports:
+      - "21:21"
+      - "21100-21110:21100-21110"
     build:
       context: .  # Set the context to the parent directory (my_project)
       dockerfile: containers/ftp/Dockerfile  # Point to the WordPress Dockerfile

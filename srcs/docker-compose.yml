@@ -41,8 +41,8 @@ services:
       interval: 5s
       timeout: 5s
       retries: 5
-    ports:
-      - "3306:3306"  # Expose port 3306 to the host for MariaDB connections
+    # ports:
+    #   - "3306:3306"  # Expose port 3306 to the host for MariaDB connections
   wordpress:
     container_name: wordpress
     build:
@@ -83,9 +83,9 @@ services:
   ftp:
     container_name: ftp
     restart: always
-    ports:
-      - "21:21"
-      - "21100-21110:21100-21110"
+    # ports:
+    #   - "21:21"
+    #   - "21100-21110:21100-21110"
     build:
       context: .  # Set the context to the parent directory (my_project)
       dockerfile: containers/ftp/Dockerfile  # Point to the WordPress Dockerfile
@@ -118,8 +118,8 @@ services:
     restart: always
     networks:
       - inception
-    ports:
-      - "6379:6379"  # Optional unless you want to connect from the host
+    # ports:
+    #   - "6379:6379"  # Optional unless you want to connect from the host
     volumes:
       - redis-data:/data
       - ./containers/redis/data:/data  # Mount the host directory to persist Redis data
@@ -128,8 +128,8 @@ services:
   adminer:
     container_name: adminer
     restart: always
-    ports:
-      - "8080:8080"
+    # ports:
+    #   - "8080:8080"
     build:
       context: .  # Set the context to the parent directory (my_project)
       dockerfile: containers/adminer/Dockerfile  # Point to the WordPress Dockerfile

@@ -17,28 +17,19 @@
  *
  * @package WordPress
  */
-
-
- 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define( 'DB_NAME', '${WORDPRESS_DB_NAME}' );
-
 /** Database username */
 define( 'DB_USER', '${WORDPRESS_DB_USER}' );
-
 /** Database password */
 define( 'DB_PASSWORD', '${WORDPRESS_DB_PASSWORD}' );
-
 /** Database hostname */
 define( 'DB_HOST', '${WORDPRESS_DB_HOST}' );
-
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
-
 /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', '' );
-
 /**#@+
  * Authentication unique keys and salts.
  *
@@ -58,9 +49,7 @@ define( 'AUTH_SALT',        '${AUTH_SALT}' );
 define( 'SECURE_AUTH_SALT', '${SECURE_AUTH_SALT}' );
 define( 'LOGGED_IN_SALT',   '${LOGGED_IN_SALT}' );
 define( 'NONCE_SALT',       '${NONCE_SALT}' );
-
 /**#@-*/
-
 /**
  * WordPress database table prefix.
  *
@@ -74,7 +63,6 @@ define( 'NONCE_SALT',       '${NONCE_SALT}' );
  * @link https://developer.wordpress.org/advanced-administration/wordpress/wp-config/#table-prefix
  */
 $table_prefix = 'wp_';
-
 /**
  * For developers: WordPress debugging mode.
  *
@@ -87,34 +75,21 @@ $table_prefix = 'wp_';
  *
  * @link https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/
  */
-// define( 'WP_DEBUG', false );
-define('WP_DEBUG', true);
+define( 'WP_DEBUG', false );
+// define('WP_DEBUG', true);
 define('WP_DEBUG_LOG', true);
-// define('WP_DEBUG_DISPLAY', false);  // Hides errors from the frontend, logs them instead
-define('WP_DEBUG_DISPLAY', true);  // Hides errors from the frontend, logs them instead
-
-
-
-
+define('WP_DEBUG_DISPLAY', false);
+// define('WP_DEBUG_DISPLAY', true);
 /* Add any custom values between this line and the "stop editing" line. */
-
 // Redis Cache Settings
-define( 'WP_REDIS_HOST', 'redis' );  // The Redis service name defined in docker-compose.yml
-define( 'WP_REDIS_PORT', 6379 );     // The port Redis is running on (default is 6379)
-// define( 'WP_REDIS_DATABASE', 0 );    // Default Redis database is 0 (optional, use if needed)
-// define( 'WP_REDIS_DISABLED', false );
+define( 'WP_REDIS_HOST', 'redis' );
+define( 'WP_REDIS_PORT', 6379 );
 define( 'WP_CONTENT_DIR', '/var/www/html/wordpress/wp-content' );
-define('FS_METHOD', 'direct');  // Tells WordPress to use direct file access
-// define('WP_REDIS_ENABLED', true); // Enable Redis Object Cache
-//define( 'WP_CONTENT_URL', 'http://yourdomain.com/wordpress/wp-content' );
-
-
+define('FS_METHOD', 'direct');
 /* That's all, stop editing! Happy publishing. */
-
 /** Absolute path to the WordPress directory. */
 if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
 }
-
 /** Sets up WordPress vars and included files. */
 require_once ABSPATH . 'wp-settings.php';

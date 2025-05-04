@@ -3,8 +3,8 @@
 # If the WordPress directory is empty, download and extract WordPress
 if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
   echo "WordPress is not installed, installing..."
-  cp /index.html /var/www/html/index.html
   mkdir -p /var/www/html/wordpress
+  cp /index.html /var/www/html/index.html
   
   wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
   chmod +x wp-cli.phar 
@@ -24,13 +24,7 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
 else
   echo "WordPress already installed, skipping installation."
 fi
-
-# php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-# php composer-setup.php
-# php -r "unlink('composer-setup.php');"
-# mv composer.phar /usr/local/bin/composer
-# composer require vlucas/phpdotenv
-cp /index.html /var/www/html/index.html
+# cp /index.html /var/www/html/index.html
 cd /var/www/html/wordpress
 chown -R nobody:nobody *
 exec php-fpm83 -F -R

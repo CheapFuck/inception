@@ -5,16 +5,12 @@ services:
   nginx:
     container_name: nginx
     build:
-      context: .  # Set the context to the parent directory (my_project)
-      dockerfile: containers/nginx/Dockerfile  # Point to the Dockerfile inside containers/nginx
+      context: .
+      dockerfile: containers/nginx/Dockerfile
     ports:
       - "443:443"
-      # - "80:80"
     volumes:
-      - data:/var/www/html  # Persist WordPress data
-      # - ./nginx.conf:/etc/nginx/nginx.conf  # Nginx config
-      # - ./ssl/cert.pem:/etc/ssl/certs/cert.pem  # SSL cert
-      # - ./ssl/my_key.key:/etc/ssl/private/my_key.key  # SSL key
+      - data:/var/www/html
     networks:
       - inception
     restart: always

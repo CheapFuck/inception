@@ -1,15 +1,11 @@
 #!/bin/bash
-
-# If the WordPress directory is empty, download and extract WordPress
 if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
   echo "WordPress is not installed, installing..."
   mkdir -p /var/www/html/wordpress
   cp /index.html /var/www/html/index.html
-  
   wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
   chmod +x wp-cli.phar 
   mv wp-cli.phar /usr/local/bin/wp
-  # wp --info --allow-root
   cd /
   ./replace-env-vars.sh
   cd /var/www/html/wordpress
@@ -24,7 +20,6 @@ if [ ! `find /var/www/html/wordpress -name wp-config.php` ]; then
 else
   echo "WordPress already installed, skipping installation."
 fi
-# cp /index.html /var/www/html/index.html
 cd /var/www/html/wordpress
 chown -R nobody:nobody *
 exec php-fpm83 -F -R

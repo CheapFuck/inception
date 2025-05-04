@@ -1,6 +1,5 @@
 FROM scratch
 ADD alpine-minirootfs-3.55.2-x86_64.tar.gz /
-
 RUN apk update && \
     apk add --no-cache \
     php \
@@ -37,5 +36,4 @@ COPY containers/wordpress/replace-env-vars.sh /replace-env-vars.sh
 COPY html/index.html /index.html
 RUN chmod +x /entrypoint.sh
 RUN chmod +x /replace-env-vars.sh
-
 ENTRYPOINT ["/sbin/tini", "--", "/entrypoint.sh"]
